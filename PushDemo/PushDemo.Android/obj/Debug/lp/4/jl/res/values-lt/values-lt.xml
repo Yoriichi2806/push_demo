@@ -1,0 +1,10 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">Ištrinta 
+        <ns1:g example="1" id="count">%1$d</ns1:g>žinutė</item><item quantity="few">Ištrintos 
+        <ns1:g example="7" id="count">%1$d</ns1:g>žinutės</item><item quantity="many">Ištrintos 
+        <ns1:g example="7" id="count">%1$d</ns1:g>žinutės</item><item quantity="other">Ištrintos 
+        <ns1:g example="7" id="count">%1$d</ns1:g>žinutės</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one">Pažymėta 
+        <ns1:g example="1" id="count">%1$d</ns1:g>žinutė kaip perskaityta</item><item quantity="few">Pažymėtos 
+        <ns1:g example="7" id="count">%1$d</ns1:g>žinutės kaip perskaitytos</item><item quantity="many">Pažymėtos 
+        <ns1:g example="7" id="count">%1$d</ns1:g>žinutės kaip perskaitytos</item><item quantity="other">Pažymėtos 
+        <ns1:g example="7" id="count">%1$d</ns1:g>žinutės kaip perskaitytos</item></plurals><string name="ua_mc_action_click">Skaityti žinutę</string><string name="ua_mc_action_select">Pasirinkti žinutę</string><string name="ua_mc_action_unselect">Panaikinti žinutės pasirinkimą</string><string name="ua_mc_description_state_selected">Pasirinkta,</string><string name="ua_mc_description_state_unread">Neskaityta,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

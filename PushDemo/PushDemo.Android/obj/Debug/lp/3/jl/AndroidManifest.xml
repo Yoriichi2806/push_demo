@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.urbanairship.android.layout" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="33" />
+
+    <application>
+        <activity
+            android:name="com.urbanairship.android.layout.ui.ModalActivity"
+            android:exported="false"
+            android:theme="@style/UrbanAirship.Layout.ModalActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <meta-data
+                android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW"
+                android:value="true" />
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,6 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">Umlayezo osusiwe ongu- 
+        <ns1:g example="1" id="count">%1$d</ns1:g></item><item quantity="other">Imilayezo engu- 
+        <ns1:g example="7" id="count">%1$d</ns1:g>esusiwe</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one">Imakwe umlayezo ongu- 
+        <ns1:g example="1" id="count">%1$d</ns1:g>njengofundiwe</item><item quantity="other">Imakwe imilayezo engu- 
+        <ns1:g example="7" id="count">%1$d</ns1:g>njengefundiwe</item></plurals><string name="ua_mc_action_click">Funda umlayezo</string><string name="ua_mc_action_select">Khetha umlayezo</string><string name="ua_mc_action_unselect">Susa ukukhetha umlayezo</string><string name="ua_mc_description_state_selected">Ikhethiwe,</string><string name="ua_mc_description_state_unread">Akufundiwe,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, ngomhla ka- 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

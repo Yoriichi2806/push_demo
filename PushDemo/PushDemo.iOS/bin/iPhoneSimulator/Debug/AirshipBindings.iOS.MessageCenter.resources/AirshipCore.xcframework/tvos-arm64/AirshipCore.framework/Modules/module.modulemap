@@ -1,0 +1,11 @@
+framework module AirshipCore {
+  umbrella header "AirshipCore.h"
+
+  export *
+  module * { export * }
+}
+
+module AirshipCore.Swift {
+  header "AirshipCore-Swift.h"
+  requires objc
+}

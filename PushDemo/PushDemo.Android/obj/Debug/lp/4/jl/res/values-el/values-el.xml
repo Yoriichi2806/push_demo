@@ -1,0 +1,6 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">Διαγράφηκε 
+        <ns1:g example="1" id="count">%1$d</ns1:g>μήνυμα</item><item quantity="other">Διαγράφηκαν 
+        <ns1:g example="7" id="count">%1$d</ns1:g>μηνύματα</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one">Επισημάνθηκε 
+        <ns1:g example="1" id="count">%1$d</ns1:g>μήνυμα ως αναγνωσμένο</item><item quantity="other">Επισημάνθηκαν 
+        <ns1:g example="7" id="count">%1$d</ns1:g>μηνύματα ως αναγνωσμένα</item></plurals><string name="ua_mc_action_click">Διαβάστε το μήνυμα</string><string name="ua_mc_action_select">Επιλέξτε μήνυμα</string><string name="ua_mc_action_unselect">Αποεπιλογή μηνύματος</string><string name="ua_mc_description_state_selected">Επιλεγμένα,</string><string name="ua_mc_description_state_unread">Αδιάβαστο,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, στις 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

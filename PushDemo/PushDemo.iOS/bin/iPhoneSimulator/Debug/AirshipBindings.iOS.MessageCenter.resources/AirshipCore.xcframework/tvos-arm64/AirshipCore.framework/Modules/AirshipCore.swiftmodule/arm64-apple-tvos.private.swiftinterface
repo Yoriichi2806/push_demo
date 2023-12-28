@@ -1,0 +1,2675 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-tvos14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AirshipCore
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+@_exported import AirshipBasement
+@_exported import AirshipCore
+import Combine
+import CommonCrypto
+import CoreData
+import Foundation
+import ImageIO
+import Network
+import QuartzCore
+import Swift
+import SwiftUI
+import SystemConfiguration
+import UIKit
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+import os
+public struct AirshipCoreDataPredicate : Swift.Sendable {
+  public init(format: Swift.String, args: [any Swift.Sendable]? = nil)
+  public func toNSPredicate() -> Foundation.NSPredicate
+}
+@_hasMissingDesignatedInitializers @available(tvOS, unavailable)
+@objc(UAChannelCapture) public class ChannelCapture : ObjectiveC.NSObject {
+  @objc public var enabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAColorUtils) public class ColorUtils : ObjectiveC.NSObject {
+  @objc(colorWithHexString:) public class func color(_ hexString: Swift.String) -> UIKit.UIColor?
+  @objc(hexStringWithColor:) public class func hexString(_ color: UIKit.UIColor) -> Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAirship) public class Airship : ObjectiveC.NSObject {
+  @objc public static let deepLinkScheme: Swift.String
+  @objc public static let airshipReadyNotification: Foundation.NSNotification.Name
+  @objc public static let airshipReadyChannelIdentifier: Swift.String
+  @objc public static let airshipReadyAppKey: Swift.String
+  @objc public static let airshipReadyPayloadVersion: Swift.String
+  @objc public static var isFlying: Swift.Bool {
+    @objc get
+  }
+  @objc public var config: AirshipCore.RuntimeConfig {
+    @objc get
+  }
+  public var actionRegistry: AirshipCore.ActionRegistry {
+    get
+  }
+  @objc public var applicationMetrics: AirshipCore.ApplicationMetrics {
+    @objc get
+  }
+  @objc public var permissionsManager: AirshipCore.AirshipPermissionsManager {
+    @objc get
+  }
+  @objc weak public var deepLinkDelegate: (any AirshipCore.DeepLinkDelegate)? {
+    @objc get
+    @objc set
+  }
+  @objc(URLAllowList) public var urlAllowList: AirshipCore.URLAllowList {
+    @objc get
+  }
+  @objc public var localeManager: AirshipCore.AirshipLocaleManager {
+    @objc get
+  }
+  @objc public var privacyManager: AirshipCore.AirshipPrivacyManager {
+    @objc get
+  }
+  @objc public var components: [any AirshipBasement.AirshipComponent] {
+    @objc get
+  }
+  @objc public static var shared: AirshipCore.Airship {
+    @objc get
+  }
+  @objc public static var push: AirshipCore.AirshipPush {
+    @objc get
+  }
+  @objc public static var contact: AirshipCore.AirshipContact {
+    @objc get
+  }
+  @objc public static var analytics: AirshipCore.AirshipAnalytics {
+    @objc get
+  }
+  @objc public static var channel: AirshipCore.AirshipChannel {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor public class func takeOff(launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]?)
+  @objc @_Concurrency.MainActor public class func takeOff(_ config: AirshipCore.AirshipConfig?, launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]?)
+  @objc public static var logHandler: any AirshipCore.AirshipLogHandler {
+    @objc get
+    @objc set
+  }
+  @objc public static var logLevel: AirshipCore.AirshipLogLevel {
+    @objc get
+    @objc set
+  }
+  @objc public class func component(forClassName className: Swift.String) -> (any AirshipBasement.AirshipComponent)?
+  public class func component<E>(ofType componentType: E.Type) -> E?
+  public class func requireComponent<E>(ofType componentType: E.Type) -> E
+  #if compiler(>=5.3) && $Sendable
+  public class func componentSupplier<E>() -> @Sendable () -> E
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor @objc public func deepLink(_ deepLink: Foundation.URL) async -> Swift.Bool
+  #endif
+  @objc deinit
+}
+@objc(UAThomasDelegate) public protocol ThomasDelegate {
+  @objc func onFormSubmitted(formResult: AirshipCore.ThomasFormResult, layoutContext: AirshipCore.ThomasLayoutContext)
+  @objc func onFormDisplayed(formInfo: AirshipCore.ThomasFormInfo, layoutContext: AirshipCore.ThomasLayoutContext)
+  @objc func onButtonTapped(buttonIdentifier: Swift.String, metadata: Any?, layoutContext: AirshipCore.ThomasLayoutContext)
+  @objc func onDismissed(layoutContext: AirshipCore.ThomasLayoutContext?)
+  @objc func onDismissed(buttonIdentifier: Swift.String, buttonDescription: Swift.String, cancel: Swift.Bool, layoutContext: AirshipCore.ThomasLayoutContext)
+  @objc func onTimedOut(layoutContext: AirshipCore.ThomasLayoutContext?)
+  @objc func onPageViewed(pagerInfo: AirshipCore.ThomasPagerInfo, layoutContext: AirshipCore.ThomasLayoutContext)
+  @objc func onPageGesture(identifier: Swift.String, metadata: Any?, layoutContext: AirshipCore.ThomasLayoutContext)
+  @objc func onPageAutomatedAction(identifier: Swift.String, metadata: Any?, layoutContext: AirshipCore.ThomasLayoutContext)
+  @objc func onPageSwiped(from: AirshipCore.ThomasPagerInfo, to: AirshipCore.ThomasPagerInfo, layoutContext: AirshipCore.ThomasLayoutContext)
+  @objc func onPromptPermissionResult(permission: AirshipCore.AirshipPermission, startingStatus: AirshipCore.AirshipPermissionStatus, endingStatus: AirshipCore.AirshipPermissionStatus, layoutContext: AirshipCore.ThomasLayoutContext)
+}
+@objc(UAThomasPagerInfo) final public class ThomasPagerInfo : ObjectiveC.NSObject, Swift.Sendable {
+  @objc final public let identifier: Swift.String
+  @objc final public let pageIndex: Swift.Int
+  @objc final public let pageIdentifier: Swift.String
+  @objc final public let pageCount: Swift.Int
+  @objc final public let completed: Swift.Bool
+  @objc public init(identifier: Swift.String, pageIndex: Swift.Int, pageIdentifier: Swift.String, pageCount: Swift.Int, completed: Swift.Bool)
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(UAThomasFormResult) public class ThomasFormResult : ObjectiveC.NSObject {
+  @objc final public let identifier: Swift.String
+  @objc final public let formData: [Swift.String : Any]
+  @objc public init(identifier: Swift.String, formData: [Swift.String : Any])
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(UAThomasButtonInfo) final public class ThomasButtonInfo : ObjectiveC.NSObject, Swift.Sendable {
+  @objc final public let identifier: Swift.String
+  @objc public init(identifier: Swift.String)
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(UAThomasFormInfo) final public class ThomasFormInfo : ObjectiveC.NSObject, Swift.Sendable {
+  @objc final public let identifier: Swift.String
+  @objc final public let submitted: Swift.Bool
+  @objc final public let formType: Swift.String
+  @objc final public let formResponseType: Swift.String?
+  @objc public init(identifier: Swift.String, submitted: Swift.Bool, formType: Swift.String, formResponseType: Swift.String?)
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(UAThomasLayoutContext) final public class ThomasLayoutContext : ObjectiveC.NSObject, Swift.Sendable {
+  @objc final public let formInfo: AirshipCore.ThomasFormInfo?
+  @objc final public let pagerInfo: AirshipCore.ThomasPagerInfo?
+  @objc final public let buttonInfo: AirshipCore.ThomasButtonInfo?
+  @objc public init(formInfo: AirshipCore.ThomasFormInfo?, pagerInfo: AirshipCore.ThomasPagerInfo?, buttonInfo: AirshipCore.ThomasButtonInfo?)
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAThomas) public class Thomas : ObjectiveC.NSObject {
+  @objc public class func validate(data: Foundation.Data) throws
+  @objc public class func validate(json: Any) throws
+  @objc public class func urls(json: Any) throws -> [AirshipCore.URLInfo]
+  @objc @_Concurrency.MainActor public class func deferredDisplay(json: Any, scene: UIKit.UIWindowScene, extensions: AirshipCore.ThomasExtensions? = nil, delegate: any AirshipCore.ThomasDelegate) throws -> () -> AirshipBasement.Disposable
+  @discardableResult
+  @objc @_Concurrency.MainActor public class func deferredDisplay(data: Foundation.Data, scene: UIKit.UIWindowScene, extensions: AirshipCore.ThomasExtensions? = nil, delegate: any AirshipCore.ThomasDelegate) throws -> () -> AirshipBasement.Disposable
+  @discardableResult
+  @_Concurrency.MainActor public class func display(_ data: Foundation.Data, scene: UIKit.UIWindowScene, extensions: AirshipCore.ThomasExtensions? = nil, delegate: any AirshipCore.ThomasDelegate) throws -> AirshipBasement.Disposable
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(UAThomasExtensions) public class ThomasExtensions : ObjectiveC.NSObject {
+  @objc public init(imageProvider: (any AirshipCore.AirshipImageProvider)? = nil)
+  @objc deinit
+}
+@objc public enum UrlTypes : Swift.Int {
+  case image
+  case video
+  case web
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol AudienceDeviceInfoProvider : AnyObject, Swift.Sendable {
+  var isAirshipReady: Swift.Bool { get }
+  var tags: Swift.Set<Swift.String> { get }
+  var channelID: Swift.String? { get }
+  var locale: Foundation.Locale { get }
+  var appVersion: Swift.String? { get }
+  #if compiler(>=5.3) && $EffectfulProp
+  var permissions: [AirshipCore.AirshipPermission : AirshipCore.AirshipPermissionStatus] { get async }
+  #endif
+  #if compiler(>=5.3) && $EffectfulProp
+  var isUserOptedInPushNotifications: Swift.Bool { get async }
+  #endif
+  var analyticsEnabled: Swift.Bool { get }
+  var installDate: Foundation.Date { get }
+  #if compiler(>=5.3) && $EffectfulProp
+  var stableContactID: Swift.String { get async }
+  #endif
+}
+final public class CachingAudienceDeviceInfoProvider : AirshipCore.AudienceDeviceInfoProvider, @unchecked Swift.Sendable {
+  public init(deviceInfoProvider: any AirshipCore.AudienceDeviceInfoProvider = DefaultAudienceDeviceInfoProvider())
+  final public var installDate: Foundation.Date {
+    get
+  }
+  #if compiler(>=5.3) && $EffectfulProp
+  final public var stableContactID: Swift.String {
+    get async
+  }
+  #endif
+  final public var appVersion: Swift.String? {
+    get
+  }
+  final public var isAirshipReady: Swift.Bool {
+    get
+  }
+  final public var tags: Swift.Set<Swift.String> {
+    get
+  }
+  final public var channelID: Swift.String? {
+    get
+  }
+  final public var locale: Foundation.Locale {
+    get
+  }
+  #if compiler(>=5.3) && $EffectfulProp
+  final public var permissions: [AirshipCore.AirshipPermission : AirshipCore.AirshipPermissionStatus] {
+    get async
+  }
+  #endif
+  #if compiler(>=5.3) && $EffectfulProp
+  final public var isUserOptedInPushNotifications: Swift.Bool {
+    get async
+  }
+  #endif
+  final public var analyticsEnabled: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
+final public class DefaultAudienceDeviceInfoProvider : AirshipCore.AudienceDeviceInfoProvider {
+  public init()
+  final public var installDate: Foundation.Date {
+    get
+  }
+  #if compiler(>=5.3) && $EffectfulProp
+  final public var stableContactID: Swift.String {
+    get async
+  }
+  #endif
+  final public var appVersion: Swift.String? {
+    get
+  }
+  final public var isAirshipReady: Swift.Bool {
+    get
+  }
+  final public var tags: Swift.Set<Swift.String> {
+    get
+  }
+  final public var channelID: Swift.String? {
+    get
+  }
+  final public var locale: Foundation.Locale {
+    get
+  }
+  #if compiler(>=5.3) && $EffectfulProp
+  final public var permissions: [AirshipCore.AirshipPermission : AirshipCore.AirshipPermissionStatus] {
+    get async
+  }
+  #endif
+  #if compiler(>=5.3) && $EffectfulProp
+  final public var isUserOptedInPushNotifications: Swift.Bool {
+    get async
+  }
+  #endif
+  final public var analyticsEnabled: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAirshipCoreResources) public class AirshipCoreResources : ObjectiveC.NSObject {
+  @objc public static let bundle: Foundation.Bundle
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(UAirshipWorkerType) public enum AirshipWorkerType : Swift.Int {
+  case serial
+  case concurrent
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class OpenExternalURLAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  convenience public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UASDKDependencyKeys) public class SDKDependencyKeys : ObjectiveC.NSObject {
+  @objc public static let channel: Swift.String
+  @objc public static let contact: Swift.String
+  @objc public static let push: Swift.String
+  @objc public static let remoteData: Swift.String
+  @objc public static let remoteDataAutomation: Swift.String
+  @objc public static let config: Swift.String
+  @objc public static let dataStore: Swift.String
+  @objc public static let analytics: Swift.String
+  @objc public static let privacyManager: Swift.String
+  @objc public static let permissionsManager: Swift.String
+  @objc public static let workManager: Swift.String
+  @objc public static let automationAudienceOverridesProvider: Swift.String
+  @objc public static let experimentsManager: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(UAChannelProtocol) public protocol BaseAirshipChannelProtocol : Swift.Sendable {
+  @objc var identifier: Swift.String? { get }
+  @objc var tags: [Swift.String] { get set }
+  @objc var isChannelTagRegistrationEnabled: Swift.Bool { get set }
+  @objc func editTags() -> AirshipCore.TagEditor
+  @objc func editTags(_ editorBlock: (AirshipCore.TagEditor) -> Swift.Void)
+  @objc func editTagGroups() -> AirshipCore.TagGroupsEditor
+  @objc func editTagGroups(_ editorBlock: (AirshipCore.TagGroupsEditor) -> Swift.Void)
+  @objc func editSubscriptionLists() -> AirshipCore.SubscriptionListEditor
+  @objc func editSubscriptionLists(_ editorBlock: (AirshipCore.SubscriptionListEditor) -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func fetchSubscriptionLists() async throws -> [Swift.String]
+  #endif
+  @objc func editAttributes() -> AirshipCore.AttributesEditor
+  @objc func editAttributes(_ editorBlock: (AirshipCore.AttributesEditor) -> Swift.Void)
+  @objc func enableChannelCreation()
+}
+public protocol AirshipChannelProtocol : AirshipCore.BaseAirshipChannelProtocol {
+}
+public protocol InternalAirshipChannelProtocol : AirshipCore.AirshipChannelProtocol {
+  #if compiler(>=5.3) && $AsyncAwait
+  func addRegistrationExtender(_ extender: @escaping (AirshipCore.ChannelRegistrationPayload) async -> AirshipCore.ChannelRegistrationPayload)
+  #endif
+  func updateRegistration()
+  func updateRegistration(forcefully: Swift.Bool)
+  func clearSubscriptionListsCache()
+}
+@_hasMissingDesignatedInitializers @objc(UARemoteDataInfo) final public class RemoteDataInfo : ObjectiveC.NSObject, Swift.Sendable, Swift.Codable, Foundation.NSCopying {
+  @objc final public let source: AirshipCore.RemoteDataSource
+  @objc final public let contactID: Swift.String?
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc final public class func fromJSON(string: Swift.String) throws -> AirshipCore.RemoteDataInfo
+  @objc final public func toEncodedJSONString() throws -> Swift.String
+  @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AirshipAsyncImage<Placeholder, ImageView> : SwiftUI.View where Placeholder : SwiftUI.View, ImageView : SwiftUI.View {
+  public init(url: Swift.String, imageLoader: AirshipCore.AirshipImageLoader = AirshipImageLoader(), image: @escaping (SwiftUI.Image, CoreFoundation.CGSize) -> ImageView, placeholder: @escaping () -> Placeholder)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11AirshipCore0A10AsyncImageV4bodyQrvp", 0) __<Placeholder, ImageView>
+}
+@_hasMissingDesignatedInitializers final public class AddTagsAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  convenience public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@objc(UAPrivacyManager) final public class AirshipPrivacyManager : ObjectiveC.NSObject, Swift.Sendable {
+  @objc public static let changeEvent: Foundation.Notification.Name
+  final public var enabledFeatures: AirshipCore.AirshipFeature {
+    get
+    set
+  }
+  @objc(enabledFeatures) final public var _objc_enabledFeatures: AirshipBasement._UAFeatures {
+    @objc get
+    @objc set
+  }
+  @objc(privacyManagerWithDataStore:defaultEnabledFeatures:) public static func _objc_factory(dataStore: AirshipCore.PreferenceDataStore, defaultEnabledFeatures: AirshipBasement._UAFeatures) -> AirshipCore.AirshipPrivacyManager
+  public init(dataStore: AirshipCore.PreferenceDataStore, defaultEnabledFeatures: AirshipCore.AirshipFeature, notificationCenter: AirshipCore.AirshipNotificationCenter = AirshipNotificationCenter.shared)
+  final public func enableFeatures(_ features: AirshipCore.AirshipFeature)
+  @objc(enableFeatures:) final public func _objc_enableFeatures(_ features: AirshipBasement._UAFeatures)
+  final public func disableFeatures(_ features: AirshipCore.AirshipFeature)
+  @objc(disableFeatures:) final public func _objc_disableFeatures(_ features: AirshipBasement._UAFeatures)
+  final public func isEnabled(_ feature: AirshipCore.AirshipFeature) -> Swift.Bool
+  @objc(isEnabled:) final public func _objc_isEnabled(_ features: AirshipBasement._UAFeatures) -> Swift.Bool
+  @objc final public func isAnyFeatureEnabled() -> Swift.Bool
+  @objc deinit
+}
+public struct AirshipFeature : Swift.OptionSet, Swift.Sendable {
+  public let rawValue: Swift.UInt
+  public static let inAppAutomation: AirshipCore.AirshipFeature
+  public static let messageCenter: AirshipCore.AirshipFeature
+  public static let push: AirshipCore.AirshipFeature
+  public static let analytics: AirshipCore.AirshipFeature
+  public static let tagsAndAttributes: AirshipCore.AirshipFeature
+  public static let contacts: AirshipCore.AirshipFeature
+  public static let all: AirshipCore.AirshipFeature
+  public init(rawValue: Swift.UInt)
+  public typealias ArrayLiteralElement = AirshipCore.AirshipFeature
+  public typealias Element = AirshipCore.AirshipFeature
+  public typealias RawValue = Swift.UInt
+}
+public struct ChannelRegistrationPayload : Swift.Codable, Swift.Equatable, Swift.Sendable {
+  public var channel: AirshipCore.ChannelRegistrationPayload.ChannelInfo
+  public var identityHints: AirshipCore.ChannelRegistrationPayload.IdentityHints?
+  public init()
+  public func minimizePayload(previous: AirshipCore.ChannelRegistrationPayload?) -> AirshipCore.ChannelRegistrationPayload
+  public struct ChannelInfo : Swift.Codable, Swift.Equatable, Swift.Sendable {
+    public var isOptedIn: Swift.Bool
+    public var isBackgroundEnabled: Swift.Bool
+    public var pushAddress: Swift.String?
+    public var setTags: Swift.Bool
+    public var tags: [Swift.String]?
+    public var tagChanges: AirshipCore.ChannelRegistrationPayload.TagChanges?
+    public var language: Swift.String?
+    public var country: Swift.String?
+    public var timeZone: Swift.String?
+    public var isActive: Swift.Bool
+    public var appVersion: Swift.String?
+    public var sdkVersion: Swift.String?
+    public var deviceModel: Swift.String?
+    public var deviceOS: Swift.String?
+    public var carrier: Swift.String?
+    public var contactID: Swift.String?
+    public var iOSChannelSettings: AirshipCore.ChannelRegistrationPayload.iOSChannelSettings?
+    public static func == (a: AirshipCore.ChannelRegistrationPayload.ChannelInfo, b: AirshipCore.ChannelRegistrationPayload.ChannelInfo) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct TagChanges : Swift.Codable, Swift.Equatable, Swift.Sendable {
+    public static func == (a: AirshipCore.ChannelRegistrationPayload.TagChanges, b: AirshipCore.ChannelRegistrationPayload.TagChanges) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct iOSChannelSettings : Swift.Codable, Swift.Equatable, Swift.Sendable {
+    public var quietTime: AirshipCore.ChannelRegistrationPayload.QuietTime?
+    public var quietTimeTimeZone: Swift.String?
+    public var badge: Swift.Int?
+    public var isScheduledSummary: Swift.Bool?
+    public var isTimeSensitive: Swift.Bool?
+    public static func == (a: AirshipCore.ChannelRegistrationPayload.iOSChannelSettings, b: AirshipCore.ChannelRegistrationPayload.iOSChannelSettings) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct IdentityHints : Swift.Codable, Swift.Equatable, Swift.Sendable {
+    public var userID: Swift.String?
+    public init(userID: Swift.String? = nil)
+    public static func == (a: AirshipCore.ChannelRegistrationPayload.IdentityHints, b: AirshipCore.ChannelRegistrationPayload.IdentityHints) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct QuietTime : Swift.Codable, Swift.Equatable, Swift.Sendable {
+    public var start: Swift.String
+    public var end: Swift.String
+    public static func == (a: AirshipCore.ChannelRegistrationPayload.QuietTime, b: AirshipCore.ChannelRegistrationPayload.QuietTime) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public static func == (a: AirshipCore.ChannelRegistrationPayload, b: AirshipCore.ChannelRegistrationPayload) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum AirshipWorkResult : Swift.Int, Swift.Sendable {
+  case success
+  case failure
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(UAMediaEventTemplate) public class MediaEventTemplate : ObjectiveC.NSObject {
+  @objc public var identifier: Swift.String?
+  @objc public var category: Swift.String?
+  @objc public var type: Swift.String?
+  @objc public var eventDescription: Swift.String?
+  @objc public var isFeature: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var author: Swift.String?
+  @objc public var publishedDate: Swift.String?
+  @objc public class func browsedTemplate() -> AirshipCore.MediaEventTemplate
+  @objc public class func starredTemplate() -> AirshipCore.MediaEventTemplate
+  @objc public class func sharedTemplate() -> AirshipCore.MediaEventTemplate
+  @objc(sharedTemplateWithSource:withMedium:) public class func sharedTemplate(source: Swift.String?, medium: Swift.String?) -> AirshipCore.MediaEventTemplate
+  @objc public class func consumedTemplate() -> AirshipCore.MediaEventTemplate
+  @objc(consumedTemplateWithValueFromString:) public class func consumedTemplate(valueString: Swift.String?) -> AirshipCore.MediaEventTemplate
+  @objc(consumedTemplateWithValue:) public class func consumedTemplate(value: Foundation.NSNumber?) -> AirshipCore.MediaEventTemplate
+  @objc public func createEvent() -> AirshipCore.CustomEvent
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAScopedSubscriptionListEditor) public class ScopedSubscriptionListEditor : ObjectiveC.NSObject {
+  @objc(subscribe:scope:) public func subscribe(_ subscriptionListID: Swift.String, scope: AirshipCore.ChannelScope)
+  @objc(unsubscribe:scope:) public func unsubscribe(_ subscriptionListID: Swift.String, scope: AirshipCore.ChannelScope)
+  public func mutate(_ subscriptionListID: Swift.String, scopes: [AirshipCore.ChannelScope], subscribe: Swift.Bool)
+  @objc public func apply()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @available(*, deprecated, message: "Use Contact#editAttributes() or Channel#editAttributes() instead.")
+@objc(UAAttributeMutations) public class AttributeMutations : ObjectiveC.NSObject {
+  @objc(setString:forAttribute:) public func setString(_ string: Swift.String, forAttribute: Swift.String)
+  @objc(setNumber:forAttribute:) public func setNumber(_ number: Foundation.NSNumber, forAttribute: Swift.String)
+  @objc(setDate:forAttribute:) public func setDate(_ date: Foundation.Date, forAttribute: Swift.String)
+  @objc(removeAttribute:) public func removeAttribute(_ attribute: Swift.String)
+  @objc public class func mutations() -> AirshipCore.AttributeMutations
+  @objc public func applyMutations(editor: AirshipCore.AttributesEditor)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct AirshipRequest {
+  public init(url: Foundation.URL?, headers: [Swift.String : Swift.String] = [:], method: Swift.String? = nil, auth: AirshipCore.AirshipRequestAuth? = nil, body: Foundation.Data? = nil, compressBody: Swift.Bool = false)
+}
+public enum SubscriptionListEdit : Swift.Equatable {
+  case subscribe(Swift.String)
+  case unsubscribe(Swift.String)
+  public static func == (a: AirshipCore.SubscriptionListEdit, b: AirshipCore.SubscriptionListEdit) -> Swift.Bool
+}
+@objc(UAPushableComponent) public protocol PushableComponent {
+  @objc optional func receivedRemoteNotification(_ notification: [Swift.AnyHashable : Any], completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  @objc(presentationOptionsForNotification:defaultPresentationOptions:) optional func presentationOptions(for notification: UserNotifications.UNNotification, defaultPresentationOptions options: UserNotifications.UNNotificationPresentationOptions) -> UserNotifications.UNNotificationPresentationOptions
+}
+final public class BlockAction : AirshipCore.AirshipAction {
+  #if compiler(>=5.3) && $AsyncAwait && $Sendable
+  public init(predicate: (@Sendable (AirshipCore.ActionArguments) async -> Swift.Bool)? = nil, block: @escaping @Sendable (AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?)
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAApplicationMetrics) public class ApplicationMetrics : ObjectiveC.NSObject {
+  @objc public var isAppVersionUpdated: Swift.Bool {
+    @objc get
+  }
+  @objc public var lastApplicationOpenDate: Foundation.Date? {
+    @objc get
+  }
+  @objc final public let currentAppVersion: Swift.String?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAAutomationAudienceChecker) public class AirshipAutomationAudienceChecker : ObjectiveC.NSObject, AirshipCore.AirshipAutomationAudienceCheckerProtocol {
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func evaluate(audience: Any, isNewUserEvaluationDate: Foundation.Date, contactID: Swift.String?) async throws -> Swift.Bool
+  #endif
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(UAAutomationAudienceCheckerProtocol) public protocol AirshipAutomationAudienceCheckerProtocol {
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func evaluate(audience: Any, isNewUserEvaluationDate: Foundation.Date, contactID: Swift.String?) async throws -> Swift.Bool
+  #endif
+}
+@_hasMissingDesignatedInitializers final public class ModifyAttributesAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  convenience public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+public enum ActionResult : Swift.Sendable {
+  case completed(AirshipCore.AirshipJSON)
+  case error(any Swift.Error)
+  case argumentsRejected
+  case actionNotFound
+}
+@_hasMissingDesignatedInitializers @available(tvOS, unavailable)
+final public class PasteboardAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+public struct DeviceAudienceSelector : Swift.Sendable, Swift.Codable, Swift.Equatable {
+  public static func == (a: AirshipCore.DeviceAudienceSelector, b: AirshipCore.DeviceAudienceSelector) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum AirshipJSON : Swift.Codable, Swift.Equatable, Swift.Sendable, Swift.Hashable {
+  public static let defaultEncoder: Foundation.JSONEncoder
+  public static let defaultDecoder: Foundation.JSONDecoder
+  case string(Swift.String)
+  case number(Swift.Double)
+  case object([Swift.String : AirshipCore.AirshipJSON])
+  case array([AirshipCore.AirshipJSON])
+  case bool(Swift.Bool)
+  case null
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public func unWrap() -> Swift.AnyHashable?
+  public static func from(json: Swift.String?, decoder: Foundation.JSONDecoder = AirshipJSON.defaultDecoder) throws -> AirshipCore.AirshipJSON
+  public static func from(data: Foundation.Data?, decoder: Foundation.JSONDecoder = AirshipJSON.defaultDecoder) throws -> AirshipCore.AirshipJSON
+  public static func wrap(_ value: Any?, encoder: Foundation.JSONEncoder = AirshipJSON.defaultEncoder) throws -> AirshipCore.AirshipJSON
+  public func toData(encoder: Foundation.JSONEncoder = AirshipJSON.defaultEncoder) throws -> Foundation.Data
+  public func toString(encoder: Foundation.JSONEncoder = AirshipJSON.defaultEncoder) throws -> Swift.String
+  public func decode<T>(decoder: Foundation.JSONDecoder = AirshipJSON.defaultDecoder, encoder: Foundation.JSONEncoder = AirshipJSON.defaultEncoder) throws -> T where T : Swift.Decodable
+  public var isNull: Swift.Bool {
+    get
+  }
+  public var isObject: Swift.Bool {
+    get
+  }
+  public var isArray: Swift.Bool {
+    get
+  }
+  public var isNumber: Swift.Bool {
+    get
+  }
+  public var isString: Swift.Bool {
+    get
+  }
+  public var isBool: Swift.Bool {
+    get
+  }
+  public static func == (a: AirshipCore.AirshipJSON, b: AirshipCore.AirshipJSON) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc(UAPermission) public enum AirshipPermission : Swift.UInt, Swift.CustomStringConvertible, Swift.Sendable {
+  case displayNotifications
+  case location
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.UInt)
+  public typealias RawValue = Swift.UInt
+  public var rawValue: Swift.UInt {
+    get
+  }
+}
+extension AirshipCore.AirshipPermission : Swift.Decodable {
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(UAJSONValueMatcher) final public class JSONValueMatcher : ObjectiveC.NSObject, @unchecked Swift.Sendable {
+  @objc final public func payload() -> [Swift.String : Any]
+  @objc(evaluateObject:) final public func evaluate(_ value: Any?) -> Swift.Bool
+  @objc(evaluateObject:ignoreCase:) final public func evaluate(_ value: Any?, ignoreCase: Swift.Bool) -> Swift.Bool
+  @objc(value:isEqualToValue:ignoreCase:) final public func value(_ valueOne: Any?, isEqualToValue valueTwo: Any?, ignoreCase: Swift.Bool) -> Swift.Bool
+  @objc(matcherWhereNumberAtLeast:) final public class func matcherWhereNumberAtLeast(atLeast number: Foundation.NSNumber) -> AirshipCore.JSONValueMatcher
+  @objc(matcherWhereNumberAtLeast:atMost:) final public class func matcherWhereNumberAtLeast(atLeast lowerNumber: Foundation.NSNumber, atMost higherNumber: Foundation.NSNumber) -> AirshipCore.JSONValueMatcher
+  @objc(matcherWhereNumberAtMost:) final public class func matcherWhereNumberAtMost(atMost number: Foundation.NSNumber) -> AirshipCore.JSONValueMatcher
+  @objc(matcherWhereNumberEquals:) final public class func matcherWhereNumberEquals(_ number: Foundation.NSNumber) -> AirshipCore.JSONValueMatcher
+  @objc(matcherWhereBooleanEquals:) final public class func matcherWhereBooleanEquals(_ boolean: Swift.Bool) -> AirshipCore.JSONValueMatcher
+  @objc(matcherWhereStringEquals:) final public class func matcherWhereStringEquals(_ string: Swift.String) -> AirshipCore.JSONValueMatcher
+  @objc(matcherWhereValueIsPresent:) final public class func matcherWhereValueIsPresent(_ present: Swift.Bool) -> AirshipCore.JSONValueMatcher
+  @objc(matcherWithVersionConstraint:) final public class func matcherWithVersionConstraint(_ versionConstraint: Swift.String) -> AirshipCore.JSONValueMatcher?
+  @objc(matcherWithArrayContainsPredicate:) final public class func matcherWithArrayContainsPredicate(_ predicate: AirshipCore.JSONPredicate) -> AirshipCore.JSONValueMatcher?
+  @objc(matcherWithArrayContainsPredicate:atIndex:) final public class func matcherWithArrayContainsPredicate(_ predicate: AirshipCore.JSONPredicate, at index: Swift.Int) -> AirshipCore.JSONValueMatcher?
+  @objc(matcherWithJSON:error:) final public class func matcherWithJSON(_ json: Any?) throws -> AirshipCore.JSONValueMatcher
+  @objc override final public func isEqual(_ other: Any?) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(UACircularRegion) public class CircularRegion : ObjectiveC.NSObject {
+  @objc public init?(radius: Swift.Double, latitude: Swift.Double, longitude: Swift.Double)
+  @objc(circularRegionWithRadius:latitude:longitude:) public class func circularRegion(radius: Swift.Double, latitude: Swift.Double, longitude: Swift.Double) -> AirshipCore.CircularRegion?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAPermissionsManager) final public class AirshipPermissionsManager : ObjectiveC.NSObject, @unchecked Swift.Sendable {
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc final public func permissionStatusMap() async -> [Swift.String : Swift.String]
+  #endif
+  @objc final public func setDelegate(_ delegate: (any AirshipCore.AirshipPermissionDelegate)?, permission: AirshipCore.AirshipPermission)
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor final public func checkPermissionStatus(_ permission: AirshipCore.AirshipPermission) async -> AirshipCore.AirshipPermissionStatus
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc @_Concurrency.MainActor final public func requestPermission(_ permission: AirshipCore.AirshipPermission) async -> AirshipCore.AirshipPermissionStatus
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc @_Concurrency.MainActor final public func requestPermission(_ permission: AirshipCore.AirshipPermission, enableAirshipUsageOnGrant: Swift.Bool) async -> AirshipCore.AirshipPermissionStatus
+  #endif
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAPreferenceDataStore) final public class PreferenceDataStore : ObjectiveC.NSObject, @unchecked Swift.Sendable {
+  @objc convenience public init(appKey: Swift.String)
+  @objc override final public func value(forKey key: Swift.String) -> Any?
+  @objc override final public func setValue(_ value: Any?, forKey key: Swift.String)
+  @objc final public func removeObject(forKey key: Swift.String)
+  @objc final public func keyExists(_ key: Swift.String) -> Swift.Bool
+  @objc final public func object(forKey key: Swift.String) -> Any?
+  @objc final public func string(forKey key: Swift.String) -> Swift.String?
+  @objc final public func array(forKey key: Swift.String) -> [Swift.AnyHashable]?
+  @objc final public func dictionary(forKey key: Swift.String) -> [Swift.AnyHashable : Any]?
+  @objc final public func data(forKey key: Swift.String) -> Foundation.Data?
+  @objc final public func stringArray(forKey key: Swift.String) -> [Swift.AnyHashable]?
+  @objc final public func integer(forKey key: Swift.String) -> Swift.Int
+  final public func unsignedInteger(forKey key: Swift.String) -> Swift.UInt?
+  @objc final public func float(forKey key: Swift.String) -> Swift.Float
+  @objc final public func double(forKey key: Swift.String) -> Swift.Double
+  @objc final public func double(forKey key: Swift.String, defaultValue: Swift.Double) -> Swift.Double
+  @objc final public func bool(forKey key: Swift.String) -> Swift.Bool
+  @objc final public func bool(forKey key: Swift.String, defaultValue: Swift.Bool) -> Swift.Bool
+  @objc final public func setInteger(_ int: Swift.Int, forKey key: Swift.String)
+  final public func setUnsignedInteger(_ value: Swift.UInt, forKey key: Swift.String)
+  @objc final public func setFloat(_ float: Swift.Float, forKey key: Swift.String)
+  @objc final public func setDouble(_ double: Swift.Double, forKey key: Swift.String)
+  @objc final public func setBool(_ bool: Swift.Bool, forKey key: Swift.String)
+  @objc final public func setObject(_ object: Any?, forKey key: Swift.String)
+  final public func codable<T>(forKey key: Swift.String) throws -> T? where T : Swift.Decodable, T : Swift.Encodable
+  final public func safeCodable<T>(forKey key: Swift.String) -> T? where T : Swift.Decodable, T : Swift.Encodable
+  final public func setSafeCodable<T>(_ codable: T?, forKey key: Swift.String) where T : Swift.Decodable, T : Swift.Encodable
+  final public func setCodable<T>(_ codable: T?, forKey key: Swift.String) throws where T : Swift.Decodable, T : Swift.Encodable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAEmailRegistrationOptions) final public class EmailRegistrationOptions : ObjectiveC.NSObject, Swift.Codable, Swift.Sendable {
+  @objc public static func commercialOptions(transactionalOptedIn: Foundation.Date?, commercialOptedIn: Foundation.Date?, properties: [Swift.String : Any]?) -> AirshipCore.EmailRegistrationOptions
+  @objc public static func options(transactionalOptedIn: Foundation.Date?, properties: [Swift.String : Any]?, doubleOptIn: Swift.Bool) -> AirshipCore.EmailRegistrationOptions
+  @objc public static func options(properties: [Swift.String : Any]?, doubleOptIn: Swift.Bool) -> AirshipCore.EmailRegistrationOptions
+  public init(from decoder: any Swift.Decoder) throws
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+}
+@objc(UADeepLinkDelegate) public protocol DeepLinkDelegate {
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func receivedDeepLink(_ deepLink: Foundation.URL) async
+  #endif
+}
+@objc public enum AirshipWorkRequestConflictPolicy : Swift.Int, Swift.Sendable {
+  @objc(UAirshipWorkRequestConflictPolicyAppend) case append
+  @objc(UAirshipWorkRequestConflictPolicyReplace) case replace
+  @objc(UAirshipWorkRequestConflictPolicyKeepIfNotStarted) case keepIfNotStarted
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct AirshipWorkRequest : Swift.Equatable, Swift.Sendable, Swift.Hashable {
+  public let workID: Swift.String
+  public let extras: [Swift.String : Swift.String]?
+  public let initialDelay: Foundation.TimeInterval
+  public let requiresNetwork: Swift.Bool
+  public let rateLimitIDs: [Swift.String]
+  public let conflictPolicy: AirshipCore.AirshipWorkRequestConflictPolicy
+  public init(workID: Swift.String, extras: [Swift.String : Swift.String]? = nil, initialDelay: Foundation.TimeInterval = 0.0, requiresNetwork: Swift.Bool = true, rateLimitIDs: [Swift.String] = [], conflictPolicy: AirshipCore.AirshipWorkRequestConflictPolicy = .replace)
+  public static func == (a: AirshipCore.AirshipWorkRequest, b: AirshipCore.AirshipWorkRequest) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct AirshipNotificationStatus : Swift.Sendable, Swift.Equatable {
+  public let isUserNotificationsEnabled: Swift.Bool
+  public let areNotificationsAllowed: Swift.Bool
+  public let isPushPrivacyFeatureEnabled: Swift.Bool
+  public let isPushTokenRegistered: Swift.Bool
+  public var isUserOptedIn: Swift.Bool {
+    get
+  }
+  public var isOptedIn: Swift.Bool {
+    get
+  }
+  public static func == (a: AirshipCore.AirshipNotificationStatus, b: AirshipCore.AirshipNotificationStatus) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers @_Concurrency.MainActor public class ActionRegistry {
+  @_Concurrency.MainActor public func registerEntry(names: [Swift.String], entry: @escaping () -> AirshipCore.ActionEntry)
+  @_Concurrency.MainActor public func registerEntry(names: [Swift.String], entry: AirshipCore.ActionEntry)
+  @discardableResult
+  @_Concurrency.MainActor public func removeEntry(name: Swift.String) -> Swift.Bool
+  @discardableResult
+  @_Concurrency.MainActor public func updateEntry(name: Swift.String, action: any AirshipCore.AirshipAction) -> Swift.Bool
+  #if compiler(>=5.3) && $AsyncAwait && $Sendable
+  @discardableResult
+  @_Concurrency.MainActor public func updateEntry(name: Swift.String, predicate: (@Sendable (AirshipCore.ActionArguments) async -> Swift.Bool)?) -> Swift.Bool
+  #endif
+  @discardableResult
+  @_Concurrency.MainActor public func updateEntry(name: Swift.String, situation: AirshipCore.ActionSituation, action: any AirshipCore.AirshipAction) -> Swift.Bool
+  @_Concurrency.MainActor public func entry(name: Swift.String) -> AirshipCore.ActionEntry?
+  @_Concurrency.MainActor public func registerActions(actionsManifests: [any AirshipCore.ActionsManifest])
+  @objc deinit
+}
+public struct ActionEntry : Swift.Sendable {
+  #if compiler(>=5.3) && $AsyncAwait && $Sendable
+  public init(action: any AirshipCore.AirshipAction, situationOverrides: [AirshipCore.ActionSituation : any AirshipCore.AirshipAction] = [:], predicate: (@Sendable (AirshipCore.ActionArguments) async -> Swift.Bool)? = nil)
+  #endif
+}
+public protocol ActionsManifest {
+  var manifest: [[Swift.String] : () -> AirshipCore.ActionEntry] { get }
+}
+public class AirshipWorkContinuation : @unchecked Swift.Sendable {
+  public init(onTaskFinished: @escaping (AirshipCore.AirshipWorkResult) -> Swift.Void)
+  public func cancel()
+  public func finishTask(_ result: AirshipCore.AirshipWorkResult)
+  @objc deinit
+}
+public struct AirshipImageLoader {
+  public init(imageProvider: (any AirshipCore.AirshipImageProvider)? = nil)
+}
+@_inheritsConvenienceInitializers @objc(UADateFormatter) public class AirshipDateFormatter : ObjectiveC.NSObject {
+  @objc(UADateFormatterFormat) public enum Format : Swift.Int {
+    case iso
+    case isoDelimitter
+    case relativeShort
+    case relativeShortDate
+    case relativeFull
+    case relativeFullDate
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public class func date(fromISOString from: Swift.String) -> Foundation.Date?
+  @objc public static func string(fromDate date: Foundation.Date, format: AirshipCore.AirshipDateFormatter.Format) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol AirshipSDKModule : ObjectiveC.NSObject {
+  var actionsManifest: (any AirshipCore.ActionsManifest)? { get }
+  var components: [any AirshipBasement.AirshipComponent] { get }
+  @_Concurrency.MainActor static func load(dependencies: [Swift.String : Any]) -> (any AirshipCore.AirshipSDKModule)?
+}
+@_hasMissingDesignatedInitializers @objc(UAAccountEventTemplate) public class AccountEventTemplate : ObjectiveC.NSObject {
+  @objc public var eventValue: Foundation.NSNumber?
+  @objc public var transactionID: Swift.String?
+  @objc public var userID: Swift.String?
+  @objc public var category: Swift.String?
+  @objc public var type: Swift.String?
+  @objc public class func registeredTemplate() -> AirshipCore.AccountEventTemplate
+  @objc(registeredTemplateWithValueFromString:) public class func registeredTemplate(valueString: Swift.String?) -> AirshipCore.AccountEventTemplate
+  @objc(registeredTemplateWithValue:) public class func registeredTemplate(value: Foundation.NSNumber?) -> AirshipCore.AccountEventTemplate
+  @objc public class func loggedInTemplate() -> AirshipCore.AccountEventTemplate
+  @objc(loggedInTemplateWithValueFromString:) public class func loggedInTemplate(valueString: Swift.String?) -> AirshipCore.AccountEventTemplate
+  @objc(loggedInTemplateWithValue:) public class func loggedInTemplate(value: Foundation.NSNumber?) -> AirshipCore.AccountEventTemplate
+  @objc public class func loggedOutTemplate() -> AirshipCore.AccountEventTemplate
+  @objc(loggedOutTemplateWithValueFromString:) public class func loggedOutTemplate(valueString: Swift.String?) -> AirshipCore.AccountEventTemplate
+  @objc(loggedOutTemplateWithValue:) public class func loggedOutTemplate(value: Foundation.NSNumber?) -> AirshipCore.AccountEventTemplate
+  @objc public func createEvent() -> AirshipCore.CustomEvent?
+  @objc deinit
+}
+public struct AirshipNotificationCenter : @unchecked Swift.Sendable {
+  public static let shared: AirshipCore.AirshipNotificationCenter
+  public init(notificationCenter: Foundation.NotificationCenter = NotificationCenter.default)
+  public func post(name: Foundation.NSNotification.Name, object: Any? = nil, userInfo: [Swift.AnyHashable : Any]? = nil)
+  public func addObserver(forName: Foundation.NSNotification.Name, object: Any? = nil, queue: Foundation.OperationQueue? = nil, using: @escaping (Foundation.Notification) -> Swift.Void)
+  public func postOnMain(name: Foundation.NSNotification.Name, object: Any? = nil, userInfo: [Swift.AnyHashable : Any]? = nil)
+  public func addObserver(_ observer: Any, selector: ObjectiveC.Selector, name: Foundation.NSNotification.Name, object: Any? = nil)
+  public func removeObserver(_ observer: Any)
+}
+@_hasMissingDesignatedInitializers @objc(UARuntimeConfig) final public class RuntimeConfig : ObjectiveC.NSObject, @unchecked Swift.Sendable {
+  @objc public static let configUpdatedEvent: Foundation.Notification.Name
+  @objc final public let appKey: Swift.String
+  @objc final public let appSecret: Swift.String
+  @objc final public let logLevel: AirshipCore.AirshipLogLevel
+  final public let requestSession: any AirshipCore.AirshipRequestSession
+  @objc final public let inProduction: Swift.Bool
+  @objc final public let autoPauseInAppAutomationOnLaunch: Swift.Bool
+  @objc final public let isAutomaticSetupEnabled: Swift.Bool
+  @objc(URLAllowList) final public let urlAllowList: [Swift.String]?
+  @objc(URLAllowListScopeJavaScriptInterface) final public let urlAllowListScopeJavaScriptInterface: [Swift.String]?
+  @objc(URLAllowListScopeOpenURL) final public let urlAllowListScopeOpenURL: [Swift.String]?
+  @objc final public let isAnalyticsEnabled: Swift.Bool
+  @objc final public let messageCenterStyleConfig: Swift.String?
+  @objc final public let itunesID: Swift.String?
+  @objc final public let clearUserOnAppRestore: Swift.Bool
+  @objc final public let clearNamedUserOnAppRestore: Swift.Bool
+  @objc final public let isChannelCaptureEnabled: Swift.Bool
+  @objc final public let isChannelCreationDelayEnabled: Swift.Bool
+  @objc final public let isExtendedBroadcastsEnabled: Swift.Bool
+  @objc final public let requestAuthorizationToUseNotifications: Swift.Bool
+  @objc final public let requireInitialRemoteConfigEnabled: Swift.Bool
+  final public let enabledFeatures: AirshipCore.AirshipFeature
+  @objc final public var deviceAPIURL: Swift.String? {
+    @objc get
+  }
+  @objc final public var remoteDataAPIURL: Swift.String? {
+    @objc get
+  }
+  @objc final public var analyticsURL: Swift.String? {
+    @objc get
+  }
+  @objc final public var chatURL: Swift.String? {
+    @objc get
+  }
+  @objc final public var chatWebSocketURL: Swift.String? {
+    @objc get
+  }
+  @objc convenience public init(config: AirshipCore.AirshipConfig, dataStore: AirshipCore.PreferenceDataStore)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UANSDictionaryValueTransformer) public class NSDictionaryValueTransformer : Foundation.ValueTransformer {
+  @objc override dynamic public class func transformedValueClass() -> Swift.AnyClass
+  @objc override dynamic public class func allowsReverseTransformation() -> Swift.Bool
+  @objc override dynamic public func transformedValue(_ value: Any?) -> Any?
+  @objc override dynamic public func reverseTransformedValue(_ value: Any?) -> Any?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAContact) final public class AirshipContact : ObjectiveC.NSObject, AirshipBasement.AirshipComponent, AirshipCore.AirshipContactProtocol, @unchecked Swift.Sendable {
+  @objc public static let contactConflictEvent: Foundation.NSNotification.Name
+  @objc public static let contactConflictEventKey: Swift.String
+  @objc public static let maxNamedUserIDLength: Swift.Int
+  final public var subscriptionListEdits: Combine.AnyPublisher<AirshipCore.ScopedSubscriptionListEdit, Swift.Never> {
+    get
+  }
+  final public var conflictEventPublisher: Combine.AnyPublisher<AirshipCore.ContactConflictEvent, Swift.Never> {
+    get
+  }
+  final public var namedUserIDPublisher: Combine.AnyPublisher<Swift.String?, Swift.Never> {
+    get
+  }
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc final public func _getNamedUserID() async -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $EffectfulProp
+  final public var namedUserID: Swift.String? {
+    get async
+  }
+  #endif
+  @objc final public var isComponentEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public static var shared: AirshipCore.AirshipContact {
+    @objc get
+  }
+  @objc final public func airshipReady()
+  @objc final public func identify(_ namedUserID: Swift.String)
+  @objc final public func reset()
+  @objc final public func editTagGroups() -> AirshipCore.TagGroupsEditor
+  @objc final public func editTagGroups(_ editorBlock: (AirshipCore.TagGroupsEditor) -> Swift.Void)
+  @objc final public func editAttributes() -> AirshipCore.AttributesEditor
+  @objc final public func editAttributes(_ editorBlock: (AirshipCore.AttributesEditor) -> Swift.Void)
+  @objc final public func registerEmail(_ address: Swift.String, options: AirshipCore.EmailRegistrationOptions)
+  @objc final public func registerSMS(_ msisdn: Swift.String, options: AirshipCore.SMSRegistrationOptions)
+  @objc final public func registerOpen(_ address: Swift.String, options: AirshipCore.OpenRegistrationOptions)
+  @objc final public func associateChannel(_ channelID: Swift.String, type: AirshipCore.ChannelType)
+  @objc final public func editSubscriptionLists() -> AirshipCore.ScopedSubscriptionListEditor
+  @objc final public func editSubscriptionLists(_ editorBlock: (AirshipCore.ScopedSubscriptionListEditor) -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func getStableContactID() async -> Swift.String
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc(fetchSubscriptionListsWithCompletionHandler:) final public func _fetchSubscriptionLists() async throws -> [Swift.String : AirshipCore.ChannelScopes]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func fetchSubscriptionLists() async throws -> [Swift.String : [AirshipCore.ChannelScope]]
+  #endif
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAirshipDate) final public class AirshipDate : ObjectiveC.NSObject, AirshipCore.AirshipDateProtocol {
+  @objc public static let shared: AirshipCore.AirshipDate
+  @objc override dynamic public init()
+  @objc final public var now: Foundation.Date {
+    @objc get
+  }
+  @objc deinit
+}
+public protocol AirshipDateProtocol : Swift.Sendable {
+  var now: Foundation.Date { get }
+}
+@_hasMissingDesignatedInitializers final public class RemoveTagsAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  @objc convenience public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAJSONUtils) public class JSONUtils : ObjectiveC.NSObject {
+  @objc(dataWithObject:options:error:) public class func data(_ obj: Any, options: Foundation.JSONSerialization.WritingOptions = []) throws -> Foundation.Data
+  @objc(stringWithObject:options:error:) public class func string(_ obj: Any, options: Foundation.JSONSerialization.WritingOptions) throws -> Swift.String
+  @objc(stringWithObject:) public class func string(_ obj: Any) -> Swift.String?
+  @objc(objectWithString:) public class func object(_ string: Swift.String) -> Any?
+  @objc(objectWithString:options:error:) public class func object(_ string: Swift.String, options: Foundation.JSONSerialization.ReadingOptions) throws -> Any
+  public class func decode<T>(data: Foundation.Data?) throws -> T where T : Swift.Decodable
+  public class func encode<T>(object: T?) throws -> Foundation.Data where T : Swift.Encodable
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAAppIntegration) public class AppIntegration : ObjectiveC.NSObject {
+  @objc public static var integrationDelegate: (any AirshipBasement.AppIntegrationDelegate)?
+  @available(*, deprecated, message: "Use application(_:performFetchWithCompletionHandler:) instead")
+  @objc(applicatin:performFetchWithCompletionHandler:) public class func applicatin(_ application: UIKit.UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  @objc(application:performFetchWithCompletionHandler:) public class func application(_ application: UIKit.UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  @objc(application:didRegisterForRemoteNotificationsWithDeviceToken:) public class func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  @objc public class func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Swift.Error)
+  @objc @_Concurrency.MainActor public class func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  @available(*, deprecated, message: "Use userNotificationCenter(_:willPresent:withCompletionHandler:) instead")
+  @objc public class func userNotificationCenter(center: UserNotifications.UNUserNotificationCenter, willPresentNotification notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (_ options: UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc(userNotificationCenter:willPresentNotification:withCompletionHandler:) public class func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (_ options: UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@available(tvOS, unavailable)
+@objc(UAInteractiveNotificationEvent) public class InteractiveNotificationEvent : ObjectiveC.NSObject, AirshipBasement.AirshipEvent {
+  @objc public var eventType: Swift.String {
+    @objc get
+  }
+  @objc public var data: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  @objc public var priority: AirshipBasement.EventPriority {
+    @objc get
+  }
+  @objc public init(action: UserNotifications.UNNotificationAction, category: Swift.String, notification: [Swift.AnyHashable : Any], responseText: Swift.String?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UATaskManager) public class TaskManager : ObjectiveC.NSObject, AirshipCore.TaskManagerProtocol {
+  @objc public static let shared: AirshipCore.TaskManager
+  @objc(registerForTaskWithID:type:launchHandler:) public func register(taskID: Swift.String, type: AirshipCore.AirshipWorkerType, launchHandler: @escaping (any AirshipCore.AirshipTask) -> Swift.Void)
+  @objc(registerForTaskWithID:type:dispatcher:launchHandler:) public func register(taskID: Swift.String, type: AirshipCore.AirshipWorkerType, dispatcher: AirshipCore.UADispatcher, launchHandler: @escaping (any AirshipCore.AirshipTask) -> Swift.Void)
+  @objc(setRateLimitForID:rate:timeInterval:error:) public func setRateLimit(_ rateLimitID: Swift.String, rate: Swift.Int, timeInterval: Foundation.TimeInterval) throws
+  @objc(enqueueRequestWithID:options:) public func enqueueRequest(taskID: Swift.String, options: AirshipCore.TaskRequestOptions)
+  @objc(enqueueRequestWithID:options:initialDelay:) public func enqueueRequest(taskID: Swift.String, options: AirshipCore.TaskRequestOptions, initialDelay: Foundation.TimeInterval)
+  @objc(enqueueRequestWithID:rateLimitIDs:options:) public func enqueueRequest(taskID: Swift.String, rateLimitIDs: [Swift.String], options: AirshipCore.TaskRequestOptions)
+  @objc(enqueueRequestWithID:rateLimitIDs:options:minDelay:) public func enqueueRequest(taskID: Swift.String, rateLimitIDs: [Swift.String], options: AirshipCore.TaskRequestOptions, minDelay: Foundation.TimeInterval)
+  @objc deinit
+}
+public struct AirshipHTTPResponse<T> : Swift.Sendable where T : Swift.Sendable {
+  public let result: T?
+  public let statusCode: Swift.Int
+  public let headers: [Swift.String : Swift.String]
+}
+extension AirshipCore.AirshipHTTPResponse {
+  public var isSuccess: Swift.Bool {
+    get
+  }
+  public var isClientError: Swift.Bool {
+    get
+  }
+  public var isServerError: Swift.Bool {
+    get
+  }
+}
+@objc(UAApplicationState) public enum ApplicationState : Swift.Int, Swift.Sendable {
+  case active
+  case inactive
+  case background
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class DeepLinkAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  convenience public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@objc(UAExperimentDataProvider) public protocol ExperimentDataProvider {
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func evaluateExperiments(info: AirshipCore.MessageInfo, contactID: Swift.String?) async throws -> AirshipCore.ExperimentResult?
+  #endif
+}
+@objc(UAExperimentMessageInfo) final public class MessageInfo : ObjectiveC.NSObject {
+  @objc public init(messageType: Swift.String, campaignsJSON: Any? = nil)
+  public init(messageType: Swift.String, campaigns: AirshipCore.AirshipJSON? = nil)
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAExperimentResult) final public class ExperimentResult : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let channelID: Swift.String
+  @objc final public let contactID: Swift.String
+  @objc final public let isMatch: Swift.Bool
+  final public let evaluatedExperimentsReportingData: [AirshipCore.AirshipJSON]
+  @objc(evaluatedExperimentsReportingData) final public var _evaluatedExperimentsReportingData: [Any] {
+    @objc get
+  }
+  @objc convenience public init(channelId: Swift.String, contactId: Swift.String, isMatch: Swift.Bool, reportingMetadata: [Any])
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension AirshipCore.PreferenceDataStore {
+  @objc final public func storeExperimentResult(_ experiment: AirshipCore.ExperimentResult?, forKey key: Swift.String)
+  @objc final public func experimentResult(forKey key: Swift.String) -> AirshipCore.ExperimentResult?
+}
+@objc public enum UABoundaryEvent : Swift.Int {
+  case enter = 1
+  case exit = 2
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(UARegionEvent) public class RegionEvent : ObjectiveC.NSObject, AirshipBasement.AirshipEvent {
+  @objc public static let regionIDKey: Swift.String
+  @objc final public let regionID: Swift.String
+  @objc final public let source: Swift.String
+  @objc final public let boundaryEvent: AirshipCore.UABoundaryEvent
+  @objc final public let circularRegion: AirshipCore.CircularRegion?
+  @objc final public let proximityRegion: AirshipCore.ProximityRegion?
+  @objc public var eventType: Swift.String {
+    @objc get
+  }
+  @objc public var priority: AirshipBasement.EventPriority {
+    @objc get
+  }
+  @objc public var data: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  @objc public var payload: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  public init?(regionID: Swift.String, source: Swift.String, boundaryEvent: AirshipCore.UABoundaryEvent, circularRegion: AirshipCore.CircularRegion? = nil, proximityRegion: AirshipCore.ProximityRegion? = nil)
+  @objc(regionEventWithRegionID:source:boundaryEvent:) public class func regionEvent(regionID: Swift.String, source: Swift.String, boundaryEvent: AirshipCore.UABoundaryEvent) -> AirshipCore.RegionEvent?
+  @objc(regionEventWithRegionID:source:boundaryEvent:circularRegion:proximityRegion:) public class func regionEvent(regionID: Swift.String, source: Swift.String, boundaryEvent: AirshipCore.UABoundaryEvent, circularRegion: AirshipCore.CircularRegion?, proximityRegion: AirshipCore.ProximityRegion?) -> AirshipCore.RegionEvent?
+  @objc deinit
+}
+@objc(UARemoteDataSource) public enum RemoteDataSource : Swift.Int, Swift.Sendable, Swift.Codable, Swift.Equatable, Swift.Hashable, Swift.CaseIterable {
+  case app
+  case contact
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [AirshipCore.RemoteDataSource]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [AirshipCore.RemoteDataSource] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(UAJSONMatcher) final public class JSONMatcher : ObjectiveC.NSObject, Swift.Sendable {
+  @objc convenience public init(valueMatcher: AirshipCore.JSONValueMatcher)
+  @objc convenience public init(valueMatcher: AirshipCore.JSONValueMatcher, scope: [Swift.String])
+  @objc convenience public init(valueMatcher: AirshipCore.JSONValueMatcher, ignoreCase: Swift.Bool)
+  @objc convenience public init(valueMatcher: AirshipCore.JSONValueMatcher, key: Swift.String)
+  @objc convenience public init(valueMatcher: AirshipCore.JSONValueMatcher, key: Swift.String, scope: [Swift.String])
+  @objc convenience public init(valueMatcher: AirshipCore.JSONValueMatcher, scope: [Swift.String], ignoreCase: Swift.Bool)
+  @objc(initWithJSON:error:) convenience public init(json: Any?) throws
+  @objc final public func payload() -> [Swift.String : Any]
+  @objc(evaluateObject:) final public func evaluate(_ value: Any?) -> Swift.Bool
+  @objc(evaluateObject:ignoreCase:) final public func evaluate(_ value: Any?, ignoreCase: Swift.Bool) -> Swift.Bool
+  @objc override final public func isEqual(_ other: Any?) -> Swift.Bool
+  @objc(isEqualToJSONMatcher:) final public func isEqual(to matcher: AirshipCore.JSONMatcher) -> Swift.Bool
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class AirshipLogger {
+  public static func trace(_ message: @autoclosure () -> Swift.String, fileID: Swift.String = #fileID, line: Swift.UInt = #line, function: Swift.String = #function)
+  public static func debug(_ message: @autoclosure () -> Swift.String, fileID: Swift.String = #fileID, line: Swift.UInt = #line, function: Swift.String = #function)
+  public static func info(_ message: @autoclosure () -> Swift.String, fileID: Swift.String = #fileID, line: Swift.UInt = #line, function: Swift.String = #function)
+  public static func importantInfo(_ message: Swift.String, fileID: Swift.String = #fileID, line: Swift.UInt = #line, function: Swift.String = #function)
+  public static func warn(_ message: @autoclosure () -> Swift.String, fileID: Swift.String = #fileID, line: Swift.UInt = #line, function: Swift.String = #function)
+  public static func error(_ message: @autoclosure () -> Swift.String, fileID: Swift.String = #fileID, line: Swift.UInt = #line, function: Swift.String = #function)
+  public static func impError(_ message: @autoclosure () -> Swift.String, fileID: Swift.String = #fileID, line: Swift.UInt = #line, function: Swift.String = #function)
+  @objc deinit
+}
+@objc(UAAssociatedChannel) final public class AssociatedChannel : ObjectiveC.NSObject, Swift.Codable, Swift.Sendable {
+  @objc final public let channelType: AirshipCore.ChannelType
+  @objc final public let channelID: Swift.String
+  @objc public init(channelType: AirshipCore.ChannelType, channelID: Swift.String)
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(UAJSONValueTransformer) public class JSONValueTransformer : Foundation.ValueTransformer {
+  @objc override dynamic public class func transformedValueClass() -> Swift.AnyClass
+  @objc override dynamic public class func allowsReverseTransformation() -> Swift.Bool
+  @objc override dynamic public func transformedValue(_ value: Any?) -> Any?
+  @objc override dynamic public func reverseTransformedValue(_ value: Any?) -> Any?
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension UIKit.UIImage {
+  @objc(fancyImageWithData:fillIn:) dynamic public class func fancyImage(with data: Foundation.Data?, fillIn: Swift.Bool) -> UIKit.UIImage?
+  @objc(fancyImageWithData:) dynamic public class func fancyImage(with data: Foundation.Data?) -> UIKit.UIImage?
+}
+@_hasMissingDesignatedInitializers @objc(UAirshipImageData) public class AirshipImageData : ObjectiveC.NSObject {
+  @objc convenience public init(data: Foundation.Data) throws
+  @objc deinit
+}
+@objc(UARegistrationDelegate) public protocol RegistrationDelegate : ObjectiveC.NSObjectProtocol {
+  @objc optional func notificationRegistrationFinished(withAuthorizedSettings authorizedSettings: AirshipBasement.UAAuthorizedNotificationSettings, status: AirshipBasement.UAAuthorizationStatus)
+  @objc optional func notificationAuthorizedSettingsDidChange(_ authorizedSettings: AirshipBasement.UAAuthorizedNotificationSettings)
+  @objc optional func apnsRegistrationSucceeded(withDeviceToken deviceToken: Foundation.Data)
+  @objc optional func apnsRegistrationFailedWithError(_ error: any Swift.Error)
+}
+@objc(UACustomEvent) public class CustomEvent : ObjectiveC.NSObject, AirshipBasement.AirshipEvent {
+  @objc public static let maxPropertiesSize: Swift.Int
+  @objc public static let eventNameKey: Swift.String
+  @objc public static let eventValueKey: Swift.String
+  @objc public static let eventPropertiesKey: Swift.String
+  @objc public static let eventTransactionIDKey: Swift.String
+  @objc public static let eventInteractionIDKey: Swift.String
+  @objc public static let eventInteractionTypeKey: Swift.String
+  @objc public var conversionSendID: Swift.String?
+  @objc public var conversionPushMetadata: Swift.String?
+  @objc public var templateType: Swift.String?
+  @objc public var eventValue: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var eventName: Swift.String?
+  @objc public var transactionID: Swift.String?
+  @objc public var interactionType: Swift.String?
+  @objc public var interactionID: Swift.String?
+  @objc public var properties: [Swift.String : Any]
+  @objc public var eventType: Swift.String {
+    @objc get
+  }
+  @objc public var priority: AirshipBasement.EventPriority {
+    @objc get
+  }
+  @objc public init(name: Swift.String, value: Foundation.NSNumber?)
+  @objc convenience public init(name: Swift.String, stringValue: Swift.String?)
+  convenience public init(name: Swift.String)
+  @objc(eventWithName:) public class func event(name: Swift.String) -> AirshipCore.CustomEvent
+  @objc(eventWithName:valueFromString:) public class func event(name: Swift.String, string: Swift.String?) -> AirshipCore.CustomEvent
+  @objc(eventWithName:value:) public class func event(name: Swift.String, value: Foundation.NSNumber?) -> AirshipCore.CustomEvent
+  @objc public func isValid() -> Swift.Bool
+  @objc public func setInteractionFromMessageCenterMessage(_ messageID: Swift.String?)
+  @objc public var data: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  @objc public var payload: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  @objc public func track()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class AddCustomEventAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAInstallAttributionEvent) public class InstallAttributionEvent : ObjectiveC.NSObject, AirshipBasement.AirshipEvent {
+  @objc public var eventType: Swift.String {
+    @objc get
+  }
+  @objc public var data: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  @objc public var priority: AirshipBasement.EventPriority {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc public init(appPurchaseDate: Foundation.Date, iAdImpressionDate: Foundation.Date)
+  @objc(eventWithAppPurchaseDate:iAdImpressionDate:) public class func event(appPurchaseDate: Foundation.Date, iAdImpressionDate: Foundation.Date) -> AirshipCore.InstallAttributionEvent
+  @objc public class func event() -> AirshipCore.InstallAttributionEvent
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UABase64) public class Base64 : ObjectiveC.NSObject {
+  @objc public class func dataFromString(_ base64String: Swift.String) -> Foundation.Data?
+  @objc public class func stringFromData(_ data: Foundation.Data) -> Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UASubscriptionListEditor) public class SubscriptionListEditor : ObjectiveC.NSObject {
+  @objc(subscribe:) public func subscribe(_ subscriptionListID: Swift.String)
+  @objc(unsubscribe:) public func unsubscribe(_ subscriptionListID: Swift.String)
+  @objc public func apply()
+  @objc deinit
+}
+@objc(SearchEventTemplate) public class SearchEventTemplate : ObjectiveC.NSObject {
+  @objc public var eventValue: Foundation.NSNumber?
+  @objc public var type: Swift.String?
+  @objc public var identifier: Swift.String?
+  @objc public var category: Swift.String?
+  @objc public var query: Swift.String?
+  @objc public var totalResults: Swift.Int
+  public init(value: Foundation.NSNumber? = nil)
+  @objc(templateWithValue:) public class func template(value: Foundation.NSNumber) -> AirshipCore.SearchEventTemplate
+  @objc(template) public class func template() -> AirshipCore.SearchEventTemplate
+  @objc public func createEvent() -> AirshipCore.CustomEvent
+  @objc deinit
+}
+@objc(UAirshipLogHandler) public protocol AirshipLogHandler {
+  @objc func log(logLevel: AirshipCore.AirshipLogLevel, message: Swift.String, fileID: Swift.String, line: Swift.UInt, function: Swift.String)
+}
+@_inheritsConvenienceInitializers @objc(UAViewUtils) public class ViewUtils : ObjectiveC.NSObject {
+  @objc @_Concurrency.MainActor public class func applyContainerConstraints(toContainer container: UIKit.UIView?, containedView contained: UIKit.UIView?)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(UAURLInfo) public class URLInfo : ObjectiveC.NSObject {
+  @objc(UAURLInfoURLType) public enum URLType : Swift.Int {
+    case web
+    case video
+    case image
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc final public let urlType: AirshipCore.URLInfo.URLType
+  @objc final public let url: Swift.String
+  @objc public init(urlType: AirshipCore.URLInfo.URLType, url: Swift.String)
+  @objc deinit
+}
+public enum RemoteDataSourceStatus : Swift.Sendable {
+  case upToDate
+  case stale
+  case outOfDate
+  public static func == (a: AirshipCore.RemoteDataSourceStatus, b: AirshipCore.RemoteDataSourceStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol AppStateTrackerProtocol : Swift.Sendable {
+  @_Concurrency.MainActor var state: AirshipCore.ApplicationState { get }
+}
+@_hasMissingDesignatedInitializers @objc(UAAppStateTracker) final public class AppStateTracker : ObjectiveC.NSObject, AirshipCore.AppStateTrackerProtocol, @unchecked Swift.Sendable {
+  @objc public static let didBecomeActiveNotification: Foundation.NSNotification.Name
+  @objc public static let willEnterForegroundNotification: Foundation.NSNotification.Name
+  @objc public static let didEnterBackgroundNotification: Foundation.NSNotification.Name
+  @objc public static let willResignActiveNotification: Foundation.NSNotification.Name
+  @objc public static let willTerminateNotification: Foundation.NSNotification.Name
+  @objc public static let didTransitionToBackground: Foundation.NSNotification.Name
+  @objc public static let didTransitionToForeground: Foundation.NSNotification.Name
+  @objc @_Concurrency.MainActor public static let shared: AirshipCore.AppStateTracker
+  @objc @_Concurrency.MainActor final public var state: AirshipCore.ApplicationState {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(UALogLevel) public enum AirshipLogLevel : Swift.Int, Swift.Sendable {
+  @objc(UALogLevelUndefined) case undefined = -1
+  @objc(UALogLevelNone) case none = 0
+  @objc(UALogLevelError) case error = 1
+  @objc(UALogLevelWarn) case warn = 2
+  @objc(UALogLevelInfo) case info = 3
+  @objc(UALogLevelDebug) case debug = 4
+  @objc(UALogLevelVerbose) case verbose = 5
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(UALocalizationUtils) public class LocalizationUtils : ObjectiveC.NSObject {
+  @objc public static func localizedString(_ string: Swift.String, withTable table: Swift.String, moduleBundle: Foundation.Bundle?, defaultValue: Swift.String) -> Swift.String?
+  @objc public static func localizedString(_ string: Swift.String, withTable table: Swift.String, moduleBundle: Foundation.Bundle?) -> Swift.String?
+  @objc public static func localizedString(_ string: Swift.String, withTable table: Swift.String, moduleBundle: Foundation.Bundle?, fallbackLocale: Swift.String?) -> Swift.String?
+  @objc public static func localizedStringExists(_ string: Swift.String, inTable table: Swift.String, moduleBundle: Foundation.Bundle?) -> Swift.Bool
+  @objc public static func localizedStringExists(_ string: Swift.String, inTable table: Swift.String, moduleBundle: Foundation.Bundle?, fallbackLocale: Swift.String?) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class PromptPermissionAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  public static let resultReceiverMetadataKey: Swift.String
+  convenience public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@objc(UAActionSituation) public enum ActionSituation : Swift.Int, Swift.Sendable {
+  case manualInvocation
+  case launchedFromPush
+  case foregroundPush
+  case backgroundPush
+  case webViewInvocation
+  case foregroundInteractiveButton
+  case backgroundInteractiveButton
+  case automation
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct ActionArguments : Swift.Sendable {
+  public static let userNotificationActionIDMetadataKey: Swift.String
+  public static let pushPayloadJSONMetadataKey: Swift.String
+  public static let isForegroundPresentationMetadataKey: Swift.String
+  public static let inboxMessageIDMetadataKey: Swift.String
+  public static let responseInfoMetadataKey: Swift.String
+  public let value: AirshipCore.AirshipJSON
+  public let situation: AirshipCore.ActionSituation
+  public let metadata: [Swift.String : any Swift.Sendable]
+  public init(string: Swift.String, situation: AirshipCore.ActionSituation = .manualInvocation, metadata: [Swift.String : any Swift.Sendable] = [:])
+  public init(double: Swift.Double, situation: AirshipCore.ActionSituation = .manualInvocation, metadata: [Swift.String : any Swift.Sendable] = [:])
+  public init(bool: Swift.Bool, situation: AirshipCore.ActionSituation = .manualInvocation, metadata: [Swift.String : any Swift.Sendable] = [:])
+  public init(value: AirshipCore.AirshipJSON = AirshipJSON.null, situation: AirshipCore.ActionSituation = .manualInvocation, metadata: [Swift.String : any Swift.Sendable] = [:])
+}
+@_inheritsConvenienceInitializers @objc(UAActionRunner) public class ActionRunner : ObjectiveC.NSObject {
+  #if compiler(>=5.3) && $AsyncAwait
+  public class func run(action: any AirshipCore.AirshipAction, arguments: AirshipCore.ActionArguments) async -> AirshipCore.ActionResult
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  public class func run(actionName: Swift.String, arguments: AirshipCore.ActionArguments) async -> AirshipCore.ActionResult
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @discardableResult
+  public class func run(actionsPayload: AirshipCore.AirshipJSON, situation: AirshipCore.ActionSituation, metadata: [Swift.String : any Swift.Sendable]) async -> [Swift.String : AirshipCore.ActionResult]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc(runActions:situation:completionHandler:) public class func _run(actionsPayload: [Swift.String : Any], situation: AirshipCore.ActionSituation) async
+  #endif
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class EmptyAction : AirshipCore.AirshipAction {
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@objc(UAPermissionStatus) public enum AirshipPermissionStatus : Swift.UInt, Swift.Sendable {
+  case notDetermined
+  case granted
+  case denied
+  public init?(rawValue: Swift.UInt)
+  public typealias RawValue = Swift.UInt
+  public var rawValue: Swift.UInt {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(UAOpenRegistrationOptions) final public class OpenRegistrationOptions : ObjectiveC.NSObject, Swift.Codable, Swift.Sendable {
+  @objc public static func optIn(platformName: Swift.String, identifiers: [Swift.String : Swift.String]?) -> AirshipCore.OpenRegistrationOptions
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc(UAContactProtocol) public protocol AirshipContactBaseProtocol : Swift.Sendable {
+  @objc static var contactConflictEvent: Foundation.NSNotification.Name { get }
+  @objc static var contactConflictEventKey: Swift.String { get }
+  @objc static var maxNamedUserIDLength: Swift.Int { get }
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc(getNamedUserIDWithCompletionHandler:) func _getNamedUserID() async -> Swift.String?
+  #endif
+  @objc func identify(_ namedUserID: Swift.String)
+  @objc func reset()
+  @objc func editTagGroups() -> AirshipCore.TagGroupsEditor
+  @objc func editTagGroups(_ editorBlock: (AirshipCore.TagGroupsEditor) -> Swift.Void)
+  @objc func editAttributes() -> AirshipCore.AttributesEditor
+  @objc func editAttributes(_ editorBlock: (AirshipCore.AttributesEditor) -> Swift.Void)
+  @objc func registerEmail(_ address: Swift.String, options: AirshipCore.EmailRegistrationOptions)
+  @objc func registerSMS(_ msisdn: Swift.String, options: AirshipCore.SMSRegistrationOptions)
+  @objc func registerOpen(_ address: Swift.String, options: AirshipCore.OpenRegistrationOptions)
+  @objc func associateChannel(_ channelID: Swift.String, type: AirshipCore.ChannelType)
+  @objc func editSubscriptionLists() -> AirshipCore.ScopedSubscriptionListEditor
+  @objc func editSubscriptionLists(_ editorBlock: (AirshipCore.ScopedSubscriptionListEditor) -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc(fetchSubscriptionListsWithCompletionHandler:) func _fetchSubscriptionLists() async throws -> [Swift.String : AirshipCore.ChannelScopes]
+  #endif
+}
+public protocol AirshipContactProtocol : AirshipCore.AirshipContactBaseProtocol {
+  #if compiler(>=5.3) && $EffectfulProp
+  var namedUserID: Swift.String? { get async }
+  #endif
+  var namedUserIDPublisher: Combine.AnyPublisher<Swift.String?, Swift.Never> { get }
+  var conflictEventPublisher: Combine.AnyPublisher<AirshipCore.ContactConflictEvent, Swift.Never> { get }
+  var subscriptionListEdits: Combine.AnyPublisher<AirshipCore.ScopedSubscriptionListEdit, Swift.Never> { get }
+  #if compiler(>=5.3) && $AsyncAwait
+  func fetchSubscriptionLists() async throws -> [Swift.String : [AirshipCore.ChannelScope]]
+  #endif
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(UAConfig) public class AirshipConfig : ObjectiveC.NSObject, Foundation.NSCopying {
+  @objc public var developmentAppKey: Swift.String?
+  @objc public var developmentAppSecret: Swift.String?
+  @objc public var productionAppKey: Swift.String?
+  @objc public var productionAppSecret: Swift.String?
+  @objc public var developmentLogLevel: AirshipCore.AirshipLogLevel
+  @objc public var productionLogLevel: AirshipCore.AirshipLogLevel
+  @objc public var autoPauseInAppAutomationOnLaunch: Swift.Bool
+  @objc public var site: AirshipCore.CloudSite
+  public var enabledFeatures: AirshipCore.AirshipFeature
+  @objc(enabledFeatures) public var _objc_enabledFeatures: AirshipBasement._UAFeatures {
+    @objc get
+    @objc set
+  }
+  @objc public var defaultAppKey: Swift.String
+  @objc public var defaultAppSecret: Swift.String
+  @objc public var inProduction: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var detectProvisioningMode: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var profilePath: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var isAutomaticSetupEnabled: Swift.Bool
+  @objc(URLAllowList) public var urlAllowList: [Swift.String] {
+    @objc get
+    @objc set
+  }
+  @objc(URLAllowListScopeJavaScriptInterface) public var urlAllowListScopeJavaScriptInterface: [Swift.String]
+  @objc(URLAllowListScopeOpenURL) public var urlAllowListScopeOpenURL: [Swift.String] {
+    @objc get
+    @objc set
+  }
+  @objc public var itunesID: Swift.String?
+  @objc public var isAnalyticsEnabled: Swift.Bool
+  @objc public var messageCenterStyleConfig: Swift.String?
+  @objc public var clearUserOnAppRestore: Swift.Bool
+  @objc public var clearNamedUserOnAppRestore: Swift.Bool
+  @objc public var isChannelCaptureEnabled: Swift.Bool
+  @objc public var isChannelCreationDelayEnabled: Swift.Bool
+  @objc public var isExtendedBroadcastsEnabled: Swift.Bool
+  @objc public var requestAuthorizationToUseNotifications: Swift.Bool
+  @objc public var requireInitialRemoteConfigEnabled: Swift.Bool
+  @objc public var initialConfigURL: Swift.String?
+  @objc public var deviceAPIURL: Swift.String?
+  @objc public var analyticsURL: Swift.String?
+  @objc public var remoteDataAPIURL: Swift.String?
+  @objc public var chatURL: Swift.String?
+  @objc public var chatWebSocketURL: Swift.String?
+  @objc public var appKey: Swift.String {
+    @objc get
+  }
+  @objc public var appSecret: Swift.String {
+    @objc get
+  }
+  @objc public var logLevel: AirshipCore.AirshipLogLevel {
+    @objc get
+  }
+  @objc(defaultConfig) public class func `default`() -> AirshipCore.AirshipConfig
+  @objc public class func config(contentsOfFile path: Swift.String?) -> AirshipCore.AirshipConfig
+  @objc public class func config() -> AirshipCore.AirshipConfig
+  @objc convenience public init(contentsOfFile path: Swift.String?)
+  @objc override dynamic public init()
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc public func validate() -> Swift.Bool
+  public func validate(logIssues: Swift.Bool) -> Swift.Bool
+  @objc public class func isProductionProvisioningProfile(_ profilePath: Swift.String) -> Swift.Bool
+  @objc override dynamic public func setValue(_ value: Any?, forUndefinedKey key: Swift.String)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class EnableFeatureAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  public static let resultReceiverMetadataKey: Swift.String
+  public static let userNotificationsActionValue: Swift.String
+  public static let locationActionValue: Swift.String
+  public static let backgroundLocationActionValue: Swift.String
+  convenience public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+public protocol AirshipRequestSession : Swift.Sendable {
+  #if compiler(>=5.3) && $AsyncAwait
+  func performHTTPRequest(_ request: AirshipCore.AirshipRequest, autoCancel: Swift.Bool) async throws -> AirshipCore.AirshipHTTPResponse<Swift.Void>
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func performHTTPRequest(_ request: AirshipCore.AirshipRequest) async throws -> AirshipCore.AirshipHTTPResponse<Swift.Void>
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func performHTTPRequest<T>(_ request: AirshipCore.AirshipRequest, autoCancel: Swift.Bool, responseParser: ((Foundation.Data?, Foundation.HTTPURLResponse) throws -> T?)?) async throws -> AirshipCore.AirshipHTTPResponse<T> where T : Swift.Sendable
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func performHTTPRequest<T>(_ request: AirshipCore.AirshipRequest, responseParser: ((Foundation.Data?, Foundation.HTTPURLResponse) throws -> T?)?) async throws -> AirshipCore.AirshipHTTPResponse<T> where T : Swift.Sendable
+  #endif
+}
+public enum AirshipRequestAuth : Swift.Sendable, Swift.Equatable, Swift.Hashable {
+  case basic(username: Swift.String, password: Swift.String)
+  case bearer(token: Swift.String)
+  case basicAppAuth
+  case channelAuthToken(identifier: Swift.String)
+  case contactAuthToken(identifier: Swift.String)
+  case generatedChannelToken(identifier: Swift.String)
+  case generatedAppToken
+  public static func == (a: AirshipCore.AirshipRequestAuth, b: AirshipCore.AirshipRequestAuth) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc(UAImageProvider) public protocol AirshipImageProvider {
+  @objc func get(url: Foundation.URL) -> AirshipCore.AirshipImageData?
+}
+@_hasMissingDesignatedInitializers @objc(UARetailEventTemplate) public class RetailEventTemplate : ObjectiveC.NSObject {
+  @objc public var eventValue: Foundation.NSNumber?
+  @objc public var transactionID: Swift.String?
+  @objc public var identifier: Swift.String?
+  @objc public var category: Swift.String?
+  @objc public var eventDescription: Swift.String?
+  @objc public var brand: Swift.String?
+  @objc public var isNewItem: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc(browsedTemplate) public class func browsedTemplate() -> AirshipCore.RetailEventTemplate
+  @objc(browsedTemplateWithValueFromString:) public class func browsedTemplate(valueString: Swift.String?) -> AirshipCore.RetailEventTemplate
+  @objc(browsedTemplateWithValue:) public class func browsedTemplate(value: Foundation.NSNumber?) -> AirshipCore.RetailEventTemplate
+  @objc(addedToCartTemplate) public class func addedToCartTemplate() -> AirshipCore.RetailEventTemplate
+  @objc(addedToCartTemplateWithValueFromString:) public class func addedToCartTemplate(valueString: Swift.String?) -> AirshipCore.RetailEventTemplate
+  @objc(addedToCartTemplateWithValue:) public class func addedToCartTemplate(value: Foundation.NSNumber?) -> AirshipCore.RetailEventTemplate
+  @objc(starredProductTemplate) public class func starredProductTemplate() -> AirshipCore.RetailEventTemplate
+  @objc(starredProductTemplateWithValueFromString:) public class func starredProductTemplate(valueString: Swift.String?) -> AirshipCore.RetailEventTemplate
+  @objc(starredProductTemplateWithValue:) public class func starredProductTemplate(value: Foundation.NSNumber?) -> AirshipCore.RetailEventTemplate
+  @objc(purchasedTemplate) public class func purchasedTemplate() -> AirshipCore.RetailEventTemplate
+  @objc(purchasedTemplateWithValueFromString:) public class func purchasedTemplate(valueString: Swift.String?) -> AirshipCore.RetailEventTemplate
+  @objc(purchasedTemplateWithValue:) public class func purchasedTemplate(value: Foundation.NSNumber?) -> AirshipCore.RetailEventTemplate
+  @objc(sharedProductTemplate) public class func sharedProductTemplate() -> AirshipCore.RetailEventTemplate
+  @objc(sharedProductTemplateWithValueFromString:) public class func sharedProductTemplate(valueString: Swift.String?) -> AirshipCore.RetailEventTemplate
+  @objc(sharedProductTemplateWithValue:) public class func sharedProductTemplate(value: Foundation.NSNumber?) -> AirshipCore.RetailEventTemplate
+  @objc(sharedProductTemplateWithSource:withMedium:) public class func sharedProductTemplate(source: Swift.String?, medium: Swift.String?) -> AirshipCore.RetailEventTemplate
+  @objc(sharedProductTemplateWithValueFromString:withSource:withMedium:) public class func sharedProductTemplate(valueString: Swift.String?, source: Swift.String?, medium: Swift.String?) -> AirshipCore.RetailEventTemplate
+  @objc(sharedProductTemplateWithValue:withSource:withMedium:) public class func sharedProductTemplate(value: Foundation.NSNumber?, source: Swift.String?, medium: Swift.String?) -> AirshipCore.RetailEventTemplate
+  @objc(wishlistTemplate) public class func wishlistTemplate() -> AirshipCore.RetailEventTemplate
+  @objc(wishlistTemplateWithName:wishlistID:) public class func wishlistTemplate(name: Swift.String?, wishlistID: Swift.String?) -> AirshipCore.RetailEventTemplate
+  @objc public func createEvent() -> AirshipCore.CustomEvent
+  @objc deinit
+}
+final public class AirshipLock : Swift.Sendable {
+  public init()
+  final public func sync(closure: () -> Swift.Void)
+  @objc deinit
+}
+@objc(UATaskRequestOptions) public class TaskRequestOptions : ObjectiveC.NSObject {
+  @objc final public let conflictPolicy: AirshipCore.AirshipWorkRequestConflictPolicy
+  @objc final public let isNetworkRequired: Swift.Bool
+  @objc final public let extras: [Swift.String : Swift.String]
+  @objc public static let defaultOptions: AirshipCore.TaskRequestOptions
+  @objc public init(conflictPolicy: AirshipCore.AirshipWorkRequestConflictPolicy = .replace, requiresNetwork: Swift.Bool = false, extras: [Swift.String : Swift.String]? = nil)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+}
+@objc(UASDKExtension) public enum AirshipSDKExtension : Swift.Int {
+  case cordova = 0
+  case xamarin = 1
+  case unity = 2
+  case flutter = 3
+  case reactNative = 4
+  case titanium = 5
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(UAChannelType) public enum ChannelType : Swift.Int, Swift.Codable, Swift.CustomStringConvertible, Swift.Sendable, Swift.Equatable {
+  case email
+  case sms
+  case open
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct AirshipTimeCriteria : Swift.Codable, Swift.Sendable, Swift.Equatable {
+  public init(start: Foundation.Date? = nil, end: Foundation.Date? = nil)
+  public static func == (a: AirshipCore.AirshipTimeCriteria, b: AirshipCore.AirshipTimeCriteria) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension AirshipCore.AirshipTimeCriteria {
+  public func isActive(date: Foundation.Date) -> Swift.Bool
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(UABeveledLoadingIndicator) @_Concurrency.MainActor(unsafe) public class BeveledLoadingIndicator : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isHidden: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @objc @_Concurrency.MainActor(unsafe) public func show()
+  @objc @_Concurrency.MainActor(unsafe) public func hide()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAirshipErrors) public class AirshipErrors : ObjectiveC.NSObject {
+  @objc public class func parseError(_ message: Swift.String) -> any Swift.Error
+  @objc public class func error(_ message: Swift.String) -> any Swift.Error
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAAttributesEditor) final public class AttributesEditor : ObjectiveC.NSObject {
+  @objc(removeAttribute:) final public func remove(_ attribute: Swift.String)
+  @objc(setDate:attribute:) final public func set(date: Foundation.Date, attribute: Swift.String)
+  @objc(setNumber:attribute:) final public func set(number: Foundation.NSNumber, attribute: Swift.String)
+  @objc(setString:attribute:) final public func set(string: Swift.String, attribute: Swift.String)
+  final public func set(float: Swift.Float, attribute: Swift.String)
+  final public func set(double: Swift.Double, attribute: Swift.String)
+  final public func set(int: Swift.Int, attribute: Swift.String)
+  final public func set(uint: Swift.UInt, attribute: Swift.String)
+  @objc final public func apply()
+  @objc deinit
+}
+public protocol AirshipWorkManagerProtocol : Swift.Sendable {
+  func registerWorker(_ workID: Swift.String, type: AirshipCore.AirshipWorkerType, workHandler: @escaping (AirshipCore.AirshipWorkRequest, AirshipCore.AirshipWorkContinuation) -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  func registerWorker(_ workID: Swift.String, type: AirshipCore.AirshipWorkerType, workHandler: @escaping (AirshipCore.AirshipWorkRequest) async throws -> AirshipCore.AirshipWorkResult)
+  #endif
+  func setRateLimit(_ limitID: Swift.String, rate: Swift.Int, timeInterval: Foundation.TimeInterval)
+  func dispatchWorkRequest(_ request: AirshipCore.AirshipWorkRequest)
+}
+@_hasMissingDesignatedInitializers @objc(UARemoteDataAutomationAccess) final public class _RemoteDataAutomationAccess : ObjectiveC.NSObject {
+  @objc final public func subscribe(types: [Swift.String], block: @escaping ([AirshipCore.RemoteDataPayload]) -> Swift.Void) -> AirshipBasement.Disposable
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc final public func isCurrent(remoteDataInfo: AirshipCore.RemoteDataInfo?) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc final public func requiresUpdate(remoteDataInfo: AirshipCore.RemoteDataInfo?) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc final public func waitFullRefresh(remoteDataInfo: AirshipCore.RemoteDataInfo?) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc final public func bestEffortRefresh(remoteDataInfo: AirshipCore.RemoteDataInfo?) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc final public func notifyOutdated(remoteDataInfo: AirshipCore.RemoteDataInfo?) async
+  #endif
+  @objc deinit
+}
+public protocol AirshipAction : AnyObject, Swift.Sendable {
+  #if compiler(>=5.3) && $AsyncAwait
+  func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+}
+@_hasMissingDesignatedInitializers @objc(UAAnalytics) final public class AirshipAnalytics : ObjectiveC.NSObject, AirshipBasement.AirshipComponent, AirshipCore.AnalyticsProtocol, @unchecked Swift.Sendable {
+  @objc public static var shared: AirshipCore.AirshipAnalytics {
+    @objc get
+  }
+  @objc public static let screenKey: Swift.String
+  @objc public static let eventKey: Swift.String
+  @objc public static let customEventAdded: Foundation.NSNotification.Name
+  @objc public static let regionEventAdded: Foundation.NSNotification.Name
+  @objc public static let screenTracked: Foundation.NSNotification.Name
+  @objc final public var conversionSendID: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc final public var conversionPushMetadata: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc final public var sessionID: Swift.String? {
+    get
+  }
+  final public var eventPublisher: Combine.AnyPublisher<AirshipCore.AirshipEventData, Swift.Never> {
+    get
+  }
+  @objc final public var isComponentEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  #if compiler(>=5.3) && $AsyncAwait && $Sendable
+  final public func addHeaderProvider(_ headerProvider: @escaping @Sendable () async -> [Swift.String : Swift.String])
+  #endif
+  @objc final public func addEvent(_ event: any AirshipBasement.AirshipEvent)
+  @objc final public func associateDeviceIdentifiers(_ associatedIdentifiers: AirshipCore.AssociatedIdentifiers)
+  @objc final public func currentAssociatedDeviceIdentifiers() -> AirshipCore.AssociatedIdentifiers
+  @objc final public func trackScreen(_ screen: Swift.String?)
+  @objc final public func registerSDKExtension(_ ext: AirshipCore.AirshipSDKExtension, version: Swift.String)
+  @_Concurrency.MainActor @objc final public func airshipReady()
+  @objc deinit
+}
+@objc(UAAirshipPermissionDelegate) public protocol AirshipPermissionDelegate {
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func checkPermissionStatus() async -> AirshipCore.AirshipPermissionStatus
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func requestPermission() async -> AirshipCore.AirshipPermissionStatus
+  #endif
+}
+@_hasMissingDesignatedInitializers final public class SubscriptionListAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  final public var _decoder: Foundation.JSONDecoder {
+    get
+  }
+  convenience public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@objc public protocol TaskManagerProtocol {
+  @objc(registerForTaskWithID:type:launchHandler:) func register(taskID: Swift.String, type: AirshipCore.AirshipWorkerType, launchHandler: @escaping (any AirshipCore.AirshipTask) -> Swift.Void)
+  @objc(registerForTaskWithID:type:dispatcher:launchHandler:) func register(taskID: Swift.String, type: AirshipCore.AirshipWorkerType, dispatcher: AirshipCore.UADispatcher, launchHandler: @escaping (any AirshipCore.AirshipTask) -> Swift.Void)
+  @objc(enqueueRequestWithID:options:) func enqueueRequest(taskID: Swift.String, options: AirshipCore.TaskRequestOptions)
+  @objc(enqueueRequestWithID:options:initialDelay:) func enqueueRequest(taskID: Swift.String, options: AirshipCore.TaskRequestOptions, initialDelay: Foundation.TimeInterval)
+  @objc(setRateLimitForID:rate:timeInterval:error:) func setRateLimit(_ rateLimitID: Swift.String, rate: Swift.Int, timeInterval: Foundation.TimeInterval) throws
+  @objc(enqueueRequestWithID:rateLimitIDs:options:minDelay:) func enqueueRequest(taskID: Swift.String, rateLimitIDs: [Swift.String], options: AirshipCore.TaskRequestOptions, minDelay: Foundation.TimeInterval)
+  @objc(enqueueRequestWithID:rateLimitIDs:options:) func enqueueRequest(taskID: Swift.String, rateLimitIDs: [Swift.String], options: AirshipCore.TaskRequestOptions)
+}
+@objc(UAPushNotificationDelegate) public protocol PushNotificationDelegate : ObjectiveC.NSObjectProtocol {
+  @objc optional func receivedForegroundNotification(_ userInfo: [Swift.AnyHashable : Any], completionHandler: @escaping () -> Swift.Void)
+  @objc optional func receivedBackgroundNotification(_ userInfo: [Swift.AnyHashable : Any], completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  @objc(extendPresentationOptions:notification:) optional func extend(_ options: UserNotifications.UNNotificationPresentationOptions, notification: UserNotifications.UNNotification) -> UserNotifications.UNNotificationPresentationOptions
+  @objc(extendPresentationOptions:notification:completionHandler:) optional func extendPresentationOptions(_ options: UserNotifications.UNNotificationPresentationOptions, notification: UserNotifications.UNNotification, completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+}
+@objc(UAProximityRegion) public class ProximityRegion : ObjectiveC.NSObject {
+  public init?(proximityID: Swift.String, major: Swift.Double, minor: Swift.Double, rssi: Swift.Double? = nil, latitude: Swift.Double? = nil, longitude: Swift.Double? = nil)
+  @objc(proximityRegionWithID:major:minor:) public class func proximityRegion(proximityID: Swift.String, major: Swift.Double, minor: Swift.Double) -> AirshipCore.ProximityRegion?
+  @objc(proximityRegionWithID:major:minor:rssi:) public class func proximityRegion(proximityID: Swift.String, major: Swift.Double, minor: Swift.Double, rssi: Swift.Double) -> AirshipCore.ProximityRegion?
+  @objc(proximityRegionWithID:major:minor:latitude:longitude:) public class func proximityRegion(proximityID: Swift.String, major: Swift.Double, minor: Swift.Double, latitude: Swift.Double, longitude: Swift.Double) -> AirshipCore.ProximityRegion?
+  @objc(proximityRegionWithID:major:minor:rssi:latitude:longitude:) public class func proximityRegion(proximityID: Swift.String, major: Swift.Double, minor: Swift.Double, rssi: Swift.Double, latitude: Swift.Double, longitude: Swift.Double) -> AirshipCore.ProximityRegion?
+  @objc deinit
+}
+@objc(UAChannelScopes) final public class ChannelScopes : ObjectiveC.NSObject, Swift.Decodable, Swift.Sendable {
+  final public let values: [AirshipCore.ChannelScope]
+  @objc(values) final public var rawValues: [Swift.Int] {
+    @objc get
+  }
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  public init(_ values: [AirshipCore.ChannelScope])
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override final public var hash: Swift.Int {
+    @objc get
+  }
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@objc(UAChannelScope) public enum ChannelScope : Swift.Int, Swift.Codable, Swift.CustomStringConvertible, Swift.Sendable, Swift.Equatable {
+  case app
+  case web
+  case email
+  case sms
+  public var stringValue: Swift.String {
+    get
+  }
+  public static func fromString(_ value: Swift.String) throws -> AirshipCore.ChannelScope
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(UAChannel) final public class AirshipChannel : ObjectiveC.NSObject, AirshipBasement.AirshipComponent, AirshipCore.AirshipChannelProtocol, @unchecked Swift.Sendable {
+  @objc public static let channelCreatedEvent: Foundation.NSNotification.Name
+  @objc public static let channelIdentifierKey: Swift.String
+  @objc public static let channelExistingKey: Swift.String
+  @objc public static let channelUpdatedEvent: Foundation.NSNotification.Name
+  @objc public static let legacyTagsSettingsKey: Swift.String
+  @objc final public var identifier: Swift.String? {
+    @objc get
+  }
+  @objc final public var tags: [Swift.String] {
+    @objc get
+    @objc set
+  }
+  @objc final public var isChannelTagRegistrationEnabled: Swift.Bool
+  @objc final public var isComponentEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public static var shared: AirshipCore.AirshipChannel {
+    @objc get
+  }
+  final public func addRegistrationExtender(_ extender: @escaping (AirshipCore.ChannelRegistrationPayload) -> AirshipCore.ChannelRegistrationPayload)
+  @objc final public func editTags() -> AirshipCore.TagEditor
+  @objc final public func editTags(_ editorBlock: (AirshipCore.TagEditor) -> Swift.Void)
+  @objc final public func editTagGroups() -> AirshipCore.TagGroupsEditor
+  @objc final public func editTagGroups(_ editorBlock: (AirshipCore.TagGroupsEditor) -> Swift.Void)
+  @objc final public func editSubscriptionLists() -> AirshipCore.SubscriptionListEditor
+  @objc final public func editSubscriptionLists(_ editorBlock: (AirshipCore.SubscriptionListEditor) -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc final public func fetchSubscriptionLists() async throws -> [Swift.String]
+  #endif
+  final public var subscriptionListEdits: Combine.AnyPublisher<AirshipCore.SubscriptionListEdit, Swift.Never> {
+    get
+  }
+  @objc final public func editAttributes() -> AirshipCore.AttributesEditor
+  @objc final public func editAttributes(_ editorBlock: (AirshipCore.AttributesEditor) -> Swift.Void)
+  @available(*, deprecated, message: "Use editTags instead.")
+  @objc(addTag:) final public func addTag(_ tag: Swift.String)
+  @available(*, deprecated, message: "Use editTags instead.")
+  @objc(addTags:) final public func addTags(_ tags: [Swift.String])
+  @available(*, deprecated, message: "Use editTags instead.")
+  @objc(removeTag:) final public func removeTag(_ tag: Swift.String)
+  @available(*, deprecated, message: "Use editTags instead.")
+  @objc(removeTags:) final public func removeTags(_ tags: [Swift.String])
+  @available(*, deprecated, message: "Use editTagGroups instead.")
+  @objc(addTags:group:) final public func addTags(_ tags: [Swift.String], group: Swift.String)
+  @available(*, deprecated, message: "Use editTagGroups instead.")
+  @objc(removeTags:group:) final public func removeTags(_ tags: [Swift.String], group: Swift.String)
+  @available(*, deprecated, message: "Use editTagGroups instead.")
+  @objc(setTags:group:) final public func setTags(_ tags: [Swift.String], group: Swift.String)
+  @available(*, deprecated, message: "Use editAttributes instead.")
+  @objc(applyAttributeMutations:) final public func apply(_ mutations: AirshipCore.AttributeMutations)
+  @objc(enableChannelCreation) final public func enableChannelCreation()
+  final public func updateRegistration()
+  final public func updateRegistration(forcefully: Swift.Bool)
+  @objc deinit
+}
+extension AirshipCore.AirshipChannel : AirshipCore.PushableComponent {
+  @objc final public func receivedRemoteNotification(_ notification: [Swift.AnyHashable : Any], completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+}
+extension AirshipCore.AirshipChannel : AirshipCore.InternalAirshipChannelProtocol {
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func addRegistrationExtender(_ extender: @escaping (AirshipCore.ChannelRegistrationPayload) async -> AirshipCore.ChannelRegistrationPayload)
+  #endif
+  final public func clearSubscriptionListsCache()
+}
+public struct AirshipEventData : Swift.Sendable, Swift.Equatable {
+  public let body: AirshipCore.AirshipJSON
+  public var unwrappedBody: [Swift.String : Any] {
+    get
+  }
+  public let id: Swift.String
+  public let date: Foundation.Date
+  public let sessionID: Swift.String
+  public let type: Swift.String
+  public static func == (a: AirshipCore.AirshipEventData, b: AirshipCore.AirshipEventData) -> Swift.Bool
+}
+@objc(UACloudSite) public enum CloudSite : Swift.Int, Swift.Sendable {
+  @objc(UACloudSiteUS) case us = 0
+  @objc(UACloudSiteEU) case eu = 1
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(UASMSRegistrationOptions) final public class SMSRegistrationOptions : ObjectiveC.NSObject, Swift.Codable, Swift.Sendable {
+  @objc public static func optIn(senderID: Swift.String) -> AirshipCore.SMSRegistrationOptions
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc(UAURLAllowListDelegate) public protocol URLAllowListDelegate {
+  @objc func allowURL(_ url: Foundation.URL, scope: AirshipBasement.URLAllowListScope) -> Swift.Bool
+}
+@objc(UAURLAllowListProtocol) public protocol URLAllowListProtocol {
+  @objc func isAllowed(_ url: Foundation.URL?) -> Swift.Bool
+  @objc func isAllowed(_ url: Foundation.URL?, scope: AirshipBasement.URLAllowListScope) -> Swift.Bool
+  @discardableResult
+  @objc func addEntry(_ patternString: Swift.String, scope: AirshipBasement.URLAllowListScope) -> Swift.Bool
+  @discardableResult
+  @objc func addEntry(_ patternString: Swift.String) -> Swift.Bool
+}
+@_inheritsConvenienceInitializers @objc(UAURLAllowList) open class URLAllowList : ObjectiveC.NSObject, AirshipCore.URLAllowListProtocol {
+  @objc @_Concurrency.MainActor public static func allowListWithConfig(_ config: AirshipCore.RuntimeConfig) -> AirshipCore.URLAllowList
+  @objc weak public var delegate: (any AirshipCore.URLAllowListDelegate)?
+  @discardableResult
+  @objc open func addEntry(_ patternString: Swift.String) -> Swift.Bool
+  @discardableResult
+  @objc open func addEntry(_ patternString: Swift.String, scope: AirshipBasement.URLAllowListScope) -> Swift.Bool
+  @objc open func isAllowed(_ url: Foundation.URL?) -> Swift.Bool
+  @objc open func isAllowed(_ url: Foundation.URL?, scope: AirshipBasement.URLAllowListScope) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(UAVersionMatcher) public class VersionMatcher : ObjectiveC.NSObject {
+  final public let versionConstraint: Swift.String
+  @objc public init?(versionConstraint: Swift.String)
+  @objc(matcherWithVersionConstraint:) public class func matcher(versionConstraint: Swift.String) -> AirshipCore.VersionMatcher?
+  @objc(evaluateObject:) public func evaluate(_ value: Any?) -> Swift.Bool
+  @objc public class func isExactVersion(_ versionConstraint: Swift.String) -> Swift.Bool
+  @objc public class func isSubVersion(_ versionConstraint: Swift.String) -> Swift.Bool
+  @objc public class func isVersionRange(_ versionConstraint: Swift.String) -> Swift.Bool
+  @objc(isEqual:) override dynamic public func isEqual(_ other: Any?) -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAAttributes) public class Attributes : ObjectiveC.NSObject {
+  @objc public static let title: Swift.String
+  @objc public static let firstName: Swift.String
+  @objc public static let lastName: Swift.String
+  @objc public static let fullName: Swift.String
+  @objc public static let gender: Swift.String
+  @objc public static let zipCode: Swift.String
+  @objc public static let city: Swift.String
+  @objc public static let region: Swift.String
+  @objc public static let country: Swift.String
+  @objc public static let birthdate: Swift.String
+  @objc public static let age: Swift.String
+  @objc public static let mobilePhone: Swift.String
+  @objc public static let homePhone: Swift.String
+  @objc public static let workPhone: Swift.String
+  @objc public static let loyaltyTier: Swift.String
+  @objc public static let company: Swift.String
+  @objc public static let username: Swift.String
+  @objc public static let accountCreation: Swift.String
+  @objc public static let email: Swift.String
+  @objc public static let advertisingId: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAPush) final public class AirshipPush : ObjectiveC.NSObject, AirshipBasement.AirshipComponent, AirshipCore.PushProtocol, @unchecked Swift.Sendable {
+  @objc public static let notificationStatusUpdateEvent: Foundation.NSNotification.Name
+  final public var notificationStatusPublisher: Combine.AnyPublisher<AirshipCore.AirshipNotificationStatus, Swift.Never> {
+    get
+  }
+  @objc public static var shared: AirshipCore.AirshipPush {
+    @objc get
+  }
+  @objc public static let receivedNotificationResponseEvent: Foundation.NSNotification.Name
+  @objc public static let receivedNotificationResponseEventResponseKey: Swift.String
+  @objc public static let receivedForegroundNotificationEvent: Foundation.NSNotification.Name
+  @objc public static let receivedBackgroundNotificationEvent: Foundation.NSNotification.Name
+  @objc public static let quietTimeStartKey: Swift.String
+  @objc public static let quietTimeEndKey: Swift.String
+  @objc public static let areNotificationsAllowed: Swift.String
+  @objc public static let isOptedIn: Swift.String
+  @objc public static let isPushPrivacyFeatureEnabled: Swift.String
+  @objc public static let isPushTokenRegistered: Swift.String
+  @objc public static let isUserNotificationsEnabled: Swift.String
+  @objc public static let isUserOptedIn: Swift.String
+  @objc final public var isComponentEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @objc final public var backgroundPushNotificationsEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc final public var userPushNotificationsEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc final public var requestExplicitPermissionWhenEphemeral: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @objc final public var deviceToken: Swift.String? {
+    @objc get
+  }
+  @objc final public var notificationOptions: AirshipBasement.UANotificationOptions {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @objc final public var requireAuthorizationForDefaultCategories: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc weak final public var pushNotificationDelegate: (any AirshipCore.PushNotificationDelegate)?
+  @objc weak final public var registrationDelegate: (any AirshipCore.RegistrationDelegate)?
+  @_Concurrency.MainActor @objc final public var authorizedNotificationSettings: AirshipBasement.UAAuthorizedNotificationSettings {
+    @objc get
+  }
+  @objc final public var authorizationStatus: AirshipBasement.UAAuthorizationStatus {
+    @objc get
+  }
+  @objc final public var userPromptedForNotifications: Swift.Bool {
+    @objc get
+  }
+  @objc final public var defaultPresentationOptions: UserNotifications.UNNotificationPresentationOptions
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc final public func enableUserPushNotifications() async -> Swift.Bool
+  #endif
+  @_Concurrency.MainActor @objc final public var isPushNotificationsOptedIn: Swift.Bool {
+    @objc get
+  }
+  #if compiler(>=5.3) && $EffectfulProp
+  final public var notificationStatus: AirshipCore.AirshipNotificationStatus {
+    get async
+  }
+  #endif
+  @_Concurrency.MainActor @objc final public var badgeNumber: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc final public var autobadgeEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor final public func resetBadge()
+  @objc final public var quietTime: [Swift.AnyHashable : Any]? {
+    @objc get
+  }
+  @objc final public var timeZone: Foundation.NSTimeZone? {
+    @objc get
+    @objc set
+  }
+  @objc final public var quietTimeEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc final public func setQuietTimeStartHour(_ startHour: Swift.Int, startMinute: Swift.Int, endHour: Swift.Int, endMinute: Swift.Int)
+  @objc final public func updateRegistration()
+  @objc deinit
+}
+extension AirshipCore.AirshipPush {
+  final public func dispatchUpdateAuthorizedNotificationTypes()
+  @_Concurrency.MainActor final public func didRegisterForRemoteNotifications(_ deviceToken: Foundation.Data)
+  final public func didFailToRegisterForRemoteNotifications(_ error: any Swift.Error)
+  final public func presentationOptionsForNotification(_ notification: UserNotifications.UNNotification, completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  final public func didReceiveRemoteNotification(_ notification: [Swift.AnyHashable : Any], isForeground: Swift.Bool, completionHandler handler: @escaping (Any) -> Swift.Void)
+}
+@objc(UACoreDataDelegate) public protocol CoreDataDelegate {
+  @objc func persistentStoreCreated(_ store: CoreData.NSPersistentStore, name: Swift.String, context: CoreData.NSManagedObjectContext)
+}
+@_hasMissingDesignatedInitializers @objc(UACoreData) final public class UACoreData : ObjectiveC.NSObject, @unchecked Swift.Sendable {
+  @objc final public let inMemory: Swift.Bool
+  @objc weak final public var delegate: (any AirshipCore.CoreDataDelegate)?
+  @objc convenience public init(modelURL: Foundation.URL, inMemory: Swift.Bool, stores: [Swift.String])
+  @objc convenience public init(modelURL: Foundation.URL, inMemory: Swift.Bool, stores: [Swift.String], mergePolicy: Any?)
+  #if compiler(>=5.3) && $AsyncAwait && $Sendable
+  final public func perform(skipIfStoreNotCreated: Swift.Bool = false, _ block: @escaping @Sendable (CoreData.NSManagedObjectContext) throws -> Swift.Void) async throws
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait && $Sendable
+  final public func performWithResult<T>(_ block: @escaping @Sendable (CoreData.NSManagedObjectContext) throws -> T) async throws -> T where T : Swift.Sendable
+  #endif
+  @objc(safePerformBlock:) final public func safePerform(_ block: @escaping (Swift.Bool, CoreData.NSManagedObjectContext) -> Swift.Void)
+  @objc(safePerformBlockAndWait:) final public func safePerformAndWait(_ block: @escaping (Swift.Bool, CoreData.NSManagedObjectContext) -> Swift.Void)
+  @objc final public func performBlockIfStoresExist(_ block: @escaping (Swift.Bool, CoreData.NSManagedObjectContext) -> Swift.Void)
+  @objc final public func shutDown()
+  @objc final public func waitForIdle()
+  @discardableResult
+  @objc final public class func safeSave(_ context: CoreData.NSManagedObjectContext?) -> Swift.Bool
+  @objc deinit
+}
+public protocol RemoteDataProtocol : AnyObject, Swift.Sendable {
+  #if compiler(>=5.3) && $AsyncAwait
+  func status(source: AirshipCore.RemoteDataSource) async -> AirshipCore.RemoteDataSourceStatus
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func isCurrent(remoteDataInfo: AirshipCore.RemoteDataInfo) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func notifyOutdated(remoteDataInfo: AirshipCore.RemoteDataInfo) async
+  #endif
+  func publisher(types: [Swift.String]) -> Combine.AnyPublisher<[AirshipCore.RemoteDataPayload], Swift.Never>
+  #if compiler(>=5.3) && $AsyncAwait
+  func payloads(types: [Swift.String]) async -> [AirshipCore.RemoteDataPayload]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func waitRefresh(source: AirshipCore.RemoteDataSource, maxTime: Foundation.TimeInterval?) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func waitRefreshAttempt(source: AirshipCore.RemoteDataSource, maxTime: Foundation.TimeInterval?) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func waitRefresh(source: AirshipCore.RemoteDataSource) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func waitRefreshAttempt(source: AirshipCore.RemoteDataSource) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @discardableResult
+  func refresh() async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @discardableResult
+  func refresh(source: AirshipCore.RemoteDataSource) async -> Swift.Bool
+  #endif
+  var remoteDataRefreshInterval: Foundation.TimeInterval { get set }
+  func setContactSourceEnabled(enabled: Swift.Bool)
+}
+@objc(UALocaleManagerProtocol) public protocol AirshipLocaleManagerProtocol : Swift.Sendable {
+  @objc func clearLocale()
+  @objc var currentLocale: Foundation.Locale { get }
+}
+@_hasMissingDesignatedInitializers @objc(UALocaleManager) final public class AirshipLocaleManager : ObjectiveC.NSObject, AirshipCore.AirshipLocaleManagerProtocol {
+  @objc public static let localeUpdatedEvent: Foundation.NSNotification.Name
+  @objc public static let localeEventKey: Swift.String
+  @objc final public var currentLocale: Foundation.Locale {
+    @objc get
+    @objc set
+  }
+  @objc final public func clearLocale()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UANetworkMonitor) open class NetworkMonitor : ObjectiveC.NSObject {
+  @objc public var connectionUpdates: ((Swift.Bool) -> Swift.Void)?
+  @objc open var isConnected: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol NetworkCheckerProtocol : _Concurrency.Actor {
+  var isConnected: Swift.Bool { get }
+}
+#if compiler(>=5.3) && $Actors
+public actor NetworkChecker : AirshipCore.NetworkCheckerProtocol {
+  public init()
+  public var isConnected: Swift.Bool {
+    get
+  }
+  @objc deinit
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  @_semantics("defaultActor") nonisolated final public var unownedExecutor: _Concurrency.UnownedSerialExecutor {
+    get
+  }
+}
+#endif
+extension SwiftUI.View {
+  public func applyIf<Content>(_ predicate: @autoclosure () -> Swift.Bool, transform: (Self) -> Content) -> some SwiftUI.View where Content : SwiftUI.View
+  
+}
+@_hasMissingDesignatedInitializers @objc(UAContactConflictEvent) final public class ContactConflictEvent : ObjectiveC.NSObject, @unchecked Swift.Sendable {
+  @objc final public let conflictingNamedUserID: Swift.String?
+  final public let subscriptionLists: [Swift.String : [AirshipCore.ChannelScope]]
+  @objc(subscriptionLists) final public var _subscriptionLists: [Swift.String : AirshipCore.ChannelScopes] {
+    @objc get
+  }
+  @objc final public let tags: [Swift.String : [Swift.String]]
+  @objc final public let attributes: [Swift.String : Swift.AnyHashable]
+  @objc final public let channels: [AirshipCore.AssociatedChannel]
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override final public var hash: Swift.Int {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(UARequestSession) open class AirshipLegacyRequestSession : ObjectiveC.NSObject {
+  @objc public init(config: AirshipCore.RuntimeConfig)
+  @objc open func performHTTPRequest(_ request: AirshipCore.AirshipLegacyRequest, completionHandler: @escaping (Foundation.Data?, Foundation.HTTPURLResponse?, (any Swift.Error)?) -> Swift.Void)
+  @objc deinit
+}
+@objc(UAHTTPResponse) public class AirshipLegacyHTTPResponse : ObjectiveC.NSObject {
+  @objc final public let status: Swift.Int
+  @objc override dynamic public var debugDescription: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc public init(status: Swift.Int)
+  @objc public var isSuccess: Swift.Bool {
+    @objc get
+  }
+  @objc public var isClientError: Swift.Bool {
+    @objc get
+  }
+  @objc public var isServerError: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UARequest) public class AirshipLegacyRequest : ObjectiveC.NSObject {
+  @objc final public let method: Swift.String
+  @objc final public let url: Foundation.URL
+  @objc final public let headers: [Swift.String : Swift.String]?
+  @objc final public let body: Foundation.Data?
+  @objc public static func makeChannelAuthRequest(channelID: Swift.String, method: Swift.String, url: Foundation.URL, headers: [Swift.String : Swift.String]?, body: Foundation.Data?) -> AirshipCore.AirshipLegacyRequest
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UANSArrayValueTransformer) public class NSArrayValueTransformer : Foundation.ValueTransformer {
+  @objc override dynamic public class func transformedValueClass() -> Swift.AnyClass
+  @objc override dynamic public class func allowsReverseTransformation() -> Swift.Bool
+  @objc override dynamic public func transformedValue(_ value: Any?) -> Any?
+  @objc override dynamic public func reverseTransformedValue(_ value: Any?) -> Any?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAConnectionType) public class ConnectionType : ObjectiveC.NSObject {
+  @objc public static let none: Swift.String
+  @objc public static let cell: Swift.String
+  @objc public static let wifi: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAUtils) public class AirshipUtils : ObjectiveC.NSObject {
+  @objc(float:isEqualToFloat:withAccuracy:) public class func isApproximatelyEqual(float1: CoreFoundation.CGFloat, float2: CoreFoundation.CGFloat, accuracy: CoreFoundation.CGFloat) -> Swift.Bool
+  @objc public class func deviceModelName() -> Swift.String?
+  @objc public class func bundleShortVersionString() -> Swift.String?
+  @objc public class func carrierName() -> Swift.String?
+  @objc public class func connectionType() -> Swift.String
+  @objc(compareVersion:toVersion:) public class func compareVersion(_ fromVersion: Swift.String, toVersion: Swift.String) -> Foundation.ComparisonResult
+  @objc public class func ISODateFormatterUTC() -> Foundation.DateFormatter
+  @objc(ISODateFormatterUTCWithDelimiter) public class func isoDateFormatterUTCWithDelimiter() -> Foundation.DateFormatter
+  @objc(parseISO8601DateFromString:) public class func parseISO8601Date(from: Swift.String) -> Foundation.Date?
+  @objc @_Concurrency.MainActor public class func mainWindow() -> UIKit.UIWindow?
+  @available(iOS 13.0, tvOS 13.0, *)
+  @objc(mainWindow:) @_Concurrency.MainActor public class func mainWindow(scene: UIKit.UIWindowScene) -> UIKit.UIWindow?
+  @objc @_Concurrency.MainActor public class func windowFor(view: UIKit.UIView) -> UIKit.UIWindow?
+  @objc @_Concurrency.MainActor public class func findWindowScene() throws -> UIKit.UIWindowScene
+  @objc public class func mergeFetchResults(_ results: [Swift.UInt]) -> UIKit.UIBackgroundFetchResult
+  @objc public class func isSilentPush(_ notification: [Swift.AnyHashable : Any]) -> Swift.Bool
+  @objc public class func isAlertingPush(_ notification: [Swift.AnyHashable : Any]) -> Swift.Bool
+  @objc public class func deviceTokenStringFromDeviceToken(_ token: Foundation.Data) -> Swift.String
+  @objc(sha256DigestWithString:) public class func sha256Digest(input: Swift.String) -> Foundation.NSData
+  @objc(sha256HashWithString:) public class func sha256Hash(input: Swift.String) -> Swift.String
+  @objc(authHeaderStringWithName:password:) public class func authHeader(username: Swift.String, password: Swift.String) -> Swift.String?
+  @objc(parseURL:) public class func parseURL(_ value: Swift.String) -> Foundation.URL?
+  @objc public class func permissionString(_ permission: AirshipCore.AirshipPermission) -> Swift.String
+  @objc public class func permissionStatusString(_ status: AirshipCore.AirshipPermissionStatus) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAJSONPredicate) final public class JSONPredicate : ObjectiveC.NSObject, Swift.Sendable, Swift.Codable {
+  @objc(initWithJSON:error:) convenience public init(json: Any?) throws
+  final public func encode(to encoder: any Swift.Encoder) throws
+  convenience public init(from decoder: any Swift.Decoder) throws
+  @objc final public func payload() -> [Swift.String : Any]
+  @objc(evaluateObject:) final public func evaluate(_ object: Any?) -> Swift.Bool
+  @objc(initWithJSONMatcher:) convenience public init(jsonMatcher matcher: AirshipCore.JSONMatcher?)
+  @objc(andPredicateWithSubpredicates:) final public class func andPredicate(subpredicates: [AirshipCore.JSONPredicate]?) -> AirshipCore.JSONPredicate
+  @objc(orPredicateWithSubpredicates:) final public class func orPredicate(subpredicates: [AirshipCore.JSONPredicate]?) -> AirshipCore.JSONPredicate
+  @objc(notPredicateWithSubpredicate:) final public class func notPredicate(subpredicate: AirshipCore.JSONPredicate) -> AirshipCore.JSONPredicate
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+}
+public struct AirshipKeychainCredentials : Swift.Sendable {
+  public let username: Swift.String
+  public let password: Swift.String
+  public init(username: Swift.String, password: Swift.String)
+}
+public protocol AirshipKeychainAccessProtocol : Swift.Sendable {
+  #if compiler(>=5.3) && $AsyncAwait
+  func writeCredentials(_ credentials: AirshipCore.AirshipKeychainCredentials, identifier: Swift.String, appKey: Swift.String) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func deleteCredentials(identifier: Swift.String, appKey: Swift.String) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func readCredentails(identifier: Swift.String, appKey: Swift.String) async -> AirshipCore.AirshipKeychainCredentials?
+  #endif
+}
+@_hasMissingDesignatedInitializers final public class AirshipKeychainAccess : AirshipCore.AirshipKeychainAccessProtocol {
+  public static let shared: AirshipCore.AirshipKeychainAccess
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func writeCredentials(_ credentials: AirshipCore.AirshipKeychainCredentials, identifier: Swift.String, appKey: Swift.String) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func deleteCredentials(identifier: Swift.String, appKey: Swift.String) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func readCredentails(identifier: Swift.String, appKey: Swift.String) async -> AirshipCore.AirshipKeychainCredentials?
+  #endif
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAirshipVersion) public class AirshipVersion : ObjectiveC.NSObject {
+  public static let version: Swift.String
+  @objc public class func get() -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UASemaphore) public class Semaphore : ObjectiveC.NSObject {
+  @objc override convenience dynamic public init()
+  @objc public init(value: Swift.Int = 0)
+  @objc public func wait()
+  @discardableResult
+  @objc public func wait(_ timeout: Foundation.TimeInterval) -> Swift.Bool
+  @discardableResult
+  @objc public func signal() -> Swift.Bool
+  @objc deinit
+}
+public enum ScopedSubscriptionListEdit : Swift.Equatable {
+  case subscribe(Swift.String, AirshipCore.ChannelScope)
+  case unsubscribe(Swift.String, AirshipCore.ChannelScope)
+  public static func == (a: AirshipCore.ScopedSubscriptionListEdit, b: AirshipCore.ScopedSubscriptionListEdit) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers @objc(UAAutomationAudienceOverridesProvider) final public class _AutomationAudienceOverridesProvider : ObjectiveC.NSObject, Swift.Sendable {
+  @objc final public func audienceOverrides(channelID: Swift.String, completionHandler: @escaping (AirshipCore._AutomationAudienceOverrides) -> Swift.Void)
+  @objc deinit
+}
+@objc(UAAutomationAudienceOverrides) public class _AutomationAudienceOverrides : ObjectiveC.NSObject {
+  @objc final public let tagsPayload: [Swift.String : [Swift.String : [Swift.String]]]?
+  @objc final public let attributesPayload: [[Swift.String : Any]]?
+  @objc public init(tagsPayload: [Swift.String : [Swift.String : [Swift.String]]]?, attributesPayload: [[Swift.String : Any]]?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAAssociatedIdentifiers) public class AssociatedIdentifiers : ObjectiveC.NSObject {
+  @objc public static let maxCount: Swift.Int
+  @objc public static let maxCharacterCount: Swift.Int
+  @objc public var advertisingID: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var vendorID: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var advertisingTrackingEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var allIDs: [Swift.String : Swift.String] {
+    @objc get
+  }
+  @objc public init(identifiers: [Swift.String : Swift.String]?)
+  @objc convenience public init(dictionary: [Swift.String : Swift.String]?)
+  @objc override convenience dynamic public init()
+  @objc public class func identifiers() -> AirshipCore.AssociatedIdentifiers
+  @objc(identifiersWithDictionary:) public class func identifiers(identifiers: [Swift.String : Swift.String]?) -> AirshipCore.AssociatedIdentifiers
+  @objc(setIdentifier:forKey:) public func set(identifier: Swift.String?, key: Swift.String)
+  @objc deinit
+}
+@objc(UAComponentDisableHelper) final public class ComponentDisableHelper : ObjectiveC.NSObject, @unchecked Swift.Sendable {
+  @objc final public var onChange: (() -> Swift.Void)?
+  @objc final public var enabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public init(dataStore: AirshipCore.PreferenceDataStore, className: Swift.String)
+  @objc deinit
+}
+@objc(UAAnalyticsProtocol) public protocol AnalyticsProtocol : Swift.Sendable {
+  @objc var conversionSendID: Swift.String? { get }
+  @objc var conversionPushMetadata: Swift.String? { get }
+  @objc var sessionID: Swift.String? { get }
+  @objc func addEvent(_ event: any AirshipBasement.AirshipEvent)
+  @objc func associateDeviceIdentifiers(_ associatedIdentifiers: AirshipCore.AssociatedIdentifiers)
+  @objc func currentAssociatedDeviceIdentifiers() -> AirshipCore.AssociatedIdentifiers
+  @objc func trackScreen(_ screen: Swift.String?)
+  @objc func registerSDKExtension(_ ext: AirshipCore.AirshipSDKExtension, version: Swift.String)
+}
+@_hasMissingDesignatedInitializers @objc(UATagEditor) public class TagEditor : ObjectiveC.NSObject {
+  @objc(addTags:) public func add(_ tags: [Swift.String])
+  @objc(addTag:) public func add(_ tag: Swift.String)
+  @objc(removeTags:) public func remove(_ tags: [Swift.String])
+  @objc(removeTag:) public func remove(_ tag: Swift.String)
+  @objc(setTags:) public func set(_ tags: [Swift.String])
+  @objc(clearTags) public func clear()
+  @objc public func apply()
+  @objc deinit
+}
+@objc(UATask) public protocol AirshipTask {
+  @objc var completionHandler: (() -> Swift.Void)? { get set }
+  @objc var taskID: Swift.String { get }
+  @objc var requestOptions: AirshipCore.TaskRequestOptions { get }
+  @objc func taskCompleted()
+  @objc func taskFailed()
+}
+@_hasMissingDesignatedInitializers @objc(UATagGroupsEditor) public class TagGroupsEditor : ObjectiveC.NSObject {
+  @objc(addTags:group:) public func add(_ tags: [Swift.String], group: Swift.String)
+  @objc(removeTags:group:) public func remove(_ tags: [Swift.String], group: Swift.String)
+  @objc(setTags:group:) public func set(_ tags: [Swift.String], group: Swift.String)
+  @objc public func apply()
+  @objc deinit
+}
+public struct FormInputData {
+}
+public enum FormValue {
+  case toggle(Swift.Bool)
+  case radio(Swift.String?)
+  case multipleCheckbox([Swift.String]?)
+  case form(Swift.String?, AirshipCore.FormType, [AirshipCore.FormInputData])
+  case text(Swift.String?)
+  case score(Swift.Int?)
+}
+public enum FormType {
+  case nps(Swift.String)
+  case form
+}
+@objc(UARemoteDataPayload) final public class RemoteDataPayload : ObjectiveC.NSObject, Swift.Sendable {
+  @objc final public let type: Swift.String
+  @objc final public let timestamp: Foundation.Date
+  @objc final public var data: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  @objc final public let remoteDataInfo: AirshipCore.RemoteDataInfo?
+  public init(type: Swift.String, timestamp: Foundation.Date, data: AirshipCore.AirshipJSON, remoteDataInfo: AirshipCore.RemoteDataInfo?)
+  @objc override final public func isEqual(_ other: Any?) -> Swift.Bool
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(UADispatcherTimeBase) public enum DispatcherTimeBase : Swift.Int {
+  case wall
+  case system
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(UADispatcher) open class UADispatcher : ObjectiveC.NSObject {
+  @objc public static let main: AirshipCore.UADispatcher
+  @objc public static let sharedSerialUtility: AirshipCore.UADispatcher
+  @objc public static let global: AirshipCore.UADispatcher
+  public init(queue: Dispatch.DispatchQueue)
+  public class func serial(_ qos: Dispatch.DispatchQoS) -> AirshipCore.UADispatcher
+  @objc public class func serial() -> AirshipCore.UADispatcher
+  @objc public class func serialUtility() -> AirshipCore.UADispatcher
+  @objc open func dispatchSync(_ block: @escaping () -> Swift.Void)
+  @objc open func doSync(_ block: @escaping () -> Swift.Void)
+  @objc open func dispatchAsyncIfNecessary(_ block: @escaping () -> Swift.Void)
+  @objc open func dispatchAsync(_ block: @escaping () -> Swift.Void)
+  @discardableResult
+  @objc open func dispatch(after delay: Foundation.TimeInterval, timebase: AirshipCore.DispatcherTimeBase, block: @escaping () -> Swift.Void) -> AirshipBasement.Disposable
+  @discardableResult
+  @objc open func dispatch(after delay: Foundation.TimeInterval, block: @escaping () -> Swift.Void) -> AirshipBasement.Disposable
+  @objc deinit
+}
+@objc(UAPushProtocol) public protocol BasePushProtocol : Swift.Sendable {
+  @objc @_Concurrency.MainActor var isPushNotificationsOptedIn: Swift.Bool { get }
+  @objc @_Concurrency.MainActor var backgroundPushNotificationsEnabled: Swift.Bool { get set }
+  @objc var userPushNotificationsEnabled: Swift.Bool { get set }
+  @objc var requestExplicitPermissionWhenEphemeral: Swift.Bool { get set }
+  @objc var deviceToken: Swift.String? { get }
+  @objc var notificationOptions: AirshipBasement.UANotificationOptions { get set }
+  @objc @_Concurrency.MainActor var requireAuthorizationForDefaultCategories: Swift.Bool { get set }
+  @objc weak var pushNotificationDelegate: (any AirshipCore.PushNotificationDelegate)? { get set }
+  @objc weak var registrationDelegate: (any AirshipCore.RegistrationDelegate)? { get set }
+  @objc var authorizedNotificationSettings: AirshipBasement.UAAuthorizedNotificationSettings { get }
+  @objc var authorizationStatus: AirshipBasement.UAAuthorizationStatus { get }
+  @objc var userPromptedForNotifications: Swift.Bool { get }
+  @objc var defaultPresentationOptions: UserNotifications.UNNotificationPresentationOptions { get set }
+  @objc @_Concurrency.MainActor var badgeNumber: Swift.Int { get set }
+}
+public protocol PushProtocol : AirshipCore.BasePushProtocol {
+  var notificationStatusPublisher: Combine.AnyPublisher<AirshipCore.AirshipNotificationStatus, Swift.Never> { get }
+  #if compiler(>=5.3) && $EffectfulProp
+  var notificationStatus: AirshipCore.AirshipNotificationStatus { get async }
+  #endif
+}
+public protocol DeviceAudienceChecker : Swift.Sendable {
+  #if compiler(>=5.3) && $AsyncAwait
+  func evaluate(audience: AirshipCore.DeviceAudienceSelector, newUserEvaluationDate: Foundation.Date, contactID: Swift.String?) async throws -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func evaluate(audience: AirshipCore.DeviceAudienceSelector, newUserEvaluationDate: Foundation.Date, contactID: Swift.String?, deviceInfoProvider: any AirshipCore.AudienceDeviceInfoProvider) async throws -> Swift.Bool
+  #endif
+}
+public struct DefaultDeviceAudienceChecker : AirshipCore.DeviceAudienceChecker {
+  public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  public func evaluate(audience: AirshipCore.DeviceAudienceSelector, newUserEvaluationDate: Foundation.Date, contactID: Swift.String?) async throws -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  public func evaluate(audience: AirshipCore.DeviceAudienceSelector, newUserEvaluationDate: Foundation.Date, contactID: Swift.String?, deviceInfoProvider: any AirshipCore.AudienceDeviceInfoProvider) async throws -> Swift.Bool
+  #endif
+}
+@_hasMissingDesignatedInitializers final public class FetchDeviceInfoAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let defaultPredicate: @Sendable (_ args: AirshipCore.ActionArguments) -> Swift.Bool
+  @objc public static let channelID: Swift.String
+  @objc public static let namedUser: Swift.String
+  @objc public static let tags: Swift.String
+  @objc public static let pushOptIn: Swift.String
+  @objc convenience public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UANSURLValueTransformer) public class NSURLValueTransformer : Foundation.ValueTransformer {
+  @objc override dynamic public class func transformedValueClass() -> Swift.AnyClass
+  @objc override dynamic public class func allowsReverseTransformation() -> Swift.Bool
+  @objc override dynamic public func transformedValue(_ value: Any?) -> Any?
+  @objc override dynamic public func reverseTransformedValue(_ value: Any?) -> Any?
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension AirshipCore.UrlTypes : Swift.Equatable {}
+extension AirshipCore.UrlTypes : Swift.Hashable {}
+extension AirshipCore.UrlTypes : Swift.RawRepresentable {}
+extension AirshipCore.AirshipWorkerType : Swift.Equatable {}
+extension AirshipCore.AirshipWorkerType : Swift.Hashable {}
+extension AirshipCore.AirshipWorkerType : Swift.RawRepresentable {}
+extension AirshipCore.AirshipWorkResult : Swift.Equatable {}
+extension AirshipCore.AirshipWorkResult : Swift.Hashable {}
+extension AirshipCore.AirshipWorkResult : Swift.RawRepresentable {}
+extension UIKit.UIApplication : Swift.Sendable {}
+extension AirshipCore.AirshipPermission : Swift.Equatable {}
+extension AirshipCore.AirshipPermission : Swift.Hashable {}
+extension AirshipCore.AirshipPermission : Swift.RawRepresentable {}
+extension AirshipCore.AirshipWorkRequestConflictPolicy : Swift.Equatable {}
+extension AirshipCore.AirshipWorkRequestConflictPolicy : Swift.Hashable {}
+extension AirshipCore.AirshipWorkRequestConflictPolicy : Swift.RawRepresentable {}
+extension AirshipCore.ActionRegistry : Swift.Sendable {}
+extension AirshipCore.AirshipDateFormatter.Format : Swift.Equatable {}
+extension AirshipCore.AirshipDateFormatter.Format : Swift.Hashable {}
+extension AirshipCore.AirshipDateFormatter.Format : Swift.RawRepresentable {}
+extension AirshipCore.ApplicationState : Swift.Equatable {}
+extension AirshipCore.ApplicationState : Swift.Hashable {}
+extension AirshipCore.ApplicationState : Swift.RawRepresentable {}
+extension AirshipCore.UABoundaryEvent : Swift.Equatable {}
+extension AirshipCore.UABoundaryEvent : Swift.Hashable {}
+extension AirshipCore.UABoundaryEvent : Swift.RawRepresentable {}
+extension AirshipCore.RemoteDataSource : Swift.RawRepresentable {}
+extension AirshipCore.AirshipLogLevel : Swift.Equatable {}
+extension AirshipCore.AirshipLogLevel : Swift.Hashable {}
+extension AirshipCore.AirshipLogLevel : Swift.RawRepresentable {}
+extension AirshipCore.URLInfo.URLType : Swift.Equatable {}
+extension AirshipCore.URLInfo.URLType : Swift.Hashable {}
+extension AirshipCore.URLInfo.URLType : Swift.RawRepresentable {}
+extension AirshipCore.RemoteDataSourceStatus : Swift.Equatable {}
+extension AirshipCore.RemoteDataSourceStatus : Swift.Hashable {}
+extension AirshipCore.ActionSituation : Swift.Equatable {}
+extension AirshipCore.ActionSituation : Swift.Hashable {}
+extension AirshipCore.ActionSituation : Swift.RawRepresentable {}
+extension AirshipCore.AirshipPermissionStatus : Swift.Equatable {}
+extension AirshipCore.AirshipPermissionStatus : Swift.Hashable {}
+extension AirshipCore.AirshipPermissionStatus : Swift.RawRepresentable {}
+extension AirshipCore.AirshipSDKExtension : Swift.Equatable {}
+extension AirshipCore.AirshipSDKExtension : Swift.Hashable {}
+extension AirshipCore.AirshipSDKExtension : Swift.RawRepresentable {}
+extension AirshipCore.ChannelType : Swift.Hashable {}
+extension AirshipCore.ChannelType : Swift.RawRepresentable {}
+extension AirshipCore.ChannelScope : Swift.Hashable {}
+extension AirshipCore.ChannelScope : Swift.RawRepresentable {}
+extension AirshipCore.CloudSite : Swift.Equatable {}
+extension AirshipCore.CloudSite : Swift.Hashable {}
+extension AirshipCore.CloudSite : Swift.RawRepresentable {}
+extension AirshipCore.DispatcherTimeBase : Swift.Equatable {}
+extension AirshipCore.DispatcherTimeBase : Swift.Hashable {}
+extension AirshipCore.DispatcherTimeBase : Swift.RawRepresentable {}

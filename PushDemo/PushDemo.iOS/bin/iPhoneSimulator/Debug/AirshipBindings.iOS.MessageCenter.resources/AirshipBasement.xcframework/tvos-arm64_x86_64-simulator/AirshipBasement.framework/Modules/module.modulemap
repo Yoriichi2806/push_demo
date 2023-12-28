@@ -1,0 +1,6 @@
+framework module AirshipBasement {
+  umbrella header "AirshipBasement.h"
+
+  export *
+  module * { export * }
+}

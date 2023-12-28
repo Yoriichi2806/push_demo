@@ -1,0 +1,14 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="zero">تم حذف 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل</item><item quantity="one">تم حذف رسالة 
+        <ns1:g example="1" id="count">%1$d</ns1:g></item><item quantity="two">تم حذف 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل</item><item quantity="few">تم حذف 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل</item><item quantity="many">تم حذف 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل</item><item quantity="other">تم حذف 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="zero">تم وضع علامة على 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل كمقروءة</item><item quantity="one">تم وضع علامة \"مقروءة\" على رسالة 
+        <ns1:g example="1" id="count">%1$d</ns1:g></item><item quantity="two">تم وضع علامة على 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل كمقروءة</item><item quantity="few">تم وضع علامة على 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل كمقروءة</item><item quantity="many">تم وضع علامة على 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل كمقروءة</item><item quantity="other">تم وضع علامة على 
+        <ns1:g example="7" id="count">%1$d</ns1:g>رسائل كمقروءة</item></plurals><string name="ua_mc_action_click">اقرأ الرساله</string><string name="ua_mc_action_select">حدد الرسالة</string><string name="ua_mc_action_unselect">قم بإلغاء تحديد الرسالة</string><string name="ua_mc_description_state_selected">تم تحديد</string><string name="ua_mc_description_state_unread">غير مقروء</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>في 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

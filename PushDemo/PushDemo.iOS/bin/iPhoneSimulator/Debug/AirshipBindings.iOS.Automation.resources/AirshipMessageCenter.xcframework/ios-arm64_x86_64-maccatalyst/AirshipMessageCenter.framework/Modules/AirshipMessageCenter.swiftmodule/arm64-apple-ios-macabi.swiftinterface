@@ -1,0 +1,335 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios14.0-macabi -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AirshipMessageCenter
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AirshipCore
+@_exported import AirshipMessageCenter
+import Combine
+import CoreData
+import Foundation
+import Swift
+import SwiftUI
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+@_hasMissingDesignatedInitializers final public class MessageCenterAction : AirshipCore.AirshipAction {
+  public static let defaultNames: [Swift.String]
+  public static let messageIDPlaceHolder: Swift.String
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func accepts(arguments: AirshipCore.ActionArguments) async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor final public func perform(arguments: AirshipCore.ActionArguments) async throws -> AirshipCore.AirshipJSON?
+  #endif
+  @objc deinit
+}
+public enum SeparatorStyle {
+  case none
+  case singleLine
+  public static func == (a: AirshipMessageCenter.SeparatorStyle, b: AirshipMessageCenter.SeparatorStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct MessageCenterTheme {
+  public var refreshTintColor: SwiftUI.Color?
+  public var iconsEnabled: Swift.Bool
+  public var placeholderIcon: SwiftUI.Image?
+  public var cellTitleFont: SwiftUI.Font?
+  public var cellDateFont: SwiftUI.Font?
+  public var cellColor: SwiftUI.Color?
+  public var cellTitleColor: SwiftUI.Color?
+  public var cellDateColor: SwiftUI.Color?
+  public var cellSeparatorStyle: AirshipMessageCenter.SeparatorStyle?
+  public var cellSeparatorColor: SwiftUI.Color?
+  public var cellTintColor: SwiftUI.Color?
+  public var unreadIndicatorColor: SwiftUI.Color?
+  public var selectAllButtonTitleColor: SwiftUI.Color?
+  public var deleteButtonTitleColor: SwiftUI.Color?
+  public var markAsReadButtonTitleColor: SwiftUI.Color?
+  public var hideDeleteButton: Swift.Bool?
+  public var editButtonTitleColor: SwiftUI.Color?
+  public var cancelButtonTitleColor: SwiftUI.Color?
+  public var backButtonColor: SwiftUI.Color?
+  public var navigationBarTitle: Swift.String?
+  public init(refreshTintColor: SwiftUI.Color? = nil, iconsEnabled: Swift.Bool = false, placeholderIcon: SwiftUI.Image? = nil, cellTitleFont: SwiftUI.Font? = nil, cellDateFont: SwiftUI.Font? = nil, cellColor: SwiftUI.Color? = nil, cellTitleColor: SwiftUI.Color? = nil, cellDateColor: SwiftUI.Color? = nil, cellSeparatorStyle: AirshipMessageCenter.SeparatorStyle? = nil, cellSeparatorColor: SwiftUI.Color? = nil, cellTintColor: SwiftUI.Color? = nil, unreadIndicatorColor: SwiftUI.Color? = nil, selectAllButtonTitleColor: SwiftUI.Color? = nil, deleteButtonTitleColor: SwiftUI.Color? = nil, markAsReadButtonTitleColor: SwiftUI.Color? = nil, hideDeleteButton: Swift.Bool? = nil, editButtonTitleColor: SwiftUI.Color? = nil, cancelButtonTitleColor: SwiftUI.Color? = nil, backButtonColor: SwiftUI.Color? = nil, navigationBarTitle: Swift.String? = nil)
+}
+extension SwiftUI.View {
+  public func messageCenterTheme(_ theme: AirshipMessageCenter.MessageCenterTheme) -> some SwiftUI.View
+  
+}
+extension SwiftUI.EnvironmentValues {
+  public var airshipMessageCenterTheme: AirshipMessageCenter.MessageCenterTheme {
+    get
+    set
+  }
+}
+extension AirshipMessageCenter.MessageCenterTheme {
+  public static func fromPlist(_ plist: Swift.String) throws -> AirshipMessageCenter.MessageCenterTheme
+}
+@_hasMissingDesignatedInitializers @objc(UAMessageCenterSDKModule) public class MessageCenterSDKModule : ObjectiveC.NSObject, AirshipCore.AirshipSDKModule {
+  final public let actionsManifest: (any AirshipCore.ActionsManifest)?
+  final public let components: [any AirshipBasement.AirshipComponent]
+  @_Concurrency.MainActor public static func load(dependencies: [Swift.String : Any]) -> (any AirshipCore.AirshipSDKModule)?
+  @objc deinit
+}
+@_Concurrency.MainActor(unsafe) public struct MessageCenterView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(controller: AirshipMessageCenter.MessageCenterController)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s20AirshipMessageCenter0bC4ViewV4bodyQrvp", 0) __
+}
+@_hasMissingDesignatedInitializers @objc(UAMessageCenterUser) final public class MessageCenterUser : ObjectiveC.NSObject, Swift.Codable, Swift.Sendable {
+  @objc final public let password: Swift.String
+  @objc final public let username: Swift.String
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension AirshipMessageCenter.MessageCenterUser {
+  @objc final public var basicAuthString: Swift.String {
+    @objc get
+  }
+}
+@objc(UAMessageCenterNativeBridgeExtension) public class MessageCenterNativeBridgeExtension : ObjectiveC.NSObject, AirshipCore.NativeBridgeExtensionDelegate {
+  @objc public init(message: AirshipMessageCenter.MessageCenterMessage, user: AirshipMessageCenter.MessageCenterUser)
+  @_Concurrency.MainActor @objc public func actionsMetadata(for command: AirshipCore.JavaScriptCommand, webView: WebKit.WKWebView) -> [Swift.String : Swift.String]
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor @objc public func extendJavaScriptEnvironment(_ js: any AirshipCore.JavaScriptEnvironmentProtocol, webView: WebKit.WKWebView) async
+  #endif
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(UAMessageCenterViewController) public class MessageCenterViewControllerFactory : ObjectiveC.NSObject {
+  @_Concurrency.MainActor public class func make(theme: AirshipMessageCenter.MessageCenterTheme? = nil, controller: AirshipMessageCenter.MessageCenterController, dismissAction: (() -> Swift.Void)? = nil) -> UIKit.UIViewController
+  @objc @_Concurrency.MainActor public class func make(themePlist: Swift.String?, controller: AirshipMessageCenter.MessageCenterController, dismissAction: (() -> Swift.Void)? = nil) throws -> UIKit.UIViewController
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(UAMessageCenterMessage) final public class MessageCenterMessage : ObjectiveC.NSObject, Swift.Sendable {
+  @objc final public let title: Swift.String
+  @objc final public let id: Swift.String
+  @objc final public let extra: [Swift.String : Swift.String]
+  @objc final public let bodyURL: Foundation.URL
+  @objc final public let expirationDate: Foundation.Date?
+  @objc final public let sentDate: Foundation.Date
+  @objc final public let unread: Swift.Bool
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+}
+extension AirshipMessageCenter.MessageCenterMessage {
+  @objc final public var listIcon: Swift.String? {
+    @objc get
+  }
+  @objc final public var subtitle: Swift.String? {
+    @objc get
+  }
+  @objc public static func parseMessageID(userInfo: [Swift.AnyHashable : Any]) -> Swift.String?
+  @objc final public var isExpired: Swift.Bool {
+    @objc get
+  }
+}
+@_Concurrency.MainActor(unsafe) public struct MessageCenterListView : SwiftUI.View {
+  @SwiftUI.ObservedObject @_projectedValueProperty($controller) @_Concurrency.MainActor(unsafe) public var controller: AirshipMessageCenter.MessageCenterController {
+    get
+    set
+    _modify
+  }
+  @_Concurrency.MainActor(unsafe) public var $controller: SwiftUI.ObservedObject<AirshipMessageCenter.MessageCenterController>.Wrapper {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s20AirshipMessageCenter0bC8ListViewV4bodyQrvp", 0) __
+}
+extension SwiftUI.View {
+  public func setMessageCenterItemViewStyle<S>(_ style: S) -> some SwiftUI.View where S : AirshipMessageCenter.MessageCenterListItemViewStyle
+  
+}
+public struct ListItemViewStyleConfiguration {
+  public let message: AirshipMessageCenter.MessageCenterMessage
+}
+public protocol MessageCenterListItemViewStyle {
+  associatedtype Body : SwiftUI.View
+  typealias Configuration = AirshipMessageCenter.ListItemViewStyleConfiguration
+  func makeBody(configuration: Self.Configuration) -> Self.Body
+}
+extension AirshipMessageCenter.MessageCenterListItemViewStyle where Self == AirshipMessageCenter.DefaultListItemViewStyle {
+  public static var defaultStyle: AirshipMessageCenter.DefaultListItemViewStyle {
+    get
+  }
+}
+public struct DefaultListItemViewStyle : AirshipMessageCenter.MessageCenterListItemViewStyle {
+  public func makeBody(configuration: AirshipMessageCenter.DefaultListItemViewStyle.Configuration) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s20AirshipMessageCenter24DefaultListItemViewStyleV8makeBody13configurationQrAA0efgH13ConfigurationV_tF", 0) __
+}
+@_inheritsConvenienceInitializers @objc(UAMessageCenterController) public class MessageCenterController : ObjectiveC.NSObject, Combine.ObservableObject {
+  @objc public func navigate(messageID: Swift.String?)
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@objc(UAMessageCenterDisplayDelegate) public protocol MessageCenterDisplayDelegate {
+  @objc(displayMessageCenterForMessageID:) func displayMessageCenter(messageID: Swift.String)
+  @objc func displayMessageCenter()
+  @objc func dismissMessageCenter()
+}
+@_hasMissingDesignatedInitializers @objc(UAMessageCenter) public class MessageCenter : ObjectiveC.NSObject {
+  @objc public var displayDelegate: (any AirshipMessageCenter.MessageCenterDisplayDelegate)?
+  @objc public var inbox: AirshipMessageCenter.MessageCenterInbox
+  public var theme: AirshipMessageCenter.MessageCenterTheme?
+  @objc public func setThemeFromPlist(_ plist: Swift.String) throws
+  @objc public static var shared: AirshipMessageCenter.MessageCenter {
+    @objc get
+  }
+  @objc public func display()
+  @objc(displayWithMessageID:) public func display(messageID: Swift.String)
+  @objc public func dismiss()
+  @objc deinit
+}
+extension AirshipMessageCenter.MessageCenter : AirshipBasement.AirshipComponent, AirshipCore.PushableComponent {
+  @objc dynamic public var isComponentEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc dynamic public func receivedRemoteNotification(_ notification: [Swift.AnyHashable : Any], completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+}
+@objc(UAMessageCenterInboxBaseProtocol) public protocol MessageCenterInboxBaseProtocol {
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc(getMessagesWithCompletionHandler:) func _getMessages() async -> [AirshipMessageCenter.MessageCenterMessage]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc(getUserWithCompletionHandler:) func _getUser() async -> AirshipMessageCenter.MessageCenterUser?
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc(getUnreadCountWithCompletionHandler:) func _getUnreadCount() async -> Swift.Int
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @discardableResult
+  @objc func refreshMessages() async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func markRead(messages: [AirshipMessageCenter.MessageCenterMessage]) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func markRead(messageIDs: [Swift.String]) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func delete(messages: [AirshipMessageCenter.MessageCenterMessage]) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func delete(messageIDs: [Swift.String]) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func message(forBodyURL bodyURL: Foundation.URL) async -> AirshipMessageCenter.MessageCenterMessage?
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc func message(forID messageID: Swift.String) async -> AirshipMessageCenter.MessageCenterMessage?
+  #endif
+}
+public protocol MessageCenterInboxProtocol : AirshipMessageCenter.MessageCenterInboxBaseProtocol {
+  var messagePublisher: Combine.AnyPublisher<[AirshipMessageCenter.MessageCenterMessage], Swift.Never> { get }
+  var unreadCountPublisher: Combine.AnyPublisher<Swift.Int, Swift.Never> { get }
+  #if compiler(>=5.3) && $EffectfulProp
+  var messages: [AirshipMessageCenter.MessageCenterMessage] { get async }
+  #endif
+  #if compiler(>=5.3) && $EffectfulProp
+  var user: AirshipMessageCenter.MessageCenterUser? { get async }
+  #endif
+  #if compiler(>=5.3) && $EffectfulProp
+  var unreadCount: Swift.Int { get async }
+  #endif
+}
+@_hasMissingDesignatedInitializers @objc(UAMessageCenterInbox) public class MessageCenterInbox : ObjectiveC.NSObject, AirshipMessageCenter.MessageCenterInboxProtocol {
+  public static let messageListUpdatedEvent: Foundation.NSNotification.Name
+  public var messagePublisher: Combine.AnyPublisher<[AirshipMessageCenter.MessageCenterMessage], Swift.Never> {
+    get
+  }
+  public var unreadCountPublisher: Combine.AnyPublisher<Swift.Int, Swift.Never> {
+    get
+  }
+  #if compiler(>=5.3) && $EffectfulProp
+  public var messages: [AirshipMessageCenter.MessageCenterMessage] {
+    get async
+  }
+  #endif
+  #if compiler(>=5.3) && $EffectfulProp
+  public var user: AirshipMessageCenter.MessageCenterUser? {
+    get async
+  }
+  #endif
+  #if compiler(>=5.3) && $EffectfulProp
+  public var unreadCount: Swift.Int {
+    get async
+  }
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func _getMessages() async -> [AirshipMessageCenter.MessageCenterMessage]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func _getUser() async -> AirshipMessageCenter.MessageCenterUser?
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func _getUnreadCount() async -> Swift.Int
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @discardableResult
+  @objc public func refreshMessages() async -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func markRead(messages: [AirshipMessageCenter.MessageCenterMessage]) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func markRead(messageIDs: [Swift.String]) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func delete(messages: [AirshipMessageCenter.MessageCenterMessage]) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func delete(messageIDs: [Swift.String]) async
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func message(forBodyURL bodyURL: Foundation.URL) async -> AirshipMessageCenter.MessageCenterMessage?
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func message(forID messageID: Swift.String) async -> AirshipMessageCenter.MessageCenterMessage?
+  #endif
+  @objc deinit
+}
+public struct MessageCenterMessageView : SwiftUI.View {
+  public init(messageID: Swift.String, title: Swift.String?, dismissAction: (() -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s20AirshipMessageCenter0bcB4ViewV4bodyQrvp", 0) __
+}
+extension SwiftUI.View {
+  public func setMessageCenterMessageViewStyle<S>(_ style: S) -> some SwiftUI.View where S : AirshipMessageCenter.MessageViewStyle
+  
+}
+public struct MessageViewStyleConfiguration {
+  public let messageID: Swift.String
+  public let title: Swift.String?
+  public let dismissAction: (() -> Swift.Void)?
+}
+public protocol MessageViewStyle {
+  associatedtype Body : SwiftUI.View
+  typealias Configuration = AirshipMessageCenter.MessageViewStyleConfiguration
+  func makeBody(configuration: Self.Configuration) -> Self.Body
+}
+extension AirshipMessageCenter.MessageViewStyle where Self == AirshipMessageCenter.DefaultMessageViewStyle {
+  public static var defaultStyle: AirshipMessageCenter.DefaultMessageViewStyle {
+    get
+  }
+}
+public struct DefaultMessageViewStyle : AirshipMessageCenter.MessageViewStyle {
+  public func makeBody(configuration: AirshipMessageCenter.DefaultMessageViewStyle.Configuration) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s20AirshipMessageCenter07DefaultB9ViewStyleV8makeBody13configurationQrAA0beF13ConfigurationV_tF", 0) __
+}
+extension AirshipMessageCenter.SeparatorStyle : Swift.Equatable {}
+extension AirshipMessageCenter.SeparatorStyle : Swift.Hashable {}

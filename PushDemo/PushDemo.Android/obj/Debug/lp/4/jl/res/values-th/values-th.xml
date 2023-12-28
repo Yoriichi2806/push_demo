@@ -1,0 +1,4 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="other">ลบแล้ว 
+        <ns1:g example="7" id="count">%1$d</ns1:g>ข้อความ</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="other">ทำเครื่องหมาย 
+        <ns1:g example="7" id="count">%1$d</ns1:g>ข้อความว่าอ่านแล้ว</item></plurals><string name="ua_mc_action_click">อ่านข้อความ</string><string name="ua_mc_action_select">เลือกข้อความ</string><string name="ua_mc_action_unselect">ยกเลิกการเลือกข้อความ</string><string name="ua_mc_description_state_selected">เลือกแล้ว</string><string name="ua_mc_description_state_unread">ยังไม่ได้อ่าน</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>บน 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

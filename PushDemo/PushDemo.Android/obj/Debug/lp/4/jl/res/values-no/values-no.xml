@@ -1,0 +1,6 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">Slettet 
+        <ns1:g example="1" id="count">%1$d</ns1:g>melding</item><item quantity="other">Slettet 
+        <ns1:g example="7" id="count">%1$d</ns1:g>meldinger</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one">Merket 
+        <ns1:g example="1" id="count">%1$d</ns1:g>melding som lest</item><item quantity="other">Merket 
+        <ns1:g example="7" id="count">%1$d</ns1:g>meldinger som lest</item></plurals><string name="ua_mc_action_click">Les melding</string><string name="ua_mc_action_select">Velg melding</string><string name="ua_mc_action_unselect">Fjern markeringen av melding</string><string name="ua_mc_description_state_selected">Valgt,</string><string name="ua_mc_description_state_unread">Ulest,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, på 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

@@ -1,0 +1,671 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AirshipPreferenceCenter
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AirshipCore
+@_exported import AirshipPreferenceCenter
+import Combine
+import Foundation
+import Swift
+import SwiftUI
+import UIKit
+import _Concurrency
+import _StringProcessing
+@_Concurrency.MainActor(unsafe) public struct PreferenceCenterAlertView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public let item: AirshipPreferenceCenter.PreferenceCenterConfig.Alert
+  @SwiftUI.ObservedObject @_projectedValueProperty($state) @_Concurrency.MainActor(unsafe) public var state: AirshipPreferenceCenter.PreferenceCenterState {
+    get
+    set
+    _modify
+  }
+  @_Concurrency.MainActor(unsafe) public var $state: SwiftUI.ObservedObject<AirshipPreferenceCenter.PreferenceCenterState>.Wrapper {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter0bC9AlertViewV4bodyQrvp", 0) __
+}
+extension SwiftUI.View {
+  public func prefernceCenterAlertStyle<S>(_ style: S) -> some SwiftUI.View where S : AirshipPreferenceCenter.PrefernceCenterAlertStyle
+  
+}
+public struct PrefernceCenterAlertStyleConfiguration {
+  public let item: AirshipPreferenceCenter.PreferenceCenterConfig.Alert
+  public let state: AirshipPreferenceCenter.PreferenceCenterState
+  public let displayConditionsMet: Swift.Bool
+  public let preferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme
+}
+public protocol PrefernceCenterAlertStyle {
+  associatedtype Body : SwiftUI.View
+  typealias Configuration = AirshipPreferenceCenter.PrefernceCenterAlertStyleConfiguration
+  func makeBody(configuration: Self.Configuration) -> Self.Body
+}
+extension AirshipPreferenceCenter.PrefernceCenterAlertStyle where Self == AirshipPreferenceCenter.DefaultPrefernceCenterAlertStyle {
+  public static var defaultStyle: AirshipPreferenceCenter.DefaultPrefernceCenterAlertStyle {
+    get
+  }
+}
+public struct DefaultPrefernceCenterAlertStyle : AirshipPreferenceCenter.PrefernceCenterAlertStyle {
+  public func makeBody(configuration: AirshipPreferenceCenter.DefaultPrefernceCenterAlertStyle.Configuration) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter016DefaultPrefernceC10AlertStyleV8makeBody13configurationQrAA0ecfG13ConfigurationV_tF", 0) __
+}
+public enum PreferenceCenterViewPhase {
+  case loading
+  case error(any Swift.Error)
+  case loaded(AirshipPreferenceCenter.PreferenceCenterState)
+}
+@_Concurrency.MainActor(unsafe) public struct PreferenceCenterList : SwiftUI.View {
+  #if compiler(>=5.3) && $AsyncAwait && $Sendable
+  @_Concurrency.MainActor(unsafe) public init(preferenceCenterID: Swift.String, onLoad: (@Sendable (Swift.String) async -> AirshipPreferenceCenter.PreferenceCenterViewPhase)? = nil, onPhaseChange: ((AirshipPreferenceCenter.PreferenceCenterViewPhase) -> Swift.Void)? = nil)
+  #endif
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter0bC4ListV4bodyQrvp", 0) __
+}
+public struct PreferenceCenterViewStyleConfiguration {
+  public let phase: AirshipPreferenceCenter.PreferenceCenterViewPhase
+  public let preferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme
+  public let refresh: () -> Swift.Void
+}
+public protocol PreferenceCenterViewStyle {
+  associatedtype Body : SwiftUI.View
+  typealias Configuration = AirshipPreferenceCenter.PreferenceCenterViewStyleConfiguration
+  func makeBody(configuration: Self.Configuration) -> Self.Body
+}
+extension AirshipPreferenceCenter.PreferenceCenterViewStyle where Self == AirshipPreferenceCenter.DefaultPreferenceCenterViewStyle {
+  public static var defaultStyle: AirshipPreferenceCenter.DefaultPreferenceCenterViewStyle {
+    get
+  }
+}
+public struct DefaultPreferenceCenterViewStyle : AirshipPreferenceCenter.PreferenceCenterViewStyle {
+  public func makeErrorView(configuration: AirshipPreferenceCenter.DefaultPreferenceCenterViewStyle.Configuration) -> some SwiftUI.View
+  
+  public func makePreferenceCenterView(configuration: AirshipPreferenceCenter.DefaultPreferenceCenterViewStyle.Configuration, state: AirshipPreferenceCenter.PreferenceCenterState) -> some SwiftUI.View
+  
+  public func makeBody(configuration: AirshipPreferenceCenter.DefaultPreferenceCenterViewStyle.Configuration) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter07DefaultbC9ViewStyleV8makeBody13configurationQrAA0bceF13ConfigurationV_tF", 0) __
+}
+public struct PreferenceCenterView : SwiftUI.View {
+  public init(preferenceCenterID: Swift.String)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter0bC4ViewV4bodyQrvp", 0) __
+}
+public struct PreferenceCenterTheme : Swift.Equatable {
+  public var viewController: AirshipPreferenceCenter.PreferenceCenterTheme.ViewController?
+  public var preferenceCenter: AirshipPreferenceCenter.PreferenceCenterTheme.PreferenceCenter?
+  public var commonSection: AirshipPreferenceCenter.PreferenceCenterTheme.CommonSection?
+  public var labeledSectionBreak: AirshipPreferenceCenter.PreferenceCenterTheme.LabeledSectionBreak?
+  public var alert: AirshipPreferenceCenter.PreferenceCenterTheme.Alert?
+  public var channelSubscription: AirshipPreferenceCenter.PreferenceCenterTheme.ChannelSubscription?
+  public var contactSubscription: AirshipPreferenceCenter.PreferenceCenterTheme.ContactSubscription?
+  public var contactSubscriptionGroup: AirshipPreferenceCenter.PreferenceCenterTheme.ContactSubscriptionGroup?
+  public struct NavigationBar : Swift.Equatable {
+    public var title: Swift.String?
+    public var backgroundColor: UIKit.UIColor?
+    public init(title: Swift.String? = nil, backgroundColor: UIKit.UIColor? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.NavigationBar, b: AirshipPreferenceCenter.PreferenceCenterTheme.NavigationBar) -> Swift.Bool
+  }
+  public struct ViewController : Swift.Equatable {
+    public var navigationBar: AirshipPreferenceCenter.PreferenceCenterTheme.NavigationBar?
+    public var backgroundColor: UIKit.UIColor?
+    public init(navigationBar: AirshipPreferenceCenter.PreferenceCenterTheme.NavigationBar? = nil, backgroundColor: UIKit.UIColor? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.ViewController, b: AirshipPreferenceCenter.PreferenceCenterTheme.ViewController) -> Swift.Bool
+  }
+  public struct PreferenceCenter : Swift.Equatable {
+    public var subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var retryButtonBackgroundColor: SwiftUI.Color?
+    public var retryButtonLabelAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var retryButtonLabel: Swift.String?
+    public var retryMessage: Swift.String?
+    public var retryMessageAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public init(subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, retryButtonBackgroundColor: SwiftUI.Color? = nil, retryButtonLabelAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, retryButtonLabel: Swift.String? = nil, retryMessage: Swift.String? = nil, retryMessageAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.PreferenceCenter, b: AirshipPreferenceCenter.PreferenceCenterTheme.PreferenceCenter) -> Swift.Bool
+  }
+  public struct TextAppearance : Swift.Equatable {
+    public var font: SwiftUI.Font?
+    public var color: SwiftUI.Color?
+    public init(font: SwiftUI.Font? = nil, color: SwiftUI.Color? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance, b: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance) -> Swift.Bool
+  }
+  public struct Chip : Swift.Equatable {
+    public var checkColor: SwiftUI.Color?
+    public var borderColor: SwiftUI.Color?
+    public var labelAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public init(checkColor: SwiftUI.Color? = nil, borderColor: SwiftUI.Color? = nil, labelAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.Chip, b: AirshipPreferenceCenter.PreferenceCenterTheme.Chip) -> Swift.Bool
+  }
+  public struct CommonSection : Swift.Equatable {
+    public var titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public init(titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.CommonSection, b: AirshipPreferenceCenter.PreferenceCenterTheme.CommonSection) -> Swift.Bool
+  }
+  public struct LabeledSectionBreak : Swift.Equatable {
+    public var titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var backgroundColor: SwiftUI.Color?
+    public init(titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, backgroundColor: SwiftUI.Color? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.LabeledSectionBreak, b: AirshipPreferenceCenter.PreferenceCenterTheme.LabeledSectionBreak) -> Swift.Bool
+  }
+  public struct Alert : Swift.Equatable {
+    public var titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var buttonLabelAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var buttonBackgroundColor: SwiftUI.Color?
+    public init(titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, buttonLabelAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, buttonBackgroundColor: SwiftUI.Color? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.Alert, b: AirshipPreferenceCenter.PreferenceCenterTheme.Alert) -> Swift.Bool
+  }
+  public struct ChannelSubscription : Swift.Equatable {
+    public var titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var toggleTintColor: SwiftUI.Color?
+    public init(titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, toggleTintColor: SwiftUI.Color? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.ChannelSubscription, b: AirshipPreferenceCenter.PreferenceCenterTheme.ChannelSubscription) -> Swift.Bool
+  }
+  public struct ContactSubscription : Swift.Equatable {
+    public var titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var toggleTintColor: SwiftUI.Color?
+    public init(titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, toggleTintColor: SwiftUI.Color? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.ContactSubscription, b: AirshipPreferenceCenter.PreferenceCenterTheme.ContactSubscription) -> Swift.Bool
+  }
+  public struct ContactSubscriptionGroup : Swift.Equatable {
+    public var titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance?
+    public var chip: AirshipPreferenceCenter.PreferenceCenterTheme.Chip?
+    public init(titleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, subtitleAppearance: AirshipPreferenceCenter.PreferenceCenterTheme.TextAppearance? = nil, chip: AirshipPreferenceCenter.PreferenceCenterTheme.Chip? = nil)
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme.ContactSubscriptionGroup, b: AirshipPreferenceCenter.PreferenceCenterTheme.ContactSubscriptionGroup) -> Swift.Bool
+  }
+  public init(viewController: AirshipPreferenceCenter.PreferenceCenterTheme.ViewController? = nil, preferenceCenter: AirshipPreferenceCenter.PreferenceCenterTheme.PreferenceCenter? = nil, commonSection: AirshipPreferenceCenter.PreferenceCenterTheme.CommonSection? = nil, labeledSectionBreak: AirshipPreferenceCenter.PreferenceCenterTheme.LabeledSectionBreak? = nil, alert: AirshipPreferenceCenter.PreferenceCenterTheme.Alert? = nil, channelSubscription: AirshipPreferenceCenter.PreferenceCenterTheme.ChannelSubscription? = nil, contactSubscription: AirshipPreferenceCenter.PreferenceCenterTheme.ContactSubscription? = nil, contactSubscriptionGroup: AirshipPreferenceCenter.PreferenceCenterTheme.ContactSubscriptionGroup? = nil)
+  public static func == (a: AirshipPreferenceCenter.PreferenceCenterTheme, b: AirshipPreferenceCenter.PreferenceCenterTheme) -> Swift.Bool
+}
+extension SwiftUI.EnvironmentValues {
+  public var airshipPreferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme {
+    get
+    set
+  }
+}
+extension SwiftUI.View {
+  public func preferenceCenterTheme(_ theme: AirshipPreferenceCenter.PreferenceCenterTheme) -> some SwiftUI.View
+  
+}
+extension AirshipPreferenceCenter.PreferenceCenterTheme {
+  public static func fromPlist(_ plist: Swift.String) throws -> AirshipPreferenceCenter.PreferenceCenterTheme
+}
+extension SwiftUI.View {
+  public func channelSubscriptionStyle<S>(_ style: S) -> some SwiftUI.View where S : AirshipPreferenceCenter.ChannelSubscriptionViewStyle
+  
+}
+public struct ChannelSubscriptionViewStyleConfiguration {
+  public let item: AirshipPreferenceCenter.PreferenceCenterConfig.ChannelSubscription
+  public let state: AirshipPreferenceCenter.PreferenceCenterState
+  public let displayConditionsMet: Swift.Bool
+  public let preferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme
+  public let isSubscribed: SwiftUI.Binding<Swift.Bool>
+}
+public protocol ChannelSubscriptionViewStyle {
+  associatedtype Body : SwiftUI.View
+  typealias Configuration = AirshipPreferenceCenter.ChannelSubscriptionViewStyleConfiguration
+  func makeBody(configuration: Self.Configuration) -> Self.Body
+}
+extension AirshipPreferenceCenter.ChannelSubscriptionViewStyle where Self == AirshipPreferenceCenter.DefaultChannelSubscriptionViewStyle {
+  public static var defaultStyle: AirshipPreferenceCenter.DefaultChannelSubscriptionViewStyle {
+    get
+  }
+}
+public struct DefaultChannelSubscriptionViewStyle : AirshipPreferenceCenter.ChannelSubscriptionViewStyle {
+  public func makeBody(configuration: AirshipPreferenceCenter.DefaultChannelSubscriptionViewStyle.Configuration) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter35DefaultChannelSubscriptionViewStyleV8makeBody13configurationQrAA0efgH13ConfigurationV_tF", 0) __
+}
+@_Concurrency.MainActor(unsafe) public struct ContactSubscriptionView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public let item: AirshipPreferenceCenter.PreferenceCenterConfig.ContactSubscription
+  @SwiftUI.ObservedObject @_projectedValueProperty($state) @_Concurrency.MainActor(unsafe) public var state: AirshipPreferenceCenter.PreferenceCenterState {
+    get
+    set
+    _modify
+  }
+  @_Concurrency.MainActor(unsafe) public var $state: SwiftUI.ObservedObject<AirshipPreferenceCenter.PreferenceCenterState>.Wrapper {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter23ContactSubscriptionViewV4bodyQrvp", 0) __
+}
+extension SwiftUI.View {
+  public func contactSubscriptionStyle<S>(_ style: S) -> some SwiftUI.View where S : AirshipPreferenceCenter.ContactSubscriptionViewStyle
+  
+}
+public struct ContactSubscriptionViewStyleConfiguration {
+  public let item: AirshipPreferenceCenter.PreferenceCenterConfig.ContactSubscription
+  public let state: AirshipPreferenceCenter.PreferenceCenterState
+  public let displayConditionsMet: Swift.Bool
+  public let preferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme
+  public let isSubscribed: SwiftUI.Binding<Swift.Bool>
+}
+public protocol ContactSubscriptionViewStyle {
+  associatedtype Body : SwiftUI.View
+  typealias Configuration = AirshipPreferenceCenter.ContactSubscriptionViewStyleConfiguration
+  func makeBody(configuration: Self.Configuration) -> Self.Body
+}
+extension AirshipPreferenceCenter.ContactSubscriptionViewStyle where Self == AirshipPreferenceCenter.DefaultContactSubscriptionViewStyle {
+  public static var defaultStyle: AirshipPreferenceCenter.DefaultContactSubscriptionViewStyle {
+    get
+  }
+}
+public struct DefaultContactSubscriptionViewStyle : AirshipPreferenceCenter.ContactSubscriptionViewStyle {
+  public func makeBody(configuration: AirshipPreferenceCenter.DefaultContactSubscriptionViewStyle.Configuration) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter35DefaultContactSubscriptionViewStyleV8makeBody13configurationQrAA0efgH13ConfigurationV_tF", 0) __
+}
+@_inheritsConvenienceInitializers @objc(UAPreferenceCenterViewControllerFactory) public class PreferenceCenterViewControllerFactory : ObjectiveC.NSObject {
+  @objc @_Concurrency.MainActor public class func makeViewController(preferenceCenterID: Swift.String, dismissAction: (() -> Swift.Void)? = nil) -> UIKit.UIViewController
+  @objc @_Concurrency.MainActor public class func makeViewController(preferenceCenterID: Swift.String, preferenceCenterThemePlist: Swift.String) throws -> UIKit.UIViewController
+  @_Concurrency.MainActor public class func makeViewController(preferenceCenterID: Swift.String, preferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme? = nil, dismissAction: (() -> Swift.Void)? = nil) -> UIKit.UIViewController
+  @_Concurrency.MainActor public class func makeViewController(view: AirshipPreferenceCenter.PreferenceCenterView, preferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme?, dismissAction: (() -> Swift.Void)? = nil) -> UIKit.UIViewController
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_Concurrency.MainActor(unsafe) public struct CommonSectionView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public let section: AirshipPreferenceCenter.PreferenceCenterConfig.CommonSection
+  @SwiftUI.ObservedObject @_projectedValueProperty($state) @_Concurrency.MainActor(unsafe) public var state: AirshipPreferenceCenter.PreferenceCenterState {
+    get
+    set
+    _modify
+  }
+  @_Concurrency.MainActor(unsafe) public var $state: SwiftUI.ObservedObject<AirshipPreferenceCenter.PreferenceCenterState>.Wrapper {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter17CommonSectionViewV4bodyQrvp", 0) __
+}
+extension SwiftUI.View {
+  public func commonSectionViewStyle<S>(_ style: S) -> some SwiftUI.View where S : AirshipPreferenceCenter.CommonSectionViewStyle
+  
+}
+public struct CommonSectionViewStyleConfiguration {
+  public let section: AirshipPreferenceCenter.PreferenceCenterConfig.CommonSection
+  public let state: AirshipPreferenceCenter.PreferenceCenterState
+  public let displayConditionsMet: Swift.Bool
+  public let preferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme
+}
+public protocol CommonSectionViewStyle {
+  associatedtype Body : SwiftUI.View
+  typealias Configuration = AirshipPreferenceCenter.CommonSectionViewStyleConfiguration
+  func makeBody(configuration: Self.Configuration) -> Self.Body
+}
+extension AirshipPreferenceCenter.CommonSectionViewStyle where Self == AirshipPreferenceCenter.DefaultCommonSectionViewStyle {
+  public static var defaultStyle: AirshipPreferenceCenter.DefaultCommonSectionViewStyle {
+    get
+  }
+}
+public struct DefaultCommonSectionViewStyle : AirshipPreferenceCenter.CommonSectionViewStyle {
+  public func makeBody(configuration: AirshipPreferenceCenter.DefaultCommonSectionViewStyle.Configuration) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter29DefaultCommonSectionViewStyleV8makeBody13configurationQrAA0efgH13ConfigurationV_tF", 0) __
+}
+@_hasMissingDesignatedInitializers public class PreferenceCenterState : Combine.ObservableObject {
+  final public let config: AirshipPreferenceCenter.PreferenceCenterConfig
+  convenience public init(config: AirshipPreferenceCenter.PreferenceCenterConfig, contactSubscriptions: [Swift.String : Swift.Set<AirshipCore.ChannelScope>] = [:], channelSubscriptions: Swift.Set<Swift.String> = Set())
+  public func isChannelSubscribed(_ listID: Swift.String) -> Swift.Bool
+  public func isContactSubscribed(_ listID: Swift.String, scope: AirshipCore.ChannelScope) -> Swift.Bool
+  public func isContactSubscribed(_ listID: Swift.String, scopes: [AirshipCore.ChannelScope]) -> Swift.Bool
+  public func makeBinding(channelListID: Swift.String) -> SwiftUI.Binding<Swift.Bool>
+  public func makeBinding(contactListID: Swift.String, scopes: [AirshipCore.ChannelScope]) -> SwiftUI.Binding<Swift.Bool>
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@objc(UAPreferenceCenterConfig) public class PreferenceCenterConfig : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let identifier: Swift.String
+  final public let sections: [AirshipPreferenceCenter.PreferenceCenterConfig.Section]
+  @objc(sections) public var _sections: [any AirshipPreferenceCenter.PreferenceCenterConfigSection] {
+    @objc get
+  }
+  @objc final public let display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay?
+  @objc final public let options: AirshipPreferenceCenter.PreferenceCenterConfig.Options?
+  public init(identifier: Swift.String, sections: [AirshipPreferenceCenter.PreferenceCenterConfig.Section], display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay? = nil, options: AirshipPreferenceCenter.PreferenceCenterConfig.Options? = nil)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc(UAPreferenceCenterConfigOptions) public class Options : ObjectiveC.NSObject, Swift.Decodable {
+    @objc final public let mergeChannelDataToContact: Swift.Bool
+    @objc public init(mergeChannelDataToContact: Swift.Bool)
+    required public init(from decoder: any Swift.Decoder) throws
+    @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+    @objc deinit
+  }
+  @objc(UAPreferenceConfigCommonDisplay) public class CommonDisplay : ObjectiveC.NSObject, Swift.Decodable {
+    @objc final public let title: Swift.String?
+    @objc final public let subtitle: Swift.String?
+    public init(title: Swift.String? = nil, subtitle: Swift.String? = nil)
+    @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+    @objc deinit
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+  @objc(UAPreferenceCenterConfigNotificationOptInCondition) public class NotificationOptInCondition : ObjectiveC.NSObject, Swift.Decodable, AirshipPreferenceCenter.PreferenceConfigCondition {
+    @objc(UANotificationOptInConditionStatus) public enum OptInStatus : Swift.Int, Swift.Equatable {
+      case optedIn
+      case optedOut
+      public init?(rawValue: Swift.Int)
+      public typealias RawValue = Swift.Int
+      public var rawValue: Swift.Int {
+        get
+      }
+    }
+    @objc final public let type: AirshipPreferenceCenter.PreferenceCenterConfigConditionType
+    @objc final public let optInStatus: AirshipPreferenceCenter.PreferenceCenterConfig.NotificationOptInCondition.OptInStatus
+    public init(optInStatus: AirshipPreferenceCenter.PreferenceCenterConfig.NotificationOptInCondition.OptInStatus)
+    required public init(from decoder: any Swift.Decoder) throws
+    @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+    @objc deinit
+  }
+  public enum Condition : Swift.Decodable, Swift.Equatable {
+    case notificationOptIn(AirshipPreferenceCenter.PreferenceCenterConfig.NotificationOptInCondition)
+    public init(from decoder: any Swift.Decoder) throws
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterConfig.Condition, b: AirshipPreferenceCenter.PreferenceCenterConfig.Condition) -> Swift.Bool
+  }
+  @objc(UAPreferenceCenterConfigCommonSection) public class CommonSection : ObjectiveC.NSObject, Swift.Decodable, AirshipPreferenceCenter.PreferenceCenterConfigSection {
+    @objc final public let type: AirshipPreferenceCenter.PreferenceCenterConfigSectionType
+    @objc final public let identifier: Swift.String
+    final public let items: [AirshipPreferenceCenter.PreferenceCenterConfig.Item]
+    @objc(items) public var _items: [any AirshipPreferenceCenter.PreferenceCenterConfigItem] {
+      @objc get
+    }
+    @objc final public let display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay?
+    final public let conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]?
+    @objc(conditions) public var _conditions: [any AirshipPreferenceCenter.PreferenceConfigCondition]? {
+      @objc get
+    }
+    public init(identifier: Swift.String, items: [AirshipPreferenceCenter.PreferenceCenterConfig.Item], display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay? = nil, conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]? = nil)
+    @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+    @objc deinit
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+  @objc(UAPreferenceLabeledSectionBreak) public class LabeledSectionBreak : ObjectiveC.NSObject, Swift.Decodable, AirshipPreferenceCenter.PreferenceCenterConfigSection {
+    @objc final public let type: AirshipPreferenceCenter.PreferenceCenterConfigSectionType
+    @objc final public let identifier: Swift.String
+    @objc final public let display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay?
+    final public let conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]?
+    @objc(conditions) public var _conditions: [any AirshipPreferenceCenter.PreferenceConfigCondition]? {
+      @objc get
+    }
+    public init(identifier: Swift.String, display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay? = nil, conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]? = nil)
+    @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+    @objc deinit
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+  public enum Section : Swift.Decodable, Swift.Equatable {
+    case common(AirshipPreferenceCenter.PreferenceCenterConfig.CommonSection)
+    case labeledSectionBreak(AirshipPreferenceCenter.PreferenceCenterConfig.LabeledSectionBreak)
+    public init(from decoder: any Swift.Decoder) throws
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterConfig.Section, b: AirshipPreferenceCenter.PreferenceCenterConfig.Section) -> Swift.Bool
+  }
+  @objc(UAPreferenceCenterConfigChannelSubscription) public class ChannelSubscription : ObjectiveC.NSObject, Swift.Decodable, AirshipPreferenceCenter.PreferenceCenterConfigItem {
+    @objc final public let type: AirshipPreferenceCenter.PreferenceCenterConfigItemType
+    @objc final public let identifier: Swift.String
+    @objc final public let subscriptionID: Swift.String
+    @objc final public let display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay?
+    final public let conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]?
+    @objc(conditions) public var _conditions: [any AirshipPreferenceCenter.PreferenceConfigCondition]? {
+      @objc get
+    }
+    public init(identifier: Swift.String, subscriptionID: Swift.String, display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay? = nil, conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]? = nil)
+    @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+    @objc deinit
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+  @objc(UAPreferenceCenterConfigContactSubscriptionGroup) public class ContactSubscriptionGroup : ObjectiveC.NSObject, Swift.Decodable, AirshipPreferenceCenter.PreferenceCenterConfigItem {
+    @objc final public let type: AirshipPreferenceCenter.PreferenceCenterConfigItemType
+    @objc final public let identifier: Swift.String
+    @objc final public let subscriptionID: Swift.String
+    @objc final public let components: [AirshipPreferenceCenter.PreferenceCenterConfig.ContactSubscriptionGroup.Component]
+    @objc final public let display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay?
+    final public let conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]?
+    @objc(conditions) public var _conditions: [any AirshipPreferenceCenter.PreferenceConfigCondition]? {
+      @objc get
+    }
+    public init(identifier: Swift.String, subscriptionID: Swift.String, components: [AirshipPreferenceCenter.PreferenceCenterConfig.ContactSubscriptionGroup.Component], display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay? = nil, conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]? = nil)
+    @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+    @objc(UAPreferenceContactSubscriptionGroupComponent) public class Component : ObjectiveC.NSObject, Swift.Decodable {
+      public var scopes: [AirshipCore.ChannelScope] {
+        get
+      }
+      @objc(scopes) final public let _scopes: AirshipCore.ChannelScopes
+      @objc final public let display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay?
+      public init(scopes: [AirshipCore.ChannelScope], display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay? = nil)
+      @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+      @objc deinit
+      required public init(from decoder: any Swift.Decoder) throws
+    }
+    @objc deinit
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+  @objc(UAPreferenceCenterConfigContactSubscription) public class ContactSubscription : ObjectiveC.NSObject, Swift.Decodable, AirshipPreferenceCenter.PreferenceCenterConfigItem {
+    @objc final public let type: AirshipPreferenceCenter.PreferenceCenterConfigItemType
+    @objc final public let identifier: Swift.String
+    @objc final public let display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay?
+    final public let conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]?
+    @objc(conditions) public var _conditions: [any AirshipPreferenceCenter.PreferenceConfigCondition]? {
+      @objc get
+    }
+    @objc final public let subscriptionID: Swift.String
+    public var scopes: [AirshipCore.ChannelScope] {
+      get
+    }
+    @objc(scopes) final public let _scopes: AirshipCore.ChannelScopes
+    public init(identifier: Swift.String, subscriptionID: Swift.String, scopes: [AirshipCore.ChannelScope], display: AirshipPreferenceCenter.PreferenceCenterConfig.CommonDisplay? = nil, conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]? = nil)
+    @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+    @objc deinit
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+  @objc(UAPreferenceCenterConfigAlert) public class Alert : ObjectiveC.NSObject, Swift.Decodable, AirshipPreferenceCenter.PreferenceCenterConfigItem {
+    @objc final public let type: AirshipPreferenceCenter.PreferenceCenterConfigItemType
+    @objc final public let identifier: Swift.String
+    @objc final public let display: AirshipPreferenceCenter.PreferenceCenterConfig.Alert.Display?
+    final public let conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]?
+    @objc(conditions) public var _conditions: [any AirshipPreferenceCenter.PreferenceConfigCondition]? {
+      @objc get
+    }
+    @objc final public let button: AirshipPreferenceCenter.PreferenceCenterConfig.Alert.Button?
+    public init(identifier: Swift.String, display: AirshipPreferenceCenter.PreferenceCenterConfig.Alert.Display? = nil, conditions: [AirshipPreferenceCenter.PreferenceCenterConfig.Condition]? = nil, button: AirshipPreferenceCenter.PreferenceCenterConfig.Alert.Button? = nil)
+    @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+    @objc(UAPreferenceCenterConfigAlertButton) public class Button : ObjectiveC.NSObject, Swift.Decodable {
+      @objc final public let text: Swift.String
+      @objc final public let contentDescription: Swift.String?
+      @objc public var actions: Any? {
+        @objc get
+      }
+      public init(text: Swift.String, contentDescription: Swift.String? = nil)
+      @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+      @objc deinit
+      required public init(from decoder: any Swift.Decoder) throws
+    }
+    @objc(UAPreferenceConfigAlertDisplay) public class Display : ObjectiveC.NSObject, Swift.Decodable {
+      @objc final public let title: Swift.String?
+      @objc final public let subtitle: Swift.String?
+      @objc final public let iconURL: Swift.String?
+      public init(title: Swift.String? = nil, subtitle: Swift.String? = nil, iconURL: Swift.String? = nil)
+      @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+      @objc deinit
+      required public init(from decoder: any Swift.Decoder) throws
+    }
+    @objc deinit
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+  public enum Item : Swift.Decodable, Swift.Equatable {
+    case channelSubscription(AirshipPreferenceCenter.PreferenceCenterConfig.ChannelSubscription)
+    case contactSubscription(AirshipPreferenceCenter.PreferenceCenterConfig.ContactSubscription)
+    case contactSubscriptionGroup(AirshipPreferenceCenter.PreferenceCenterConfig.ContactSubscriptionGroup)
+    case alert(AirshipPreferenceCenter.PreferenceCenterConfig.Alert)
+    public init(from decoder: any Swift.Decoder) throws
+    public static func == (a: AirshipPreferenceCenter.PreferenceCenterConfig.Item, b: AirshipPreferenceCenter.PreferenceCenterConfig.Item) -> Swift.Bool
+  }
+  @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc(UAPreferenceCenterConfigConditionType) public enum PreferenceCenterConfigConditionType : Swift.Int, Swift.CustomStringConvertible, Swift.Equatable {
+  case notificationOptIn
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(UAPreferenceConfigCondition) public protocol PreferenceConfigCondition {
+  @objc var type: AirshipPreferenceCenter.PreferenceCenterConfigConditionType { get }
+}
+@objc(UAPreferenceCenterConfigItemType) public enum PreferenceCenterConfigItemType : Swift.Int, Swift.CustomStringConvertible, Swift.Equatable {
+  case channelSubscription
+  case contactSubscription
+  case contactSubscriptionGroup
+  case alert
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(UAPreferenceCenterConfigItem) public protocol PreferenceCenterConfigItem {
+  @objc var type: AirshipPreferenceCenter.PreferenceCenterConfigItemType { get }
+  @objc var identifier: Swift.String { get }
+}
+@objc(UAPreferenceCenterConfigSectionType) public enum PreferenceCenterConfigSectionType : Swift.Int, Swift.CustomStringConvertible, Swift.Equatable {
+  case common
+  case labeledSectionBreak
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(UAPreferenceCenterConfigSection) public protocol PreferenceCenterConfigSection {
+  @objc var type: AirshipPreferenceCenter.PreferenceCenterConfigSectionType { get }
+  @objc var identifier: Swift.String { get }
+}
+extension AirshipPreferenceCenter.PreferenceCenterConfig {
+  public func containsChannelSubscriptions() -> Swift.Bool
+  public func containsContactSubscriptions() -> Swift.Bool
+}
+@_Concurrency.MainActor(unsafe) public struct LabeledSectionBreakView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public let section: AirshipPreferenceCenter.PreferenceCenterConfig.LabeledSectionBreak
+  @SwiftUI.ObservedObject @_projectedValueProperty($state) @_Concurrency.MainActor(unsafe) public var state: AirshipPreferenceCenter.PreferenceCenterState {
+    get
+    set
+    _modify
+  }
+  @_Concurrency.MainActor(unsafe) public var $state: SwiftUI.ObservedObject<AirshipPreferenceCenter.PreferenceCenterState>.Wrapper {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter23LabeledSectionBreakViewV4bodyQrvp", 0) __
+}
+extension SwiftUI.View {
+  public func labeledSectionBreakStyle<S>(_ style: S) -> some SwiftUI.View where S : AirshipPreferenceCenter.LabeledSectionBreakStyle
+  
+}
+public struct LabeledSectionBreakStyleConfiguration {
+  public let section: AirshipPreferenceCenter.PreferenceCenterConfig.LabeledSectionBreak
+  public let state: AirshipPreferenceCenter.PreferenceCenterState
+  public let displayConditionsMet: Swift.Bool
+  public let preferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme
+}
+public protocol LabeledSectionBreakStyle {
+  associatedtype Body : SwiftUI.View
+  typealias Configuration = AirshipPreferenceCenter.LabeledSectionBreakStyleConfiguration
+  func makeBody(configuration: Self.Configuration) -> Self.Body
+}
+extension AirshipPreferenceCenter.LabeledSectionBreakStyle where Self == AirshipPreferenceCenter.DefaultLabeledSectionBreakStyle {
+  public static var defaultStyle: AirshipPreferenceCenter.DefaultLabeledSectionBreakStyle {
+    get
+  }
+}
+public struct DefaultLabeledSectionBreakStyle : AirshipPreferenceCenter.LabeledSectionBreakStyle {
+  public func makeBody(configuration: AirshipPreferenceCenter.DefaultLabeledSectionBreakStyle.Configuration) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter31DefaultLabeledSectionBreakStyleV8makeBody13configurationQrAA0efgH13ConfigurationV_tF", 0) __
+}
+@_hasMissingDesignatedInitializers @objc(UAPreferenceCenterSDKModule) public class PreferenceCenterSDKModule : ObjectiveC.NSObject, AirshipCore.AirshipSDKModule {
+  final public let actionsManifest: (any AirshipCore.ActionsManifest)?
+  final public let components: [any AirshipBasement.AirshipComponent]
+  @_Concurrency.MainActor public static func load(dependencies: [Swift.String : Any]) -> (any AirshipCore.AirshipSDKModule)?
+  @objc deinit
+}
+extension SwiftUI.View {
+  public func contactSubscriptionGroupStyle<S>(_ style: S) -> some SwiftUI.View where S : AirshipPreferenceCenter.ContactSubscriptionGroupStyle
+  
+}
+public struct ContactSubscriptionGroupStyleConfiguration {
+  public let item: AirshipPreferenceCenter.PreferenceCenterConfig.ContactSubscriptionGroup
+  public let state: AirshipPreferenceCenter.PreferenceCenterState
+  public let displayConditionsMet: Swift.Bool
+  public let preferenceCenterTheme: AirshipPreferenceCenter.PreferenceCenterTheme
+  public let componentStates: [AirshipPreferenceCenter.ContactSubscriptionGroupStyleConfiguration.ComponentState]
+  public struct ComponentState {
+    public let component: AirshipPreferenceCenter.PreferenceCenterConfig.ContactSubscriptionGroup.Component
+    public let isSubscribed: SwiftUI.Binding<Swift.Bool>
+  }
+}
+public protocol ContactSubscriptionGroupStyle {
+  associatedtype Body : SwiftUI.View
+  typealias Configuration = AirshipPreferenceCenter.ContactSubscriptionGroupStyleConfiguration
+  func makeBody(configuration: Self.Configuration) -> Self.Body
+}
+extension AirshipPreferenceCenter.ContactSubscriptionGroupStyle where Self == AirshipPreferenceCenter.DefaultContactSubscriptionGroupStyle {
+  public static var defaultStyle: AirshipPreferenceCenter.DefaultContactSubscriptionGroupStyle {
+    get
+  }
+}
+public struct DefaultContactSubscriptionGroupStyle : AirshipPreferenceCenter.ContactSubscriptionGroupStyle {
+  public func makeBody(configuration: AirshipPreferenceCenter.DefaultContactSubscriptionGroupStyle.Configuration) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s23AirshipPreferenceCenter36DefaultContactSubscriptionGroupStyleV8makeBody13configurationQrAA0efgH13ConfigurationV_tF", 0) __
+}
+@objc(UAPreferenceCenterOpenDelegate) public protocol PreferenceCenterOpenDelegate {
+  @objc func openPreferenceCenter(_ preferenceCenterID: Swift.String) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers @objc(UAPreferenceCenter) public class PreferenceCenter : ObjectiveC.NSObject, AirshipBasement.AirshipComponent {
+  @objc public static var shared: AirshipPreferenceCenter.PreferenceCenter {
+    @objc get
+  }
+  @objc weak public var openDelegate: (any AirshipPreferenceCenter.PreferenceCenterOpenDelegate)?
+  public var theme: AirshipPreferenceCenter.PreferenceCenterTheme?
+  @objc public func setThemeFromPlist(_ plist: Swift.String) throws
+  @objc public var isComponentEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc(openPreferenceCenter:) public func open(_ preferenceCenterID: Swift.String)
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func config(preferenceCenterID: Swift.String) async throws -> AirshipPreferenceCenter.PreferenceCenterConfig
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func jsonConfig(preferenceCenterID: Swift.String) async throws -> Foundation.Data
+  #endif
+  @objc public func deepLink(_ deepLink: Foundation.URL) -> Swift.Bool
+  @objc deinit
+}
+extension AirshipPreferenceCenter.PreferenceCenterConfig.NotificationOptInCondition.OptInStatus : Swift.Hashable {}
+extension AirshipPreferenceCenter.PreferenceCenterConfig.NotificationOptInCondition.OptInStatus : Swift.RawRepresentable {}
+extension AirshipPreferenceCenter.PreferenceCenterConfigConditionType : Swift.Hashable {}
+extension AirshipPreferenceCenter.PreferenceCenterConfigConditionType : Swift.RawRepresentable {}
+extension AirshipPreferenceCenter.PreferenceCenterConfigItemType : Swift.Hashable {}
+extension AirshipPreferenceCenter.PreferenceCenterConfigItemType : Swift.RawRepresentable {}
+extension AirshipPreferenceCenter.PreferenceCenterConfigSectionType : Swift.Hashable {}
+extension AirshipPreferenceCenter.PreferenceCenterConfigSectionType : Swift.RawRepresentable {}

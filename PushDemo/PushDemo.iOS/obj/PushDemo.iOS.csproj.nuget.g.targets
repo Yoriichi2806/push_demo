@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)xamarin.forms/5.0.0.2196/buildTransitive/Xamarin.Forms.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.forms/5.0.0.2196/buildTransitive/Xamarin.Forms.targets')" />
+    <Import Project="$(NuGetPackageRoot)airship.ios.basement/17.4.0/build/airship.ios.basement.targets" Condition="Exists('$(NuGetPackageRoot)airship.ios.basement/17.4.0/build/airship.ios.basement.targets')" />
+    <Import Project="$(NuGetPackageRoot)airship.ios.core/17.4.0/build/airship.ios.core.targets" Condition="Exists('$(NuGetPackageRoot)airship.ios.core/17.4.0/build/airship.ios.core.targets')" />
+    <Import Project="$(NuGetPackageRoot)airship.ios.messagecenter/17.4.0/build/airship.ios.messagecenter.targets" Condition="Exists('$(NuGetPackageRoot)airship.ios.messagecenter/17.4.0/build/airship.ios.messagecenter.targets')" />
+    <Import Project="$(NuGetPackageRoot)airship.ios.automation/17.4.0/build/airship.ios.automation.targets" Condition="Exists('$(NuGetPackageRoot)airship.ios.automation/17.4.0/build/airship.ios.automation.targets')" />
+    <Import Project="$(NuGetPackageRoot)airship.ios.preferencecenter/17.4.0/build/airship.ios.preferencecenter.targets" Condition="Exists('$(NuGetPackageRoot)airship.ios.preferencecenter/17.4.0/build/airship.ios.preferencecenter.targets')" />
+  </ImportGroup>
+</Project>

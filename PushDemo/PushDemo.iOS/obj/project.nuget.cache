@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "aIYSWFD5hacn8NaGgwXKMp7bqWYjlZPLayq8SS3wQ3+lVSB3st80HV67p+qxI37Sd+51EiOsqnVg94LgfvnloQ==",
+  "success": true,
+  "projectFilePath": "/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushDemo.iOS.csproj",
+  "expectedPackageFiles": [
+    "/Users/ns17/.nuget/packages/airship.ios/17.4.0/airship.ios.17.4.0.nupkg.sha512",
+    "/Users/ns17/.nuget/packages/airship.ios.automation/17.4.0/airship.ios.automation.17.4.0.nupkg.sha512",
+    "/Users/ns17/.nuget/packages/airship.ios.basement/17.4.0/airship.ios.basement.17.4.0.nupkg.sha512",
+    "/Users/ns17/.nuget/packages/airship.ios.core/17.4.0/airship.ios.core.17.4.0.nupkg.sha512",
+    "/Users/ns17/.nuget/packages/airship.ios.messagecenter/17.4.0/airship.ios.messagecenter.17.4.0.nupkg.sha512",
+    "/Users/ns17/.nuget/packages/airship.ios.preferencecenter/17.4.0/airship.ios.preferencecenter.17.4.0.nupkg.sha512",
+    "/Users/ns17/.nuget/packages/airship.netstandard/18.0.0/airship.netstandard.18.0.0.nupkg.sha512",
+    "/Users/ns17/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/ns17/.nuget/packages/xamarin.essentials/1.7.0/xamarin.essentials.1.7.0.nupkg.sha512",
+    "/Users/ns17/.nuget/packages/xamarin.forms/5.0.0.2196/xamarin.forms.5.0.0.2196.nupkg.sha512"
+  ],
+  "logs": []
+}

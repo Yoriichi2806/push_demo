@@ -1,0 +1,11 @@
+framework module AirshipPreferenceCenter {
+  umbrella header "AirshipPreferenceCenter.h"
+
+  export *
+  module * { export * }
+}
+
+module AirshipPreferenceCenter.Swift {
+  header "AirshipPreferenceCenter-Swift.h"
+  requires objc
+}

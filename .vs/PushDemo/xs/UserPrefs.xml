@@ -1,0 +1,71 @@
+﻿<Properties StartupConfiguration="{5054E8DE-8330-40A8-AE35-0C5FD961BB58}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PushDemo/PushDemo.iOS/AppDelegate.cs">
+    <Files>
+      <File FileName="PushDemo/PushDemo.iOS/Entitlements.plist" />
+      <File FileName="PushDemo/PushDemo.iOS/Info.plist" />
+      <File FileName="PushDemo/PushDemo.iOS/AppDelegate.cs" Line="100" Column="1" />
+      <File FileName="PushDemo/PushDemo.iOS/PushHandler.cs" />
+      <File FileName="PushDemo/PushDemo/App.xaml.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PushDemo" expanded="True">
+            <Node name="PushDemo" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="PushDemo.iOS" expanded="True">
+              <Node name="AppDelegate.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/AppDelegate.cs" relfile="PushDemo/PushDemo.iOS/AppDelegate.cs" line="119" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="18" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="22" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="25" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="26" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="15" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="13" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="67" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="70" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="92" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="110" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="112" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="113" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="86" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="82" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="68" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="72" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="73" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="75" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="51" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="38" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="39" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="45" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="61" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo.iOS/PushHandler.cs" relfile="PushDemo/PushDemo.iOS/PushHandler.cs" line="59" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo/App.xaml.cs" relfile="PushDemo/PushDemo/App.xaml.cs" line="22" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo/App.xaml.cs" relfile="PushDemo/PushDemo/App.xaml.cs" line="23" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo/App.xaml.cs" relfile="PushDemo/PushDemo/App.xaml.cs" line="24" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo/App.xaml.cs" relfile="PushDemo/PushDemo/App.xaml.cs" line="38" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo/App.xaml.cs" relfile="PushDemo/PushDemo/App.xaml.cs" line="42" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo/App.xaml.cs" relfile="PushDemo/PushDemo/App.xaml.cs" line="57" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo/App.xaml.cs" relfile="PushDemo/PushDemo/App.xaml.cs" line="58" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo/App.xaml.cs" relfile="PushDemo/PushDemo/App.xaml.cs" line="39" column="1" />
+      <Breakpoint file="/Users/ns17/Downloads/PushDemo/PushDemo/PushDemo/App.xaml.cs" relfile="PushDemo/PushDemo/App.xaml.cs" line="46" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.pixel_5_-_api_34" />
+  <MonoDevelop.Ide.ItemProperties.PushDemo.iOS Xamarin.HotReload.DebuggerTimeoutException.PushDemo.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.61BBE28C-B12D-40BA-8F57-628A36EE065B" />
+  <MonoDevelop.Ide.ItemProperties.PushDemo.Android PreferredExecutionTarget="Android.pixel_5_-_api_34" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

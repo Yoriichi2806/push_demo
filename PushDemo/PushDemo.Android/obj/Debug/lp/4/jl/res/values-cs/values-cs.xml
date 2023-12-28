@@ -1,0 +1,10 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">Smazána zpráva 
+        <ns1:g example="1" id="count">%1$d</ns1:g></item><item quantity="few">Bylo smazáno 
+        <ns1:g example="7" id="count">%1$d</ns1:g>zpráv</item><item quantity="many">Bylo smazáno 
+        <ns1:g example="7" id="count">%1$d</ns1:g>zpráv</item><item quantity="other">Bylo smazáno 
+        <ns1:g example="7" id="count">%1$d</ns1:g>zpráv</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one">Byla označena 
+        <ns1:g example="1" id="count">%1$d</ns1:g>zpráva jako přečtená</item><item quantity="few">Označeno 
+        <ns1:g example="7" id="count">%1$d</ns1:g>zpráv jako přečtených</item><item quantity="many">Označeno 
+        <ns1:g example="7" id="count">%1$d</ns1:g>zpráv jako přečtených</item><item quantity="other">Označeno 
+        <ns1:g example="7" id="count">%1$d</ns1:g>zpráv jako přečtených</item></plurals><string name="ua_mc_action_click">Přečtěte si zprávu</string><string name="ua_mc_action_select">Vyberte zprávu</string><string name="ua_mc_action_unselect">Zrušte výběr zprávy</string><string name="ua_mc_description_state_selected">Počet vybraných:</string><string name="ua_mc_description_state_unread">Nepřečtený,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, dne 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

@@ -1,0 +1,6 @@
+framework module AirshipAutomation {
+  umbrella header "AirshipAutomation.h"
+
+  export *
+  module * { export * }
+}

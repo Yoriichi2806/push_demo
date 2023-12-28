@@ -1,0 +1,10 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">Usunięto 
+        <ns1:g example="1" id="count">%1$d</ns1:g>wiadomość</item><item quantity="few">Usunięto 
+        <ns1:g example="7" id="count">%1$d</ns1:g>wiadomości</item><item quantity="many">Usunięto 
+        <ns1:g example="7" id="count">%1$d</ns1:g>wiadomości</item><item quantity="other">Usunięto 
+        <ns1:g example="7" id="count">%1$d</ns1:g>wiadomości</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one">Oznaczono 
+        <ns1:g example="1" id="count">%1$d</ns1:g>wiadomość jako przeczytaną</item><item quantity="few">Oznaczono 
+        <ns1:g example="7" id="count">%1$d</ns1:g>wiadomości jako przeczytane</item><item quantity="many">Oznaczono 
+        <ns1:g example="7" id="count">%1$d</ns1:g>wiadomości jako przeczytane</item><item quantity="other">Oznaczono 
+        <ns1:g example="7" id="count">%1$d</ns1:g>wiadomości jako przeczytane</item></plurals><string name="ua_mc_action_click">Czytaj wiadomość</string><string name="ua_mc_action_select">Wybierz wiadomość</string><string name="ua_mc_action_unselect">Odznacz wiadomość</string><string name="ua_mc_description_state_selected">Wybrano:</string><string name="ua_mc_description_state_unread">Nieprzeczytane,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, dnia 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

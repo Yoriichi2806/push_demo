@@ -1,0 +1,7 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">Избрисана је 
+        <ns1:g example="1" id="count">%1$d</ns1:g>порука</item><item quantity="few">Избрисано је 
+        <ns1:g example="7" id="count">%1$d</ns1:g>порука</item><item quantity="other">Избрисано је 
+        <ns1:g example="7" id="count">%1$d</ns1:g>порука</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one"><ns1:g example="1" id="count">%1$d</ns1:g>порука је означена као прочитана</item><item quantity="few">Означено је као прочитано ( 
+        <ns1:g example="7" id="count">%1$d</ns1:g>).</item><item quantity="other">Означено је као прочитано ( 
+        <ns1:g example="7" id="count">%1$d</ns1:g>).</item></plurals><string name="ua_mc_action_click">Прочитајте поруку</string><string name="ua_mc_action_select">Изаберите поруку</string><string name="ua_mc_action_unselect">Поништи избор поруке</string><string name="ua_mc_description_state_selected">Изабрано,</string><string name="ua_mc_description_state_unread">Непрочитано,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

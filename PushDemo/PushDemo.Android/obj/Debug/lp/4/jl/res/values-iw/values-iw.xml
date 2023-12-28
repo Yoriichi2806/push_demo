@@ -1,0 +1,10 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">הודעה אחת ( 
+        <ns1:g example="1" id="count">%1$d</ns1:g>) נמחקה</item><item quantity="two">נמחקו 
+        <ns1:g example="7" id="count">%1$d</ns1:g>הודעות</item><item quantity="many">נמחקו 
+        <ns1:g example="7" id="count">%1$d</ns1:g>הודעות</item><item quantity="other">נמחקו 
+        <ns1:g example="7" id="count">%1$d</ns1:g>הודעות</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one">סומנה הודעה 
+        <ns1:g example="1" id="count">%1$d</ns1:g>כנקראה</item><item quantity="two">סומנו 
+        <ns1:g example="7" id="count">%1$d</ns1:g>הודעות כנקראו</item><item quantity="many">סומנו 
+        <ns1:g example="7" id="count">%1$d</ns1:g>הודעות כנקראו</item><item quantity="other">סומנו 
+        <ns1:g example="7" id="count">%1$d</ns1:g>הודעות כנקראו</item></plurals><string name="ua_mc_action_click">קרא הודעה</string><string name="ua_mc_action_select">בחר הודעה</string><string name="ua_mc_action_unselect">בטל את בחירת ההודעה</string><string name="ua_mc_description_state_selected">נבחר</string><string name="ua_mc_description_state_unread">לא נקרא,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, ב- 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

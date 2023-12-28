@@ -1,0 +1,1 @@
+<com.urbanairship.iam.view.InAppButton android:layout_width="match_parent" android:layout_height="match_parent" android:layout_gravity="center_vertical" style="@style/UrbanAirship.InAppBanner.Button" xmlns:android="http://schemas.android.com/apk/res/android" />

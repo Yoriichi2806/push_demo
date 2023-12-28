@@ -1,0 +1,8 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">S-a șters 
+        <ns1:g example="1" id="count">%1$d</ns1:g>mesaj</item><item quantity="few">S-au șters 
+        <ns1:g example="7" id="count">%1$d</ns1:g>mesaje</item><item quantity="other">S-au șters 
+        <ns1:g example="7" id="count">%1$d</ns1:g>mesaje</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one">S-a marcat 
+        <ns1:g example="1" id="count">%1$d</ns1:g>mesaj ca citit</item><item quantity="few">S-au marcat 
+        <ns1:g example="7" id="count">%1$d</ns1:g>mesaje ca citite</item><item quantity="other">S-au marcat 
+        <ns1:g example="7" id="count">%1$d</ns1:g>mesaje ca citite</item></plurals><string name="ua_mc_action_click">Citiți mesajul</string><string name="ua_mc_action_select">Selectați mesajul</string><string name="ua_mc_action_unselect">Deselectați mesajul</string><string name="ua_mc_description_state_selected">Selectat</string><string name="ua_mc_description_state_unread">Necitit,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, pe 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>

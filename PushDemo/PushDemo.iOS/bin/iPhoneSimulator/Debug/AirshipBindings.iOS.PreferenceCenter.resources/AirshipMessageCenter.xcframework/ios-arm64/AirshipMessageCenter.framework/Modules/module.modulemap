@@ -1,0 +1,11 @@
+framework module AirshipMessageCenter {
+  umbrella header "AirshipMessageCenter.h"
+
+  export *
+  module * { export * }
+}
+
+module AirshipMessageCenter.Swift {
+  header "AirshipMessageCenter-Swift.h"
+  requires objc
+}

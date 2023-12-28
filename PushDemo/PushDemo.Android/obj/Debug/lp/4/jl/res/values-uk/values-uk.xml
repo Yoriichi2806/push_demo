@@ -1,0 +1,10 @@
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><plurals name="ua_mc_description_deleted"><item quantity="one">Повідомлення ( 
+        <ns1:g example="1" id="count">%1$d</ns1:g>) видалено</item><item quantity="few">Повідомлення ( 
+        <ns1:g example="7" id="count">%1$d</ns1:g>) видалено</item><item quantity="many">Повідомлення ( 
+        <ns1:g example="7" id="count">%1$d</ns1:g>) видалено</item><item quantity="other">Повідомлення ( 
+        <ns1:g example="7" id="count">%1$d</ns1:g>) видалено</item></plurals><plurals name="ua_mc_description_marked_read"><item quantity="one">Повідомлення ( 
+        <ns1:g example="1" id="count">%1$d</ns1:g>) позначено як прочитане</item><item quantity="few">Повідомлення ( 
+        <ns1:g example="7" id="count">%1$d</ns1:g>) позначено як прочитане</item><item quantity="many">Повідомлення ( 
+        <ns1:g example="7" id="count">%1$d</ns1:g>) позначено як прочитане</item><item quantity="other">Повідомлення ( 
+        <ns1:g example="7" id="count">%1$d</ns1:g>) позначено як прочитане</item></plurals><string name="ua_mc_action_click">Прочитати повідомлення</string><string name="ua_mc_action_select">Вибрати повідомлення</string><string name="ua_mc_action_unselect">Скасувати вибір повідомлення</string><string name="ua_mc_description_state_selected">Обрано,</string><string name="ua_mc_description_state_unread">Не прочитано,</string><string name="ua_mc_description_title_and_date"><ns1:g example="This week\'s top deals" id="title">%1$s</ns1:g>, 
+    <ns1:g example="May 1st, 2021" id="sent_date">%2$s</ns1:g></string></resources>
